@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.7.34302.85
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IPDR_Analyzer", "IPDR_Analyzer\IPDR_Analyzer.csproj", "{37897D03-BE04-42DC-B9AB-8569EF1BC226}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{37897D03-BE04-42DC-B9AB-8569EF1BC226}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{37897D03-BE04-42DC-B9AB-8569EF1BC226}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{37897D03-BE04-42DC-B9AB-8569EF1BC226}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{37897D03-BE04-42DC-B9AB-8569EF1BC226}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {6F035DC5-C9AD-44FF-8E0A-748FA9011012}
+	EndGlobalSection
+EndGlobal
