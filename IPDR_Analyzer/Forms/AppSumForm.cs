@@ -139,6 +139,53 @@ namespace IPDR_Analyzer.Forms
             return appsum;
         }
 
+        private void IPDRSummaryGridView_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            string appName = IPDRSummaryGridView.Rows[e.RowIndex].Cells[0].Value.ToString();
+            string columnType = IPDRSummaryGridView.Columns[e.ColumnIndex].HeaderText;
+
+            if (!rbSelected.Checked)
+            {
+                if (rbMorning.Checked)
+                {
+                    getDetailedRecords(appName, morningRecordsA_Num);
+                }
+                else if (rbDay.Checked)
+                {
+                    getDetailedRecords(appName, dayRecordsA_Num);
+                }
+                else if (rbEvening.Checked)
+                {
+                    getDetailedRecords(appName, eveningRecordsA_Num);
+                }
+                else
+                {
+                    getDetailedRecords(appName, Common.allRecordNum);
+                }
+            }
+            else
+            {
+                getDetailedRecords(appName, selectedRecordsA_Num);
+            }
+        }
+
+        private void getDetailedRecords(string appName, List<StandIPDR> list)
+        {
+            try
+            {
+                var matchingRecords = list.Where(record => record.App == appName).ToList();
+
+                ListtoDataTable ltdt = new ListtoDataTable();
+                DataTable dataTable = ltdt.ToDataTable(matchingRecords);
+
+                new IPDRSummaryDetailForm(dataTable).ShowDialog();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
         private void rbMorning_Click(object sender, EventArgs e)
         {
             morningRecordsA_Num = new List<StandIPDR>();

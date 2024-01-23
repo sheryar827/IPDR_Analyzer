@@ -108,6 +108,7 @@
             this.btnClose.WaitOnLoad = false;
             this.btnClose.Zoom = 20;
             this.btnClose.ZoomSpeed = 10;
+            this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
             // 
             // DragControl_LoginForm
             // 
@@ -173,7 +174,7 @@
             stateProperties12.PlaceholderForeColor = System.Drawing.Color.Empty;
             this.txtRegRePassword.OnIdleState = stateProperties12;
             this.txtRegRePassword.Padding = new System.Windows.Forms.Padding(3);
-            this.txtRegRePassword.PasswordChar = '\0';
+            this.txtRegRePassword.PasswordChar = '*';
             this.txtRegRePassword.PlaceholderForeColor = System.Drawing.Color.Silver;
             this.txtRegRePassword.PlaceholderText = "Reenter Password";
             this.txtRegRePassword.ReadOnly = false;
@@ -434,7 +435,7 @@
             stateProperties16.PlaceholderForeColor = System.Drawing.Color.Empty;
             this.txtRegPassword.OnIdleState = stateProperties16;
             this.txtRegPassword.Padding = new System.Windows.Forms.Padding(3);
-            this.txtRegPassword.PasswordChar = '\0';
+            this.txtRegPassword.PasswordChar = '*';
             this.txtRegPassword.PlaceholderForeColor = System.Drawing.Color.Silver;
             this.txtRegPassword.PlaceholderText = "Enter Password";
             this.txtRegPassword.ReadOnly = false;
@@ -796,7 +797,7 @@
             stateProperties4.PlaceholderForeColor = System.Drawing.Color.Empty;
             this.txtPassword.OnIdleState = stateProperties4;
             this.txtPassword.Padding = new System.Windows.Forms.Padding(3);
-            this.txtPassword.PasswordChar = '\0';
+            this.txtPassword.PasswordChar = '*';
             this.txtPassword.PlaceholderForeColor = System.Drawing.Color.Silver;
             this.txtPassword.PlaceholderText = "Enter Password";
             this.txtPassword.ReadOnly = false;

@@ -344,6 +344,7 @@
             this.btnMissingDates.TextMarginLeft = 0;
             this.btnMissingDates.TextPadding = new System.Windows.Forms.Padding(70, 0, 0, 0);
             this.btnMissingDates.UseDefaultRadiusAndThickness = true;
+            this.btnMissingDates.Visible = false;
             // 
             // btnTimeLine
             // 
@@ -436,6 +437,7 @@
             this.btnTimeLine.TextMarginLeft = 0;
             this.btnTimeLine.TextPadding = new System.Windows.Forms.Padding(70, 0, 0, 0);
             this.btnTimeLine.UseDefaultRadiusAndThickness = true;
+            this.btnTimeLine.Visible = false;
             // 
             // btnSubSearch
             // 
@@ -528,6 +530,7 @@
             this.btnSubSearch.TextMarginLeft = 0;
             this.btnSubSearch.TextPadding = new System.Windows.Forms.Padding(70, 0, 0, 0);
             this.btnSubSearch.UseDefaultRadiusAndThickness = true;
+            this.btnSubSearch.Visible = false;
             // 
             // btnBTS
             // 
@@ -620,6 +623,7 @@
             this.btnBTS.TextMarginLeft = 0;
             this.btnBTS.TextPadding = new System.Windows.Forms.Padding(70, 0, 0, 0);
             this.btnBTS.UseDefaultRadiusAndThickness = true;
+            this.btnBTS.Visible = false;
             // 
             // btnRelation
             // 
@@ -712,6 +716,7 @@
             this.btnRelation.TextMarginLeft = 0;
             this.btnRelation.TextPadding = new System.Windows.Forms.Padding(70, 0, 0, 0);
             this.btnRelation.UseDefaultRadiusAndThickness = true;
+            this.btnRelation.Visible = false;
             // 
             // btnSearch
             // 
@@ -804,6 +809,7 @@
             this.btnSearch.TextMarginLeft = 0;
             this.btnSearch.TextPadding = new System.Windows.Forms.Padding(70, 0, 0, 0);
             this.btnSearch.UseDefaultRadiusAndThickness = true;
+            this.btnSearch.Visible = false;
             // 
             // btnNewNum
             // 
@@ -896,6 +902,7 @@
             this.btnNewNum.TextMarginLeft = 0;
             this.btnNewNum.TextPadding = new System.Windows.Forms.Padding(70, 0, 0, 0);
             this.btnNewNum.UseDefaultRadiusAndThickness = true;
+            this.btnNewNum.Visible = false;
             // 
             // btnFormatCDR
             // 
@@ -988,6 +995,7 @@
             this.btnFormatCDR.TextMarginLeft = 0;
             this.btnFormatCDR.TextPadding = new System.Windows.Forms.Padding(70, 0, 0, 0);
             this.btnFormatCDR.UseDefaultRadiusAndThickness = true;
+            this.btnFormatCDR.Visible = false;
             // 
             // btnCallsCountSec
             // 
@@ -1003,7 +1011,7 @@
             this.btnCallsCountSec.BackColor1 = System.Drawing.Color.White;
             this.btnCallsCountSec.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnCallsCountSec.BackgroundImage")));
             this.btnCallsCountSec.BorderStyle = Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderStyles.Solid;
-            this.btnCallsCountSec.ButtonText = "Calls Duration";
+            this.btnCallsCountSec.ButtonText = "Apps Duration";
             this.btnCallsCountSec.ButtonTextMarginLeft = 0;
             this.btnCallsCountSec.ColorContrastOnClick = 45;
             this.btnCallsCountSec.ColorContrastOnHover = 45;
@@ -1173,6 +1181,7 @@
             this.btnCallsCount.TextMarginLeft = 0;
             this.btnCallsCount.TextPadding = new System.Windows.Forms.Padding(70, 0, 0, 0);
             this.btnCallsCount.UseDefaultRadiusAndThickness = true;
+            this.btnCallsCount.Visible = false;
             // 
             // btnImeiUsed
             // 
@@ -1265,6 +1274,7 @@
             this.btnImeiUsed.TextMarginLeft = 0;
             this.btnImeiUsed.TextPadding = new System.Windows.Forms.Padding(70, 0, 0, 0);
             this.btnImeiUsed.UseDefaultRadiusAndThickness = true;
+            this.btnImeiUsed.Visible = false;
             // 
             // btnSilentPurged
             // 
@@ -1357,6 +1367,7 @@
             this.btnSilentPurged.TextMarginLeft = 0;
             this.btnSilentPurged.TextPadding = new System.Windows.Forms.Padding(70, 0, 0, 0);
             this.btnSilentPurged.UseDefaultRadiusAndThickness = true;
+            this.btnSilentPurged.Visible = false;
             // 
             // btnBasicConver
             // 
@@ -1558,7 +1569,7 @@
             this.btnCDRSum.BackColor1 = System.Drawing.Color.White;
             this.btnCDRSum.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnCDRSum.BackgroundImage")));
             this.btnCDRSum.BorderStyle = Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderStyles.Solid;
-            this.btnCDRSum.ButtonText = "CDR Summary";
+            this.btnCDRSum.ButtonText = "IPDR Summary";
             this.btnCDRSum.ButtonTextMarginLeft = 0;
             this.btnCDRSum.ColorContrastOnClick = 45;
             this.btnCDRSum.ColorContrastOnHover = 45;
@@ -1728,6 +1739,7 @@
             this.btnLinkAnaly.TextMarginLeft = 0;
             this.btnLinkAnaly.TextPadding = new System.Windows.Forms.Padding(70, 0, 0, 0);
             this.btnLinkAnaly.UseDefaultRadiusAndThickness = true;
+            this.btnLinkAnaly.Visible = false;
             this.btnLinkAnaly.Click += new System.EventHandler(this.btnLinkAnaly_Click);
             // 
             // btnGMap
@@ -1837,7 +1849,7 @@
             this.btnAddCDR.BackColor1 = System.Drawing.Color.White;
             this.btnAddCDR.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnAddCDR.BackgroundImage")));
             this.btnAddCDR.BorderStyle = Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderStyles.Solid;
-            this.btnAddCDR.ButtonText = "Add CDR";
+            this.btnAddCDR.ButtonText = "Add IPDR";
             this.btnAddCDR.ButtonTextMarginLeft = 0;
             this.btnAddCDR.ColorContrastOnClick = 45;
             this.btnAddCDR.ColorContrastOnHover = 45;

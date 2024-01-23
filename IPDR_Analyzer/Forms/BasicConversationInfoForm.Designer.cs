@@ -419,6 +419,7 @@
             this.gbBasicConver.TabIndex = 1;
             this.gbBasicConver.TabStop = false;
             this.gbBasicConver.Text = "Basic Conversation Info";
+            this.gbBasicConver.Visible = false;
             // 
             // lbTotalSession
             // 

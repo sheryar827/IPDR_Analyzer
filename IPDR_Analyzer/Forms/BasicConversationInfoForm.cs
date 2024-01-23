@@ -106,7 +106,7 @@ namespace IPDR_Analyzer.Forms
 
         private void BasicConversationInfoForm_Load(object sender, EventArgs e)
         {
-            
+            daysAnalyz();
         }
 
         private void gbWeekDays_MouseHover(object sender, EventArgs e)

@@ -261,5 +261,63 @@ namespace IPDR_Analyzer.Forms
  
             }
         }
+
+        private void gMap_OnMarkerClick(GMapMarker item, MouseEventArgs e)
+        {
+            if (locDetails)
+            {
+                /*var latlngRecord = FilterBySpecificCoordinates(commonLatLngList
+                    , item.Position.Lat.ToString()
+                    , item.Position.Lng.ToString());*/
+
+                var matchingRecords = allLocRecordA_Num.Where(r => r.Latitude == item.Position.Lat && r.Longitude == item.Position.Lng).ToList();
+
+                //matchingRecords = matchingRecords.OrderByDescending(cs => cs.Number).ThenBy(cs => cs.Time).ToList();
+
+                var groupedData = matchingRecords.GroupBy(
+                n => new { n.Number, n.Date, LatLong = new { n.Latitude, n.Longitude }, n.Location }
+                ).Select(g => new
+                {
+                    g.Key.Number,
+                    g.Key.Date,
+                    g.Key.Location,
+                    g.Key.LatLong,
+                    StartTime = g.Min(n => n.Time),
+                    EndTime = g.Max(n => n.Time)
+                });
+
+                //var specificLatLngDT = new ListtoDataTable().ToDataTable(groupedData);
+
+                var timeOverLap = new List<TimeOverLap>();
+
+                foreach (var group in groupedData)
+                {
+                    var to = new TimeOverLap(group.Number, group.Date, group.StartTime, group.EndTime, group.Location, group.LatLong.Latitude, group.LatLong.Longitude);
+
+                    timeOverLap.Add(to);
+                    //Console.WriteLine($"Number: {group.Number}, LatLong: ({group.LatLong.Latitude}, {group.LatLong.Longitude}), Start Time: {group.StartTime}, End Time: {group.EndTime}");
+                }
+
+                new CommonLocDetailsForm(new ListtoDataTable().ToDataTable(timeOverLap)).Show();
+                
+            }
+        }
+
+        private void btnLocDetails_Click(object sender, EventArgs e)
+        {
+            if (locDetails == false)
+            {
+                locDetails = true;
+                zoom = false;
+                route = false;
+                btnLocDetails.FlatAppearance.BorderSize = 1;
+            }
+
+            else
+            {
+                locDetails = false;
+                btnLocDetails.FlatAppearance.BorderSize = 0;
+            }
+        }
     }
 }

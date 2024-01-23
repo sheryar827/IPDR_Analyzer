@@ -223,6 +223,52 @@ namespace IPDR_Analyzer.Forms
             getAllSummary(getLocRecords(Common.allRecordNum));
         }
 
+        private void LocSumDataGridView_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            string location = LocSumDataGridView.Rows[e.RowIndex].Cells[0].Value.ToString();
+            
+            if (!rbSelected.Checked)
+            {
+                if (rbMorning.Checked)
+                {
+                    getDetailedRecords(location, morningRecordsA_Num);
+                }
+                else if (rbDay.Checked)
+                {
+                    getDetailedRecords(location, dayRecordsA_Num);
+                }
+                else if (rbEvening.Checked)
+                {
+                    getDetailedRecords(location, eveningRecordsA_Num);
+                }
+                else
+                {
+                    getDetailedRecords(location, Common.allRecordNum);
+                }
+            }
+            else
+            {
+                getDetailedRecords(location, selectedRecordsA_Num);
+            }
+        }
+
+        private void getDetailedRecords(string location, List<StandIPDR> list)
+        {
+            try
+            {
+                var matchingRecords = list.Where(record => record.Location == location).ToList();
+
+                ListtoDataTable ltdt = new ListtoDataTable();
+                DataTable dataTable = ltdt.ToDataTable(matchingRecords);
+
+                new IPDRSummaryDetailForm(dataTable).ShowDialog();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
         private void rbMorning_Click(object sender, EventArgs e)
         {
             morningRecordsA_Num = new List<StandIPDR>();

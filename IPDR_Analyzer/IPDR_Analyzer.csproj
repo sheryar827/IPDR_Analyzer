@@ -366,6 +366,12 @@
     <Compile Include="Forms\GMapForm.Designer.cs">
       <DependentUpon>GMapForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\IPDRSummaryDetailForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\IPDRSummaryDetailForm.Designer.cs">
+      <DependentUpon>IPDRSummaryDetailForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\LocSumForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -412,6 +418,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\GMapForm.resx">
       <DependentUpon>GMapForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\IPDRSummaryDetailForm.resx">
+      <DependentUpon>IPDRSummaryDetailForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\LocSumForm.resx">
       <DependentUpon>LocSumForm.cs</DependentUpon>

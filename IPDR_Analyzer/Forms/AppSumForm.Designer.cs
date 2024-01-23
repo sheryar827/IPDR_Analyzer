@@ -161,6 +161,7 @@
             this.label20.Size = new System.Drawing.Size(16, 22);
             this.label20.TabIndex = 17;
             this.label20.Text = "/";
+            this.label20.Visible = false;
             // 
             // panelDateTime
             // 
@@ -299,6 +300,7 @@
             this.lbListSize.Size = new System.Drawing.Size(37, 22);
             this.lbListSize.TabIndex = 18;
             this.lbListSize.Text = "???";
+            this.lbListSize.Visible = false;
             // 
             // txtGetRange
             // 
@@ -307,6 +309,7 @@
             this.txtGetRange.Name = "txtGetRange";
             this.txtGetRange.Size = new System.Drawing.Size(61, 27);
             this.txtGetRange.TabIndex = 16;
+            this.txtGetRange.Visible = false;
             // 
             // panel2
             // 
@@ -380,6 +383,7 @@
             this.IPDRSummaryGridView.Size = new System.Drawing.Size(940, 669);
             this.IPDRSummaryGridView.TabIndex = 0;
             this.IPDRSummaryGridView.TimeFilter = false;
+            this.IPDRSummaryGridView.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.IPDRSummaryGridView_CellClick);
             // 
             // AppSumForm
             // 
