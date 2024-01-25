@@ -75,6 +75,9 @@
             this.pcbasicConver = new LiveCharts.WinForms.PieChart();
             this.labelA_Num = new System.Windows.Forms.Label();
             this.bunifuElipse1 = new Bunifu.Framework.UI.BunifuElipse(this.components);
+            this.bunifuElipse2 = new Bunifu.Framework.UI.BunifuElipse(this.components);
+            this.bunifuElipse3 = new Bunifu.Framework.UI.BunifuElipse(this.components);
+            this.bunifuElipse4 = new Bunifu.Framework.UI.BunifuElipse(this.components);
             this.gbActiveThirds.SuspendLayout();
             this.panel1.SuspendLayout();
             this.panelWeekDays.SuspendLayout();
@@ -574,8 +577,23 @@
             // 
             // bunifuElipse1
             // 
-            this.bunifuElipse1.ElipseRadius = 15;
-            this.bunifuElipse1.TargetControl = this;
+            this.bunifuElipse1.ElipseRadius = 20;
+            this.bunifuElipse1.TargetControl = this.panel1;
+            // 
+            // bunifuElipse2
+            // 
+            this.bunifuElipse2.ElipseRadius = 20;
+            this.bunifuElipse2.TargetControl = this.panel3;
+            // 
+            // bunifuElipse3
+            // 
+            this.bunifuElipse3.ElipseRadius = 20;
+            this.bunifuElipse3.TargetControl = this.panelActiveThirds;
+            // 
+            // bunifuElipse4
+            // 
+            this.bunifuElipse4.ElipseRadius = 20;
+            this.bunifuElipse4.TargetControl = this.panelWeekDays;
             // 
             // BasicConversationInfoForm
             // 
@@ -653,5 +671,8 @@
         private System.Windows.Forms.Label labelA_Num;
         private Bunifu.Framework.UI.BunifuElipse bunifuElipse1;
         private LiveCharts.WinForms.PieChart pcbasicConver;
+        private Bunifu.Framework.UI.BunifuElipse bunifuElipse2;
+        private Bunifu.Framework.UI.BunifuElipse bunifuElipse3;
+        private Bunifu.Framework.UI.BunifuElipse bunifuElipse4;
     }
 }

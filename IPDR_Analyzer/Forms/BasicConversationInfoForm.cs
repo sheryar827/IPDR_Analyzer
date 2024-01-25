@@ -106,6 +106,10 @@ namespace IPDR_Analyzer.Forms
 
         private void BasicConversationInfoForm_Load(object sender, EventArgs e)
         {
+            panel1.BackColor = ThemeManager.RandomizeTheme();
+            panel3.BackColor = ThemeManager.RandomizeTheme();
+            panelActiveThirds.BackColor = ThemeManager.RandomizeTheme();
+            panelWeekDays.BackColor = ThemeManager.RandomizeTheme();
             daysAnalyz();
         }
 
