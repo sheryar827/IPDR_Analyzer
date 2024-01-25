@@ -30,7 +30,7 @@
         {
             this.components = new System.ComponentModel.Container();
             this.bunifuElipse3 = new Bunifu.Framework.UI.BunifuElipse(this.components);
-            this.panel3 = new System.Windows.Forms.Panel();
+            this.panelMenu = new System.Windows.Forms.Panel();
             this.flpTime = new System.Windows.Forms.FlowLayoutPanel();
             this.rbMorning = new System.Windows.Forms.RadioButton();
             this.rbDay = new System.Windows.Forms.RadioButton();
@@ -38,7 +38,7 @@
             this.labelA_Num = new System.Windows.Forms.Label();
             this.label20 = new System.Windows.Forms.Label();
             this.panelDateTime = new System.Windows.Forms.Panel();
-            this.btnSearch = new System.Windows.Forms.Button();
+            this.btnSearch = new FontAwesome.Sharp.IconPictureBox();
             this.panelDT = new System.Windows.Forms.Panel();
             this.dtpTimeTo = new System.Windows.Forms.DateTimePicker();
             this.dtpDateFrom = new System.Windows.Forms.DateTimePicker();
@@ -56,9 +56,11 @@
             this.gbCDRSummary = new System.Windows.Forms.GroupBox();
             this.panel4 = new System.Windows.Forms.Panel();
             this.IPDRSummaryGridView = new ADGV.AdvancedDataGridView();
-            this.panel3.SuspendLayout();
+            this.fontDialog1 = new System.Windows.Forms.FontDialog();
+            this.panelMenu.SuspendLayout();
             this.flpTime.SuspendLayout();
             this.panelDateTime.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.btnSearch)).BeginInit();
             this.panelDT.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -69,26 +71,26 @@
             // 
             // bunifuElipse3
             // 
-            this.bunifuElipse3.ElipseRadius = 15;
-            this.bunifuElipse3.TargetControl = this;
+            this.bunifuElipse3.ElipseRadius = 20;
+            this.bunifuElipse3.TargetControl = this.panelMenu;
             // 
-            // panel3
+            // panelMenu
             // 
-            this.panel3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.panel3.Controls.Add(this.flpTime);
-            this.panel3.Controls.Add(this.labelA_Num);
-            this.panel3.Controls.Add(this.label20);
-            this.panel3.Controls.Add(this.panelDateTime);
-            this.panel3.Controls.Add(this.btnExportExcel);
-            this.panel3.Controls.Add(this.btnExportPDF);
-            this.panel3.Controls.Add(this.lbListSize);
-            this.panel3.Controls.Add(this.txtGetRange);
-            this.panel3.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.panel3.Location = new System.Drawing.Point(3, 23);
-            this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(960, 159);
-            this.panel3.TabIndex = 15;
+            this.panelMenu.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.panelMenu.Controls.Add(this.flpTime);
+            this.panelMenu.Controls.Add(this.labelA_Num);
+            this.panelMenu.Controls.Add(this.label20);
+            this.panelMenu.Controls.Add(this.panelDateTime);
+            this.panelMenu.Controls.Add(this.btnExportExcel);
+            this.panelMenu.Controls.Add(this.btnExportPDF);
+            this.panelMenu.Controls.Add(this.lbListSize);
+            this.panelMenu.Controls.Add(this.txtGetRange);
+            this.panelMenu.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panelMenu.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.panelMenu.Location = new System.Drawing.Point(3, 23);
+            this.panelMenu.Name = "panelMenu";
+            this.panelMenu.Size = new System.Drawing.Size(960, 159);
+            this.panelMenu.TabIndex = 15;
             // 
             // flpTime
             // 
@@ -177,14 +179,17 @@
             // 
             // btnSearch
             // 
-            this.btnSearch.Dock = System.Windows.Forms.DockStyle.Right;
-            this.btnSearch.FlatAppearance.BorderSize = 0;
-            this.btnSearch.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnSearch.Location = new System.Drawing.Point(360, 0);
+            this.btnSearch.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.btnSearch.ForeColor = System.Drawing.Color.Gainsboro;
+            this.btnSearch.IconChar = FontAwesome.Sharp.IconChar.MagnifyingGlass;
+            this.btnSearch.IconColor = System.Drawing.Color.Gainsboro;
+            this.btnSearch.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.btnSearch.IconSize = 72;
+            this.btnSearch.Location = new System.Drawing.Point(360, 3);
             this.btnSearch.Name = "btnSearch";
-            this.btnSearch.Size = new System.Drawing.Size(75, 82);
-            this.btnSearch.TabIndex = 35;
-            this.btnSearch.UseVisualStyleBackColor = true;
+            this.btnSearch.Size = new System.Drawing.Size(72, 76);
+            this.btnSearch.TabIndex = 43;
+            this.btnSearch.TabStop = false;
             this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
             // 
             // panelDT
@@ -343,7 +348,7 @@
             // gbCDRSummary
             // 
             this.gbCDRSummary.Controls.Add(this.panel4);
-            this.gbCDRSummary.Controls.Add(this.panel3);
+            this.gbCDRSummary.Controls.Add(this.panelMenu);
             this.gbCDRSummary.Dock = System.Windows.Forms.DockStyle.Fill;
             this.gbCDRSummary.Font = new System.Drawing.Font("Montserrat", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.gbCDRSummary.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(180)))), ((int)(((byte)(74)))), ((int)(((byte)(86)))));
@@ -369,6 +374,7 @@
             // 
             this.IPDRSummaryGridView.AutoGenerateContextFilters = true;
             this.IPDRSummaryGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.IPDRSummaryGridView.BackgroundColor = System.Drawing.Color.White;
             this.IPDRSummaryGridView.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.IPDRSummaryGridView.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
             this.IPDRSummaryGridView.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
@@ -396,12 +402,13 @@
             this.Name = "AppSumForm";
             this.Text = "AppSumForm";
             this.Load += new System.EventHandler(this.AppSumForm_Load);
-            this.panel3.ResumeLayout(false);
-            this.panel3.PerformLayout();
+            this.panelMenu.ResumeLayout(false);
+            this.panelMenu.PerformLayout();
             this.flpTime.ResumeLayout(false);
             this.flpTime.PerformLayout();
             this.panelDateTime.ResumeLayout(false);
             this.panelDateTime.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.btnSearch)).EndInit();
             this.panelDT.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
@@ -420,7 +427,7 @@
         private System.Windows.Forms.GroupBox gbCDRSummary;
         private System.Windows.Forms.Panel panel4;
         private ADGV.AdvancedDataGridView IPDRSummaryGridView;
-        private System.Windows.Forms.Panel panel3;
+        private System.Windows.Forms.Panel panelMenu;
         private System.Windows.Forms.FlowLayoutPanel flpTime;
         private System.Windows.Forms.RadioButton rbMorning;
         private System.Windows.Forms.RadioButton rbDay;
@@ -433,7 +440,6 @@
         private System.Windows.Forms.DateTimePicker dtpDateFrom;
         private System.Windows.Forms.DateTimePicker dtpTimeFrom;
         private System.Windows.Forms.DateTimePicker dtpDateTo;
-        private System.Windows.Forms.Button btnSearch;
         private System.Windows.Forms.RadioButton rbAllData;
         private System.Windows.Forms.RadioButton rbSelected;
         private System.Windows.Forms.Button btnExportExcel;
@@ -441,5 +447,7 @@
         private System.Windows.Forms.Label lbListSize;
         private System.Windows.Forms.TextBox txtGetRange;
         private LiveCharts.WinForms.PieChart pcCDRSummary;
+        private System.Windows.Forms.FontDialog fontDialog1;
+        private FontAwesome.Sharp.IconPictureBox btnSearch;
     }
 }

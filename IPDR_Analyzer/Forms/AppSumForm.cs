@@ -3,12 +3,8 @@ using LiveCharts;
 using LiveCharts.Wpf;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace IPDR_Analyzer.Forms
@@ -257,6 +253,7 @@ namespace IPDR_Analyzer.Forms
         {
             try
             {
+                panelMenu.BackColor = ThemeManager.RandomizeTheme();
                 //getting start date from datatable
                 string sd = Common.allRecordNum.First().Date.ToString();
                 string st = Common.allRecordNum.First().Time.ToString();

@@ -41,7 +41,7 @@
             this.gbLocationSummary = new System.Windows.Forms.GroupBox();
             this.panel3 = new System.Windows.Forms.Panel();
             this.LocSumDataGridView = new ADGV.AdvancedDataGridView();
-            this.panel1 = new System.Windows.Forms.Panel();
+            this.panelMenu = new System.Windows.Forms.Panel();
             this.flpTime = new System.Windows.Forms.FlowLayoutPanel();
             this.rbMorning = new System.Windows.Forms.RadioButton();
             this.rbDay = new System.Windows.Forms.RadioButton();
@@ -68,7 +68,7 @@
             this.gbLocationSummary.SuspendLayout();
             this.panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.LocSumDataGridView)).BeginInit();
-            this.panel1.SuspendLayout();
+            this.panelMenu.SuspendLayout();
             this.flpTime.SuspendLayout();
             this.panelDateTime.SuspendLayout();
             this.panelDT.SuspendLayout();
@@ -177,7 +177,7 @@
             // gbLocationSummary
             // 
             this.gbLocationSummary.Controls.Add(this.panel3);
-            this.gbLocationSummary.Controls.Add(this.panel1);
+            this.gbLocationSummary.Controls.Add(this.panelMenu);
             this.gbLocationSummary.Dock = System.Windows.Forms.DockStyle.Fill;
             this.gbLocationSummary.Font = new System.Drawing.Font("Montserrat", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.gbLocationSummary.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(180)))), ((int)(((byte)(74)))), ((int)(((byte)(86)))));
@@ -204,6 +204,7 @@
             // 
             this.LocSumDataGridView.AutoGenerateContextFilters = true;
             this.LocSumDataGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.LocSumDataGridView.BackgroundColor = System.Drawing.Color.White;
             this.LocSumDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.LocSumDataGridView.DateWithTime = false;
             this.LocSumDataGridView.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -214,22 +215,22 @@
             this.LocSumDataGridView.TimeFilter = false;
             this.LocSumDataGridView.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.LocSumDataGridView_CellClick);
             // 
-            // panel1
+            // panelMenu
             // 
-            this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.panel1.Controls.Add(this.flpTime);
-            this.panel1.Controls.Add(this.panelDateTime);
-            this.panel1.Controls.Add(this.labelA_Num);
-            this.panel1.Controls.Add(this.btnExportExcel);
-            this.panel1.Controls.Add(this.btnExportPDF);
-            this.panel1.Controls.Add(this.lbListSize);
-            this.panel1.Controls.Add(this.label1);
-            this.panel1.Controls.Add(this.txtGetRange);
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel1.Location = new System.Drawing.Point(3, 23);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1220, 152);
-            this.panel1.TabIndex = 15;
+            this.panelMenu.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.panelMenu.Controls.Add(this.flpTime);
+            this.panelMenu.Controls.Add(this.panelDateTime);
+            this.panelMenu.Controls.Add(this.labelA_Num);
+            this.panelMenu.Controls.Add(this.btnExportExcel);
+            this.panelMenu.Controls.Add(this.btnExportPDF);
+            this.panelMenu.Controls.Add(this.lbListSize);
+            this.panelMenu.Controls.Add(this.label1);
+            this.panelMenu.Controls.Add(this.txtGetRange);
+            this.panelMenu.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panelMenu.Location = new System.Drawing.Point(3, 23);
+            this.panelMenu.Name = "panelMenu";
+            this.panelMenu.Size = new System.Drawing.Size(1220, 152);
+            this.panelMenu.TabIndex = 15;
             // 
             // flpTime
             // 
@@ -451,8 +452,8 @@
             // 
             // bunifuElipse2
             // 
-            this.bunifuElipse2.ElipseRadius = 15;
-            this.bunifuElipse2.TargetControl = this.panel1;
+            this.bunifuElipse2.ElipseRadius = 20;
+            this.bunifuElipse2.TargetControl = this.panelMenu;
             // 
             // LocSumForm
             // 
@@ -471,8 +472,8 @@
             this.gbLocationSummary.ResumeLayout(false);
             this.panel3.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.LocSumDataGridView)).EndInit();
-            this.panel1.ResumeLayout(false);
-            this.panel1.PerformLayout();
+            this.panelMenu.ResumeLayout(false);
+            this.panelMenu.PerformLayout();
             this.flpTime.ResumeLayout(false);
             this.flpTime.PerformLayout();
             this.panelDateTime.ResumeLayout(false);
@@ -491,7 +492,7 @@
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.GroupBox gbLocationSummary;
         private System.Windows.Forms.Panel panel3;
-        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Panel panelMenu;
         private System.Windows.Forms.FlowLayoutPanel flpTime;
         private System.Windows.Forms.RadioButton rbMorning;
         private System.Windows.Forms.RadioButton rbDay;

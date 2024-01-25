@@ -116,6 +116,7 @@ namespace IPDR_Analyzer.Forms
         {
             try
             {
+                panelMenu.BackColor = ThemeManager.RandomizeTheme();
                 //getting start date from datatable
                 string sd = Common.allRecordNum.First().Date.ToString();
                 string st = Common.allRecordNum.First().Time.ToString();

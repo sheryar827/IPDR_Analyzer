@@ -53,8 +53,8 @@
             this.shadowPanelMenu = new Bunifu.UI.WinForms.BunifuShadowPanel();
             this.panelMenu = new System.Windows.Forms.Panel();
             this.panelMenuButtons = new System.Windows.Forms.Panel();
-            this.bfbtnCommonLatLng = new Bunifu.UI.WinForms.BunifuButton.BunifuButton();
             this.indicator = new System.Windows.Forms.PictureBox();
+            this.bfbtnCommonLatLng = new Bunifu.UI.WinForms.BunifuButton.BunifuButton();
             this.btnMissingDates = new Bunifu.UI.WinForms.BunifuButton.BunifuButton();
             this.btnTimeLine = new Bunifu.UI.WinForms.BunifuButton.BunifuButton();
             this.btnSubSearch = new Bunifu.UI.WinForms.BunifuButton.BunifuButton();
@@ -82,6 +82,7 @@
             this.panelMenuButtons.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.indicator)).BeginInit();
             this.bunifuPages.SuspendLayout();
+            this.tabPage.SuspendLayout();
             this.SuspendLayout();
             // 
             // shadowPanelMenu
@@ -96,7 +97,7 @@
             this.shadowPanelMenu.Dock = System.Windows.Forms.DockStyle.Left;
             this.shadowPanelMenu.FillStyle = Bunifu.UI.WinForms.BunifuShadowPanel.FillStyles.Solid;
             this.shadowPanelMenu.GradientMode = Bunifu.UI.WinForms.BunifuShadowPanel.GradientModes.Vertical;
-            this.shadowPanelMenu.Location = new System.Drawing.Point(0, 0);
+            this.shadowPanelMenu.Location = new System.Drawing.Point(3, 3);
             this.shadowPanelMenu.Name = "shadowPanelMenu";
             this.shadowPanelMenu.Padding = new System.Windows.Forms.Padding(0, 20, 0, 0);
             this.shadowPanelMenu.PanelColor = System.Drawing.Color.White;
@@ -106,7 +107,7 @@
             this.shadowPanelMenu.ShadowDepth = 5;
             this.shadowPanelMenu.ShadowStyle = Bunifu.UI.WinForms.BunifuShadowPanel.ShadowStyles.Surrounded;
             this.shadowPanelMenu.ShadowTopLeftVisible = false;
-            this.shadowPanelMenu.Size = new System.Drawing.Size(225, 629);
+            this.shadowPanelMenu.Size = new System.Drawing.Size(225, 597);
             this.shadowPanelMenu.Style = Bunifu.UI.WinForms.BunifuShadowPanel.BevelStyles.Flat;
             this.shadowPanelMenu.TabIndex = 5;
             // 
@@ -118,14 +119,14 @@
             this.panelMenu.Dock = System.Windows.Forms.DockStyle.Left;
             this.panelMenu.Location = new System.Drawing.Point(0, 20);
             this.panelMenu.Name = "panelMenu";
-            this.panelMenu.Size = new System.Drawing.Size(205, 609);
+            this.panelMenu.Size = new System.Drawing.Size(205, 577);
             this.panelMenu.TabIndex = 0;
             // 
             // panelMenuButtons
             // 
             this.panelMenuButtons.BackColor = System.Drawing.Color.White;
-            this.panelMenuButtons.Controls.Add(this.bfbtnCommonLatLng);
             this.panelMenuButtons.Controls.Add(this.indicator);
+            this.panelMenuButtons.Controls.Add(this.bfbtnCommonLatLng);
             this.panelMenuButtons.Controls.Add(this.btnMissingDates);
             this.panelMenuButtons.Controls.Add(this.btnTimeLine);
             this.panelMenuButtons.Controls.Add(this.btnSubSearch);
@@ -145,11 +146,19 @@
             this.panelMenuButtons.Controls.Add(this.btnGMap);
             this.panelMenuButtons.Controls.Add(this.btnAddCDR);
             this.panelMenuButtons.Controls.Add(this.btnAddCaseProject);
-            this.panelMenuButtons.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelMenuButtons.Location = new System.Drawing.Point(0, 0);
             this.panelMenuButtons.Name = "panelMenuButtons";
             this.panelMenuButtons.Size = new System.Drawing.Size(188, 1205);
             this.panelMenuButtons.TabIndex = 2;
+            // 
+            // indicator
+            // 
+            this.indicator.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.indicator.Location = new System.Drawing.Point(0, 0);
+            this.indicator.Name = "indicator";
+            this.indicator.Size = new System.Drawing.Size(5, 60);
+            this.indicator.TabIndex = 2;
+            this.indicator.TabStop = false;
             // 
             // bfbtnCommonLatLng
             // 
@@ -243,15 +252,6 @@
             this.bfbtnCommonLatLng.TextPadding = new System.Windows.Forms.Padding(70, 0, 0, 0);
             this.bfbtnCommonLatLng.UseDefaultRadiusAndThickness = true;
             this.bfbtnCommonLatLng.Click += new System.EventHandler(this.bfbtnCommonLatLng_Click);
-            // 
-            // indicator
-            // 
-            this.indicator.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.indicator.Location = new System.Drawing.Point(0, 0);
-            this.indicator.Name = "indicator";
-            this.indicator.Size = new System.Drawing.Size(5, 60);
-            this.indicator.TabIndex = 2;
-            this.indicator.TabStop = false;
             // 
             // btnMissingDates
             // 
@@ -2028,7 +2028,7 @@
             this.bunifuPages.Controls.Add(this.tabPage);
             this.bunifuPages.Controls.Add(this.tabPage2);
             this.bunifuPages.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.bunifuPages.Location = new System.Drawing.Point(225, 0);
+            this.bunifuPages.Location = new System.Drawing.Point(0, 0);
             this.bunifuPages.Multiline = true;
             this.bunifuPages.Name = "bunifuPages";
             this.bunifuPages.Page = this.tabPage;
@@ -2036,7 +2036,7 @@
             this.bunifuPages.PageName = "tabPage";
             this.bunifuPages.PageTitle = "tabPage";
             this.bunifuPages.SelectedIndex = 0;
-            this.bunifuPages.Size = new System.Drawing.Size(879, 629);
+            this.bunifuPages.Size = new System.Drawing.Size(1104, 629);
             this.bunifuPages.TabIndex = 6;
             animation1.AnimateOnlyDifferences = false;
             animation1.BlindCoeff = ((System.Drawing.PointF)(resources.GetObject("animation1.BlindCoeff")));
@@ -2059,10 +2059,11 @@
             // tabPage
             // 
             this.tabPage.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.tabPage.Controls.Add(this.shadowPanelMenu);
             this.tabPage.Location = new System.Drawing.Point(4, 4);
             this.tabPage.Name = "tabPage";
             this.tabPage.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage.Size = new System.Drawing.Size(871, 603);
+            this.tabPage.Size = new System.Drawing.Size(1096, 603);
             this.tabPage.TabIndex = 0;
             this.tabPage.Text = "tabPage";
             // 
@@ -2083,7 +2084,6 @@
             this.BackColor = System.Drawing.Color.WhiteSmoke;
             this.ClientSize = new System.Drawing.Size(1104, 629);
             this.Controls.Add(this.bunifuPages);
-            this.Controls.Add(this.shadowPanelMenu);
             this.Name = "MainForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "MainForm";
@@ -2093,6 +2093,7 @@
             this.panelMenuButtons.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.indicator)).EndInit();
             this.bunifuPages.ResumeLayout(false);
+            this.tabPage.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }

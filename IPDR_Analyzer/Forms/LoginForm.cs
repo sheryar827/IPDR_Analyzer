@@ -72,8 +72,10 @@ namespace IPDR_Analyzer.Forms
                             txtUserName.Clear();
                             txtPassword.Clear();
                             Hide();
-                            MainForm cDRAnalyzer = new MainForm();
-                            cDRAnalyzer.Show();
+                            Dashboard db = new Dashboard();
+                            db.Show();
+                            /*MainForm cDRAnalyzer = new MainForm();
+                            cDRAnalyzer.Show();*/
                         }
                         else
                         {

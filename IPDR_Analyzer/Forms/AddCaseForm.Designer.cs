@@ -29,21 +29,21 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AddCaseForm));
-            Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderEdges borderEdges1 = new Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderEdges();
+            Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderEdges borderEdges4 = new Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderEdges();
             this.bunifuElipse1 = new Bunifu.Framework.UI.BunifuElipse(this.components);
             this.gvShowCaseProject = new Bunifu.UI.WinForms.BunifuDataGridView();
             this.viewCasesProjects = new System.Windows.Forms.GroupBox();
             this.cmbBoxProject = new System.Windows.Forms.ComboBox();
             this.btnSaveProjectCase = new Bunifu.UI.WinForms.BunifuButton.BunifuButton();
-            this.bunifuShadowPanel1 = new Bunifu.UI.WinForms.BunifuShadowPanel();
+            this.panelProject = new Bunifu.UI.WinForms.BunifuShadowPanel();
             this.gbPrject = new System.Windows.Forms.GroupBox();
             ((System.ComponentModel.ISupportInitialize)(this.gvShowCaseProject)).BeginInit();
             this.viewCasesProjects.SuspendLayout();
-            this.bunifuShadowPanel1.SuspendLayout();
+            this.panelProject.SuspendLayout();
             this.gbPrject.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -55,54 +55,54 @@
             // gvShowCaseProject
             // 
             this.gvShowCaseProject.AllowCustomTheming = false;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(48)))), ((int)(((byte)(52)))));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.White;
-            this.gvShowCaseProject.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle10.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(203)))), ((int)(((byte)(242)))), ((int)(((byte)(203)))));
+            dataGridViewCellStyle10.ForeColor = System.Drawing.Color.Black;
+            this.gvShowCaseProject.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle10;
             this.gvShowCaseProject.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.gvShowCaseProject.BackgroundColor = System.Drawing.Color.White;
             this.gvShowCaseProject.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.gvShowCaseProject.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.Raised;
             this.gvShowCaseProject.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(16)))), ((int)(((byte)(18)))));
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI Semibold", 11.75F, System.Drawing.FontStyle.Bold);
-            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(63)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.gvShowCaseProject.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle11.BackColor = System.Drawing.Color.LimeGreen;
+            dataGridViewCellStyle11.Font = new System.Drawing.Font("Segoe UI Semibold", 11.75F, System.Drawing.FontStyle.Bold);
+            dataGridViewCellStyle11.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle11.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(164)))), ((int)(((byte)(40)))));
+            dataGridViewCellStyle11.SelectionForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle11.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.gvShowCaseProject.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle11;
             this.gvShowCaseProject.ColumnHeadersHeight = 40;
-            this.gvShowCaseProject.CurrentTheme.AlternatingRowsStyle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(48)))), ((int)(((byte)(52)))));
+            this.gvShowCaseProject.CurrentTheme.AlternatingRowsStyle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(203)))), ((int)(((byte)(242)))), ((int)(((byte)(203)))));
             this.gvShowCaseProject.CurrentTheme.AlternatingRowsStyle.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold);
-            this.gvShowCaseProject.CurrentTheme.AlternatingRowsStyle.ForeColor = System.Drawing.Color.White;
-            this.gvShowCaseProject.CurrentTheme.AlternatingRowsStyle.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(114)))), ((int)(((byte)(117)))), ((int)(((byte)(119)))));
-            this.gvShowCaseProject.CurrentTheme.AlternatingRowsStyle.SelectionForeColor = System.Drawing.Color.WhiteSmoke;
-            this.gvShowCaseProject.CurrentTheme.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(16)))), ((int)(((byte)(18)))));
-            this.gvShowCaseProject.CurrentTheme.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(56)))), ((int)(((byte)(62)))));
-            this.gvShowCaseProject.CurrentTheme.HeaderStyle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(16)))), ((int)(((byte)(18)))));
+            this.gvShowCaseProject.CurrentTheme.AlternatingRowsStyle.ForeColor = System.Drawing.Color.Black;
+            this.gvShowCaseProject.CurrentTheme.AlternatingRowsStyle.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(132)))), ((int)(((byte)(225)))), ((int)(((byte)(132)))));
+            this.gvShowCaseProject.CurrentTheme.AlternatingRowsStyle.SelectionForeColor = System.Drawing.Color.Black;
+            this.gvShowCaseProject.CurrentTheme.BackColor = System.Drawing.Color.LimeGreen;
+            this.gvShowCaseProject.CurrentTheme.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(193)))), ((int)(((byte)(240)))), ((int)(((byte)(193)))));
+            this.gvShowCaseProject.CurrentTheme.HeaderStyle.BackColor = System.Drawing.Color.LimeGreen;
             this.gvShowCaseProject.CurrentTheme.HeaderStyle.Font = new System.Drawing.Font("Segoe UI Semibold", 11.75F, System.Drawing.FontStyle.Bold);
             this.gvShowCaseProject.CurrentTheme.HeaderStyle.ForeColor = System.Drawing.Color.White;
-            this.gvShowCaseProject.CurrentTheme.HeaderStyle.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(63)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            this.gvShowCaseProject.CurrentTheme.HeaderStyle.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(164)))), ((int)(((byte)(40)))));
             this.gvShowCaseProject.CurrentTheme.HeaderStyle.SelectionForeColor = System.Drawing.Color.White;
             this.gvShowCaseProject.CurrentTheme.Name = null;
-            this.gvShowCaseProject.CurrentTheme.RowsStyle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(37)))), ((int)(((byte)(41)))));
+            this.gvShowCaseProject.CurrentTheme.RowsStyle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(214)))), ((int)(((byte)(245)))), ((int)(((byte)(214)))));
             this.gvShowCaseProject.CurrentTheme.RowsStyle.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold);
-            this.gvShowCaseProject.CurrentTheme.RowsStyle.ForeColor = System.Drawing.Color.White;
-            this.gvShowCaseProject.CurrentTheme.RowsStyle.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(114)))), ((int)(((byte)(117)))), ((int)(((byte)(119)))));
-            this.gvShowCaseProject.CurrentTheme.RowsStyle.SelectionForeColor = System.Drawing.Color.WhiteSmoke;
+            this.gvShowCaseProject.CurrentTheme.RowsStyle.ForeColor = System.Drawing.Color.Black;
+            this.gvShowCaseProject.CurrentTheme.RowsStyle.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(132)))), ((int)(((byte)(225)))), ((int)(((byte)(132)))));
+            this.gvShowCaseProject.CurrentTheme.RowsStyle.SelectionForeColor = System.Drawing.Color.Black;
             this.gvShowCaseProject.Cursor = System.Windows.Forms.Cursors.Hand;
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(37)))), ((int)(((byte)(41)))));
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold);
-            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(114)))), ((int)(((byte)(117)))), ((int)(((byte)(119)))));
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.WhiteSmoke;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.gvShowCaseProject.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle12.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(214)))), ((int)(((byte)(245)))), ((int)(((byte)(214)))));
+            dataGridViewCellStyle12.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold);
+            dataGridViewCellStyle12.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle12.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(132)))), ((int)(((byte)(225)))), ((int)(((byte)(132)))));
+            dataGridViewCellStyle12.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle12.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.gvShowCaseProject.DefaultCellStyle = dataGridViewCellStyle12;
             this.gvShowCaseProject.Dock = System.Windows.Forms.DockStyle.Fill;
             this.gvShowCaseProject.EnableHeadersVisualStyles = false;
-            this.gvShowCaseProject.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(56)))), ((int)(((byte)(62)))));
-            this.gvShowCaseProject.HeaderBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(16)))), ((int)(((byte)(18)))));
+            this.gvShowCaseProject.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(193)))), ((int)(((byte)(240)))), ((int)(((byte)(193)))));
+            this.gvShowCaseProject.HeaderBackColor = System.Drawing.Color.LimeGreen;
             this.gvShowCaseProject.HeaderBgColor = System.Drawing.Color.Empty;
             this.gvShowCaseProject.HeaderForeColor = System.Drawing.Color.White;
             this.gvShowCaseProject.Location = new System.Drawing.Point(8, 39);
@@ -112,7 +112,7 @@
             this.gvShowCaseProject.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
             this.gvShowCaseProject.Size = new System.Drawing.Size(828, 762);
             this.gvShowCaseProject.TabIndex = 0;
-            this.gvShowCaseProject.Theme = Bunifu.UI.WinForms.BunifuDataGridView.PresetThemes.Dark;
+            this.gvShowCaseProject.Theme = Bunifu.UI.WinForms.BunifuDataGridView.PresetThemes.LimeGreen;
             // 
             // viewCasesProjects
             // 
@@ -194,11 +194,11 @@
             this.btnSaveProjectCase.ColorContrastOnClick = 45;
             this.btnSaveProjectCase.ColorContrastOnHover = 45;
             this.btnSaveProjectCase.Cursor = System.Windows.Forms.Cursors.Default;
-            borderEdges1.BottomLeft = true;
-            borderEdges1.BottomRight = true;
-            borderEdges1.TopLeft = true;
-            borderEdges1.TopRight = true;
-            this.btnSaveProjectCase.CustomizableEdges = borderEdges1;
+            borderEdges4.BottomLeft = true;
+            borderEdges4.BottomRight = true;
+            borderEdges4.TopLeft = true;
+            borderEdges4.TopRight = true;
+            this.btnSaveProjectCase.CustomizableEdges = borderEdges4;
             this.btnSaveProjectCase.DialogResult = System.Windows.Forms.DialogResult.None;
             this.btnSaveProjectCase.DisabledBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(191)))), ((int)(((byte)(191)))), ((int)(((byte)(191)))));
             this.btnSaveProjectCase.DisabledFillColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(204)))), ((int)(((byte)(204)))));
@@ -268,29 +268,29 @@
             this.btnSaveProjectCase.UseDefaultRadiusAndThickness = true;
             this.btnSaveProjectCase.Click += new System.EventHandler(this.btnSaveProjectCase_Click);
             // 
-            // bunifuShadowPanel1
+            // panelProject
             // 
-            this.bunifuShadowPanel1.AutoScroll = true;
-            this.bunifuShadowPanel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(245)))), ((int)(((byte)(244)))));
-            this.bunifuShadowPanel1.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(245)))), ((int)(((byte)(244)))));
-            this.bunifuShadowPanel1.BorderRadius = 20;
-            this.bunifuShadowPanel1.BorderThickness = 0;
-            this.bunifuShadowPanel1.Controls.Add(this.gbPrject);
-            this.bunifuShadowPanel1.Dock = System.Windows.Forms.DockStyle.Left;
-            this.bunifuShadowPanel1.FillStyle = Bunifu.UI.WinForms.BunifuShadowPanel.FillStyles.Solid;
-            this.bunifuShadowPanel1.GradientMode = Bunifu.UI.WinForms.BunifuShadowPanel.GradientModes.ForwardDiagonal;
-            this.bunifuShadowPanel1.Location = new System.Drawing.Point(0, 0);
-            this.bunifuShadowPanel1.Name = "bunifuShadowPanel1";
-            this.bunifuShadowPanel1.PanelColor = System.Drawing.Color.White;
-            this.bunifuShadowPanel1.PanelColor2 = System.Drawing.Color.White;
-            this.bunifuShadowPanel1.ShadowColor = System.Drawing.Color.DarkGray;
-            this.bunifuShadowPanel1.ShadowDept = 2;
-            this.bunifuShadowPanel1.ShadowDepth = 7;
-            this.bunifuShadowPanel1.ShadowStyle = Bunifu.UI.WinForms.BunifuShadowPanel.ShadowStyles.Surrounded;
-            this.bunifuShadowPanel1.ShadowTopLeftVisible = false;
-            this.bunifuShadowPanel1.Size = new System.Drawing.Size(583, 809);
-            this.bunifuShadowPanel1.Style = Bunifu.UI.WinForms.BunifuShadowPanel.BevelStyles.Flat;
-            this.bunifuShadowPanel1.TabIndex = 40;
+            this.panelProject.AutoScroll = true;
+            this.panelProject.BackColor = System.Drawing.Color.White;
+            this.panelProject.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(245)))), ((int)(((byte)(244)))));
+            this.panelProject.BorderRadius = 20;
+            this.panelProject.BorderThickness = 0;
+            this.panelProject.Controls.Add(this.gbPrject);
+            this.panelProject.Dock = System.Windows.Forms.DockStyle.Left;
+            this.panelProject.FillStyle = Bunifu.UI.WinForms.BunifuShadowPanel.FillStyles.Solid;
+            this.panelProject.GradientMode = Bunifu.UI.WinForms.BunifuShadowPanel.GradientModes.ForwardDiagonal;
+            this.panelProject.Location = new System.Drawing.Point(0, 0);
+            this.panelProject.Name = "panelProject";
+            this.panelProject.PanelColor = System.Drawing.Color.White;
+            this.panelProject.PanelColor2 = System.Drawing.Color.White;
+            this.panelProject.ShadowColor = System.Drawing.Color.DarkGray;
+            this.panelProject.ShadowDept = 2;
+            this.panelProject.ShadowDepth = 7;
+            this.panelProject.ShadowStyle = Bunifu.UI.WinForms.BunifuShadowPanel.ShadowStyles.Surrounded;
+            this.panelProject.ShadowTopLeftVisible = false;
+            this.panelProject.Size = new System.Drawing.Size(583, 809);
+            this.panelProject.Style = Bunifu.UI.WinForms.BunifuShadowPanel.BevelStyles.Flat;
+            this.panelProject.TabIndex = 40;
             // 
             // gbPrject
             // 
@@ -313,13 +313,14 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1427, 809);
             this.Controls.Add(this.viewCasesProjects);
-            this.Controls.Add(this.bunifuShadowPanel1);
+            this.Controls.Add(this.panelProject);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "AddCaseForm";
             this.Text = "Add Case";
+            this.Load += new System.EventHandler(this.AddCaseForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.gvShowCaseProject)).EndInit();
             this.viewCasesProjects.ResumeLayout(false);
-            this.bunifuShadowPanel1.ResumeLayout(false);
+            this.panelProject.ResumeLayout(false);
             this.gbPrject.ResumeLayout(false);
             this.ResumeLayout(false);
 
@@ -332,7 +333,7 @@
         private System.Windows.Forms.GroupBox viewCasesProjects;
         private System.Windows.Forms.ComboBox cmbBoxProject;
         private Bunifu.UI.WinForms.BunifuButton.BunifuButton btnSaveProjectCase;
-        private Bunifu.UI.WinForms.BunifuShadowPanel bunifuShadowPanel1;
+        private Bunifu.UI.WinForms.BunifuShadowPanel panelProject;
         private System.Windows.Forms.GroupBox gbPrject;
     }
 }

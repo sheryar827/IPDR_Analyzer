@@ -27,7 +27,7 @@
     <UpdatePeriodically>false</UpdatePeriodically>
     <UpdateRequired>false</UpdateRequired>
     <MapFileExtensions>true</MapFileExtensions>
-    <ApplicationRevision>3</ApplicationRevision>
+    <ApplicationRevision>7</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <PublishWizardCompleted>true</PublishWizardCompleted>
@@ -100,6 +100,9 @@
     </Reference>
     <Reference Include="ExcelDataReader.DataSet, Version=3.6.0.0, Culture=neutral, PublicKeyToken=93517dbe6a4012fa, processorArchitecture=MSIL">
       <HintPath>..\packages\ExcelDataReader.DataSet.3.6.0\lib\net35\ExcelDataReader.DataSet.dll</HintPath>
+    </Reference>
+    <Reference Include="FontAwesome.Sharp, Version=6.3.0.0, Culture=neutral, PublicKeyToken=d16d1e4e568ec10f, processorArchitecture=MSIL">
+      <HintPath>..\packages\FontAwesome.Sharp.6.3.0\lib\net472\FontAwesome.Sharp.dll</HintPath>
     </Reference>
     <Reference Include="GMap.NET.Core, Version=2.1.7.0, Culture=neutral, PublicKeyToken=b85b9027b614afef, processorArchitecture=MSIL">
       <HintPath>..\packages\GMap.NET.Core.2.1.7\lib\net472\GMap.NET.Core.dll</HintPath>
@@ -320,6 +323,7 @@
     <Compile Include="Classes\ListtoDataTable.cs" />
     <Compile Include="Classes\LocSummary.cs" />
     <Compile Include="Classes\StandIPDR.cs" />
+    <Compile Include="Classes\ThemeManager.cs" />
     <Compile Include="Classes\TimeOverLap.cs" />
     <Compile Include="Classes\TopAppCallSec.cs" />
     <Compile Include="Classes\TopLocations.cs" />
@@ -359,6 +363,12 @@
     </Compile>
     <Compile Include="Forms\CommonLocDetailsForm.Designer.cs">
       <DependentUpon>CommonLocDetailsForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Dashboard.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Dashboard.Designer.cs">
+      <DependentUpon>Dashboard.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\GMapForm.cs">
       <SubType>Form</SubType>
@@ -415,6 +425,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\CommonLocDetailsForm.resx">
       <DependentUpon>CommonLocDetailsForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Dashboard.resx">
+      <DependentUpon>Dashboard.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\GMapForm.resx">
       <DependentUpon>GMapForm.cs</DependentUpon>

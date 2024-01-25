@@ -28,13 +28,13 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.gMap = new GMap.NET.WindowsForms.GMapControl();
-            this.gvProjectNum = new Bunifu.UI.WinForms.BunifuDataGridView();
             this.btnLocDetails = new System.Windows.Forms.Button();
+            this.gvProjectNum = new Bunifu.UI.WinForms.BunifuDataGridView();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -90,67 +90,6 @@
             this.gMap.OnMarkerClick += new GMap.NET.WindowsForms.MarkerClick(this.gMap_OnMarkerClick);
             this.gMap.Load += new System.EventHandler(this.gMap_Load);
             // 
-            // gvProjectNum
-            // 
-            this.gvProjectNum.AllowCustomTheming = false;
-            dataGridViewCellStyle7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(248)))), ((int)(((byte)(251)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle7.ForeColor = System.Drawing.Color.Black;
-            this.gvProjectNum.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle7;
-            this.gvProjectNum.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.gvProjectNum.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.gvProjectNum.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
-            this.gvProjectNum.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle8.BackColor = System.Drawing.Color.DodgerBlue;
-            dataGridViewCellStyle8.Font = new System.Drawing.Font("Segoe UI Semibold", 11.75F, System.Drawing.FontStyle.Bold);
-            dataGridViewCellStyle8.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(115)))), ((int)(((byte)(204)))));
-            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.gvProjectNum.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle8;
-            this.gvProjectNum.ColumnHeadersHeight = 40;
-            this.gvProjectNum.CurrentTheme.AlternatingRowsStyle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(248)))), ((int)(((byte)(251)))), ((int)(((byte)(255)))));
-            this.gvProjectNum.CurrentTheme.AlternatingRowsStyle.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold);
-            this.gvProjectNum.CurrentTheme.AlternatingRowsStyle.ForeColor = System.Drawing.Color.Black;
-            this.gvProjectNum.CurrentTheme.AlternatingRowsStyle.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(210)))), ((int)(((byte)(232)))), ((int)(((byte)(255)))));
-            this.gvProjectNum.CurrentTheme.AlternatingRowsStyle.SelectionForeColor = System.Drawing.Color.Black;
-            this.gvProjectNum.CurrentTheme.BackColor = System.Drawing.Color.White;
-            this.gvProjectNum.CurrentTheme.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(238)))), ((int)(((byte)(255)))));
-            this.gvProjectNum.CurrentTheme.HeaderStyle.BackColor = System.Drawing.Color.DodgerBlue;
-            this.gvProjectNum.CurrentTheme.HeaderStyle.Font = new System.Drawing.Font("Segoe UI Semibold", 11.75F, System.Drawing.FontStyle.Bold);
-            this.gvProjectNum.CurrentTheme.HeaderStyle.ForeColor = System.Drawing.Color.White;
-            this.gvProjectNum.CurrentTheme.HeaderStyle.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(115)))), ((int)(((byte)(204)))));
-            this.gvProjectNum.CurrentTheme.HeaderStyle.SelectionForeColor = System.Drawing.Color.White;
-            this.gvProjectNum.CurrentTheme.Name = null;
-            this.gvProjectNum.CurrentTheme.RowsStyle.BackColor = System.Drawing.Color.White;
-            this.gvProjectNum.CurrentTheme.RowsStyle.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold);
-            this.gvProjectNum.CurrentTheme.RowsStyle.ForeColor = System.Drawing.Color.Black;
-            this.gvProjectNum.CurrentTheme.RowsStyle.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(210)))), ((int)(((byte)(232)))), ((int)(((byte)(255)))));
-            this.gvProjectNum.CurrentTheme.RowsStyle.SelectionForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle9.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle9.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold);
-            dataGridViewCellStyle9.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle9.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(210)))), ((int)(((byte)(232)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle9.SelectionForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.gvProjectNum.DefaultCellStyle = dataGridViewCellStyle9;
-            this.gvProjectNum.Dock = System.Windows.Forms.DockStyle.Top;
-            this.gvProjectNum.EnableHeadersVisualStyles = false;
-            this.gvProjectNum.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(238)))), ((int)(((byte)(255)))));
-            this.gvProjectNum.HeaderBackColor = System.Drawing.Color.DodgerBlue;
-            this.gvProjectNum.HeaderBgColor = System.Drawing.Color.Empty;
-            this.gvProjectNum.HeaderForeColor = System.Drawing.Color.White;
-            this.gvProjectNum.Location = new System.Drawing.Point(0, 0);
-            this.gvProjectNum.Name = "gvProjectNum";
-            this.gvProjectNum.RowHeadersVisible = false;
-            this.gvProjectNum.RowTemplate.Height = 40;
-            this.gvProjectNum.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.gvProjectNum.Size = new System.Drawing.Size(283, 246);
-            this.gvProjectNum.TabIndex = 0;
-            this.gvProjectNum.Theme = Bunifu.UI.WinForms.BunifuDataGridView.PresetThemes.Light;
-            this.gvProjectNum.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.gvProjectNum_CellClick);
-            // 
             // btnLocDetails
             // 
             this.btnLocDetails.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
@@ -167,6 +106,67 @@
             this.btnLocDetails.Text = "Location Details";
             this.btnLocDetails.UseVisualStyleBackColor = false;
             this.btnLocDetails.Click += new System.EventHandler(this.btnLocDetails_Click);
+            // 
+            // gvProjectNum
+            // 
+            this.gvProjectNum.AllowCustomTheming = false;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(191)))), ((int)(((byte)(223)))), ((int)(((byte)(223)))));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.Black;
+            this.gvProjectNum.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            this.gvProjectNum.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.gvProjectNum.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.gvProjectNum.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
+            this.gvProjectNum.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.Teal;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI Semibold", 11.75F, System.Drawing.FontStyle.Bold);
+            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(102)))), ((int)(((byte)(102)))));
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.gvProjectNum.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            this.gvProjectNum.ColumnHeadersHeight = 40;
+            this.gvProjectNum.CurrentTheme.AlternatingRowsStyle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(191)))), ((int)(((byte)(223)))), ((int)(((byte)(223)))));
+            this.gvProjectNum.CurrentTheme.AlternatingRowsStyle.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold);
+            this.gvProjectNum.CurrentTheme.AlternatingRowsStyle.ForeColor = System.Drawing.Color.Black;
+            this.gvProjectNum.CurrentTheme.AlternatingRowsStyle.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(102)))), ((int)(((byte)(178)))), ((int)(((byte)(178)))));
+            this.gvProjectNum.CurrentTheme.AlternatingRowsStyle.SelectionForeColor = System.Drawing.Color.White;
+            this.gvProjectNum.CurrentTheme.BackColor = System.Drawing.Color.Teal;
+            this.gvProjectNum.CurrentTheme.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(178)))), ((int)(((byte)(216)))), ((int)(((byte)(216)))));
+            this.gvProjectNum.CurrentTheme.HeaderStyle.BackColor = System.Drawing.Color.Teal;
+            this.gvProjectNum.CurrentTheme.HeaderStyle.Font = new System.Drawing.Font("Segoe UI Semibold", 11.75F, System.Drawing.FontStyle.Bold);
+            this.gvProjectNum.CurrentTheme.HeaderStyle.ForeColor = System.Drawing.Color.White;
+            this.gvProjectNum.CurrentTheme.HeaderStyle.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(102)))), ((int)(((byte)(102)))));
+            this.gvProjectNum.CurrentTheme.HeaderStyle.SelectionForeColor = System.Drawing.Color.White;
+            this.gvProjectNum.CurrentTheme.Name = null;
+            this.gvProjectNum.CurrentTheme.RowsStyle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
+            this.gvProjectNum.CurrentTheme.RowsStyle.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold);
+            this.gvProjectNum.CurrentTheme.RowsStyle.ForeColor = System.Drawing.Color.Black;
+            this.gvProjectNum.CurrentTheme.RowsStyle.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(102)))), ((int)(((byte)(178)))), ((int)(((byte)(178)))));
+            this.gvProjectNum.CurrentTheme.RowsStyle.SelectionForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold);
+            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(102)))), ((int)(((byte)(178)))), ((int)(((byte)(178)))));
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.gvProjectNum.DefaultCellStyle = dataGridViewCellStyle3;
+            this.gvProjectNum.Dock = System.Windows.Forms.DockStyle.Top;
+            this.gvProjectNum.EnableHeadersVisualStyles = false;
+            this.gvProjectNum.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(178)))), ((int)(((byte)(216)))), ((int)(((byte)(216)))));
+            this.gvProjectNum.HeaderBackColor = System.Drawing.Color.Teal;
+            this.gvProjectNum.HeaderBgColor = System.Drawing.Color.Empty;
+            this.gvProjectNum.HeaderForeColor = System.Drawing.Color.White;
+            this.gvProjectNum.Location = new System.Drawing.Point(0, 0);
+            this.gvProjectNum.Name = "gvProjectNum";
+            this.gvProjectNum.RowHeadersVisible = false;
+            this.gvProjectNum.RowTemplate.Height = 40;
+            this.gvProjectNum.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.gvProjectNum.Size = new System.Drawing.Size(283, 246);
+            this.gvProjectNum.TabIndex = 0;
+            this.gvProjectNum.Theme = Bunifu.UI.WinForms.BunifuDataGridView.PresetThemes.Teal;
+            this.gvProjectNum.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.gvProjectNum_CellClick);
             // 
             // GMapForm
             // 

@@ -17,6 +17,7 @@ namespace IPDR_Analyzer.Forms
         {
             InitializeComponent();
             getProjectCases();
+            
         }
 
         private async void getProjectCases()
@@ -66,6 +67,12 @@ namespace IPDR_Analyzer.Forms
                 Valid = false;
             }
             return Valid;
+        }
+
+        private void AddCaseForm_Load(object sender, EventArgs e)
+        {
+            
+            panelProject.PanelColor = ThemeManager.RandomizeTheme();
         }
     }
 }

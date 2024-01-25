@@ -85,6 +85,7 @@ namespace IPDR_Analyzer.Forms
         private void MainForm_Load(object sender, EventArgs e)
         {
             //btnMaimize.PerformClick();
+            
             bunifuPages.SetPage("tabPage");
             openChildFormPage(new AddCaseForm(), sender, tabPage);
             this.Text = "ADD CASE";
