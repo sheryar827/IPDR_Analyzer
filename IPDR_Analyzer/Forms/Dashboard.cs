@@ -115,7 +115,7 @@ namespace IPDR_Analyzer.Forms
         {
             if(currentBtn != null)
             {
-                currentBtn.BackColor = Color.FromArgb(31, 30, 68);
+                currentBtn.BackColor = Color.FromArgb(108, 35, 250);
                 currentBtn.ForeColor = Color.Gainsboro;
                 currentBtn.TextAlign = ContentAlignment.MiddleLeft;
                 currentBtn.IconColor = Color.Gainsboro;
@@ -272,6 +272,14 @@ namespace IPDR_Analyzer.Forms
         {
             //btnMin.IconChar= IconChar.Minimize;
             btnMin.BackColor = Color.Transparent;
+        }
+
+        private void btnAppsDur_Click(object sender, EventArgs e)
+        {
+            ActivateButton(sender, ThemeManager.RandomizeTheme());
+            bunifuPages.SetPage("tabPage");
+            openChildFormPage(new AppDurForm(), sender, tabPage);
+            lbTitleChildForm.Text = "APPS DURATION";
         }
     }
 }

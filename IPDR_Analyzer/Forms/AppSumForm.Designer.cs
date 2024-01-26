@@ -29,6 +29,9 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             this.bunifuElipse3 = new Bunifu.Framework.UI.BunifuElipse(this.components);
             this.panelMenu = new System.Windows.Forms.Panel();
             this.flpTime = new System.Windows.Forms.FlowLayoutPanel();
@@ -55,7 +58,7 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.gbCDRSummary = new System.Windows.Forms.GroupBox();
             this.panel4 = new System.Windows.Forms.Panel();
-            this.IPDRSummaryGridView = new ADGV.AdvancedDataGridView();
+            this.IPDRSummaryGridView = new Bunifu.UI.WinForms.BunifuDataGridView();
             this.fontDialog1 = new System.Windows.Forms.FontDialog();
             this.panelMenu.SuspendLayout();
             this.flpTime.SuspendLayout();
@@ -372,29 +375,70 @@
             // 
             // IPDRSummaryGridView
             // 
-            this.IPDRSummaryGridView.AutoGenerateContextFilters = true;
+            this.IPDRSummaryGridView.AllowCustomTheming = false;
+            dataGridViewCellStyle4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(206)))), ((int)(((byte)(236)))), ((int)(((byte)(219)))));
+            dataGridViewCellStyle4.ForeColor = System.Drawing.Color.Black;
+            this.IPDRSummaryGridView.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle4;
             this.IPDRSummaryGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.IPDRSummaryGridView.BackgroundColor = System.Drawing.Color.White;
             this.IPDRSummaryGridView.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.IPDRSummaryGridView.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
             this.IPDRSummaryGridView.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            this.IPDRSummaryGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.IPDRSummaryGridView.DateWithTime = false;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle5.BackColor = System.Drawing.Color.MediumSeaGreen;
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("Segoe UI Semibold", 11.75F, System.Drawing.FontStyle.Bold);
+            dataGridViewCellStyle5.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(143)))), ((int)(((byte)(90)))));
+            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.IPDRSummaryGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
+            this.IPDRSummaryGridView.ColumnHeadersHeight = 40;
+            this.IPDRSummaryGridView.CurrentTheme.AlternatingRowsStyle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(206)))), ((int)(((byte)(236)))), ((int)(((byte)(219)))));
+            this.IPDRSummaryGridView.CurrentTheme.AlternatingRowsStyle.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold);
+            this.IPDRSummaryGridView.CurrentTheme.AlternatingRowsStyle.ForeColor = System.Drawing.Color.Black;
+            this.IPDRSummaryGridView.CurrentTheme.AlternatingRowsStyle.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(209)))), ((int)(((byte)(169)))));
+            this.IPDRSummaryGridView.CurrentTheme.AlternatingRowsStyle.SelectionForeColor = System.Drawing.Color.Black;
+            this.IPDRSummaryGridView.CurrentTheme.BackColor = System.Drawing.Color.MediumSeaGreen;
+            this.IPDRSummaryGridView.CurrentTheme.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(196)))), ((int)(((byte)(232)))), ((int)(((byte)(212)))));
+            this.IPDRSummaryGridView.CurrentTheme.HeaderStyle.BackColor = System.Drawing.Color.MediumSeaGreen;
+            this.IPDRSummaryGridView.CurrentTheme.HeaderStyle.Font = new System.Drawing.Font("Segoe UI Semibold", 11.75F, System.Drawing.FontStyle.Bold);
+            this.IPDRSummaryGridView.CurrentTheme.HeaderStyle.ForeColor = System.Drawing.Color.White;
+            this.IPDRSummaryGridView.CurrentTheme.HeaderStyle.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(143)))), ((int)(((byte)(90)))));
+            this.IPDRSummaryGridView.CurrentTheme.HeaderStyle.SelectionForeColor = System.Drawing.Color.White;
+            this.IPDRSummaryGridView.CurrentTheme.Name = null;
+            this.IPDRSummaryGridView.CurrentTheme.RowsStyle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(216)))), ((int)(((byte)(239)))), ((int)(((byte)(226)))));
+            this.IPDRSummaryGridView.CurrentTheme.RowsStyle.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold);
+            this.IPDRSummaryGridView.CurrentTheme.RowsStyle.ForeColor = System.Drawing.Color.Black;
+            this.IPDRSummaryGridView.CurrentTheme.RowsStyle.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(209)))), ((int)(((byte)(169)))));
+            this.IPDRSummaryGridView.CurrentTheme.RowsStyle.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(216)))), ((int)(((byte)(239)))), ((int)(((byte)(226)))));
+            dataGridViewCellStyle6.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold);
+            dataGridViewCellStyle6.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(209)))), ((int)(((byte)(169)))));
+            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.IPDRSummaryGridView.DefaultCellStyle = dataGridViewCellStyle6;
             this.IPDRSummaryGridView.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.IPDRSummaryGridView.EnableHeadersVisualStyles = false;
+            this.IPDRSummaryGridView.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(196)))), ((int)(((byte)(232)))), ((int)(((byte)(212)))));
+            this.IPDRSummaryGridView.HeaderBackColor = System.Drawing.Color.MediumSeaGreen;
+            this.IPDRSummaryGridView.HeaderBgColor = System.Drawing.Color.Empty;
+            this.IPDRSummaryGridView.HeaderForeColor = System.Drawing.Color.White;
             this.IPDRSummaryGridView.Location = new System.Drawing.Point(10, 10);
             this.IPDRSummaryGridView.Name = "IPDRSummaryGridView";
-            this.IPDRSummaryGridView.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
             this.IPDRSummaryGridView.RowHeadersVisible = false;
-            this.IPDRSummaryGridView.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToAllHeaders;
+            this.IPDRSummaryGridView.RowTemplate.Height = 40;
+            this.IPDRSummaryGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.IPDRSummaryGridView.Size = new System.Drawing.Size(940, 669);
             this.IPDRSummaryGridView.TabIndex = 0;
-            this.IPDRSummaryGridView.TimeFilter = false;
+            this.IPDRSummaryGridView.Theme = Bunifu.UI.WinForms.BunifuDataGridView.PresetThemes.MediumSeaGreen;
             this.IPDRSummaryGridView.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.IPDRSummaryGridView_CellClick);
             // 
             // AppSumForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.ClientSize = new System.Drawing.Size(1311, 894);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
@@ -426,7 +470,6 @@
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.GroupBox gbCDRSummary;
         private System.Windows.Forms.Panel panel4;
-        private ADGV.AdvancedDataGridView IPDRSummaryGridView;
         private System.Windows.Forms.Panel panelMenu;
         private System.Windows.Forms.FlowLayoutPanel flpTime;
         private System.Windows.Forms.RadioButton rbMorning;
@@ -449,5 +492,6 @@
         private LiveCharts.WinForms.PieChart pcCDRSummary;
         private System.Windows.Forms.FontDialog fontDialog1;
         private FontAwesome.Sharp.IconPictureBox btnSearch;
+        private Bunifu.UI.WinForms.BunifuDataGridView IPDRSummaryGridView;
     }
 }

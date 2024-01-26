@@ -1,4 +1,5 @@
-﻿using Dapper;
+﻿using Bunifu.UI.WinForms;
+using Dapper;
 using ExcelDataReader;
 using IPDR_Analyzer.Classes;
 using LumenWorks.Framework.IO.Csv;
@@ -12,6 +13,7 @@ using System.Diagnostics;
 using System.Globalization;
 using System.IO;
 using System.Linq;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace IPDR_Analyzer.Forms
@@ -35,7 +37,7 @@ namespace IPDR_Analyzer.Forms
         {
             try
             {
-
+                gvStandIPDR.DataSource = null;
                 using (FileDialog openFileDialog = new OpenFileDialog() { Filter = "All Worksheets|*.xls;*.xlsx;*.csv;|Ms 97-2003|*.xls;|Ms Office 2007|*.xlsx;|CSV file|*.csv;|All Files|*.*" })
                 {
                     if (openFileDialog.ShowDialog() == DialogResult.OK)
@@ -50,7 +52,7 @@ namespace IPDR_Analyzer.Forms
                                 dt = new DataTable();
                                 //CSVToDataTable converter = new CSVToDataTable();
                                 dt.Load(csvReader);
-                                standCDRs();
+                                standCDRsAsync();
                             }
                         }
                         else
@@ -71,7 +73,7 @@ namespace IPDR_Analyzer.Forms
                                         /*Getting first sheet from the excel file no need to select
                                          sheet from the combobox*/
                                         dt = tableCollection[0];
-                                        standCDRs();
+                                        standCDRsAsync();
                                     }
                                 }
 
@@ -156,7 +158,7 @@ namespace IPDR_Analyzer.Forms
 
                     SortIPDRListByDate(standIPDR);
 
-                    gvStandIPDR.DataSource = standIPDR;
+                    //gvStandIPDR.DataSource = standIPDR;
 
                     Number = standIPDR.First().Number;
                 }
@@ -167,6 +169,34 @@ namespace IPDR_Analyzer.Forms
                 UpdateErrorHandlingText(standIPDR);
             }
         }
+
+        private async void standCDRsAsync()
+        {
+            bunifuLoader.Visible = true; // Show the loader
+
+            try
+            {
+                await Task.Run(() =>
+                {
+                    // ... existing code moved inside Task.Run ...
+                    standCDRs();
+                });
+
+                this.Invoke(new Action(() =>
+                {
+                    gvStandIPDR.DataSource = standIPDR;
+                    Number = standIPDR.First().Number;
+                    bunifuLoader.Visible = false; // Hide the loader
+                }));
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+                UpdateErrorHandlingText(standIPDR);
+                bunifuLoader.Visible = false; // Hide the loader in case of exception
+            }
+        }
+
 
         public void UpdateErrorHandlingText(List<StandIPDR> standIPDR)
         {
@@ -459,6 +489,8 @@ namespace IPDR_Analyzer.Forms
         {
             if (e.RowIndex >= 0)
             {
+                bunifuLoader.Visible = true; // Show the loader
+
                 Common.numForAnalysis = gvIPDRNumber.Rows[e.RowIndex].Cells[2].Value.ToString();
                 Common.project_Name = gvIPDRNumber.Rows[e.RowIndex].Cells[1].Value.ToString();
 
@@ -468,51 +500,56 @@ namespace IPDR_Analyzer.Forms
                 
                 dt = await CommonMethods.getRecords(spGetAllRecords);
 
-                try
+                this.Invoke(new Action(() =>
                 {
-                    if (dt.Columns.Count > 0)
+                    bunifuLoader.Visible = false;
+                    try
                     {
-                        Common.allRecordNum = new List<StandIPDR>();
-                       
-                        
-                        foreach (DataRow row in dt.Rows)
+                        if (dt.Columns.Count > 0)
                         {
-                           
-                            StandIPDR record = new StandIPDR
-                            {
-                                Number = row["Number"].ToString(),
-                                Date = row["Date"].ToString(),//dateTime.ToString(Common.datef), // Format date as a string in the format you need
-                                Time = row["Time"].ToString(), // Format time as a string
-                                Dur = row["Dur"].ToString(),
-                                Protocol = row["Protocol"].ToString(),
-                                Source_IP = row["Source_IP"].ToString(),
-                                Source_PORT = row["Source_PORT"].ToString(),
-                                Dest_IP = row["Dest_IP"].ToString(),
-                                Dest_PORT = row["Dest_PORT"].ToString(),
-                                App = row["App"].ToString(),
-                                Up = row["Up"].ToString(),
-                                Down = row["Down"].ToString(),
-                                Location = row["Location"].ToString(),
-                                Latitude = Convert.ToDouble(row["Latitude"]),
-                                Longitude = Convert.ToDouble(row["Longitude"]),
-                                Weekday = row["Weekday"].ToString()
-                            };
+                            Common.allRecordNum = new List<StandIPDR>();
 
-                            Common.allRecordNum.Add(record);
+
+                            foreach (DataRow row in dt.Rows)
+                            {
+
+                                StandIPDR record = new StandIPDR
+                                {
+                                    Number = row["Number"].ToString(),
+                                    Date = row["Date"].ToString(),//dateTime.ToString(Common.datef), // Format date as a string in the format you need
+                                    Time = row["Time"].ToString(), // Format time as a string
+                                    Dur = row["Dur"].ToString(),
+                                    Protocol = row["Protocol"].ToString(),
+                                    Source_IP = row["Source_IP"].ToString(),
+                                    Source_PORT = row["Source_PORT"].ToString(),
+                                    Dest_IP = row["Dest_IP"].ToString(),
+                                    Dest_PORT = row["Dest_PORT"].ToString(),
+                                    App = row["App"].ToString(),
+                                    Up = row["Up"].ToString(),
+                                    Down = row["Down"].ToString(),
+                                    Location = row["Location"].ToString(),
+                                    Latitude = Convert.ToDouble(row["Latitude"]),
+                                    Longitude = Convert.ToDouble(row["Longitude"]),
+                                    Weekday = row["Weekday"].ToString()
+                                };
+
+                                Common.allRecordNum.Add(record);
+                            }
+
+
                         }
 
-                        
-                    }
+                        Common.numForAnalysis = Common.allRecordNum.First().Number;
 
-                    Common.numForAnalysis = Common.allRecordNum.First().Number;
-         
-                    MessageBox.Show(Common.numForAnalysis + " With " + Common.allRecordNum.Count() + " Records Is Selected For Analysis");
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show(ex.Message);
-                    UpdateErrorHandlingText(standIPDR);
-                }
+                        MessageBox.Show(Common.numForAnalysis + " With " + Common.allRecordNum.Count() + " Records Is Selected For Analysis");
+
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show(ex.Message);
+                        UpdateErrorHandlingText(standIPDR);
+                    }
+                }));
 
                 //Common.allRecordA_Nums = Common.allRecordA_Nums.OrderBy(x => x.Date).ToList();
                 //MessageBox.Show(Common.numForAnalysis + " With " + Common.allRecordNum.Count() + " Records Is Selected For Analysis");

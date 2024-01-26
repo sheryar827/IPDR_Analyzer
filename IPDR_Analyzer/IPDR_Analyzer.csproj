@@ -334,11 +334,11 @@
       <DependentUpon>AddCaseForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Classes\Common.cs" />
-    <Compile Include="Forms\AppDurationForm.cs">
+    <Compile Include="Forms\AppDurForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\AppDurationForm.Designer.cs">
-      <DependentUpon>AppDurationForm.cs</DependentUpon>
+    <Compile Include="Forms\AppDurForm.Designer.cs">
+      <DependentUpon>AppDurForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\AppSumForm.cs">
       <SubType>Form</SubType>
@@ -411,8 +411,8 @@
     <EmbeddedResource Include="Forms\AddCaseForm.resx">
       <DependentUpon>AddCaseForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\AppDurationForm.resx">
-      <DependentUpon>AppDurationForm.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\AppDurForm.resx">
+      <DependentUpon>AppDurForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\AppSumForm.resx">
       <DependentUpon>AppSumForm.cs</DependentUpon>

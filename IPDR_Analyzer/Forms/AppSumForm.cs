@@ -1,10 +1,12 @@
-﻿using IPDR_Analyzer.Classes;
+﻿using Bunifu.UI.WinForms;
+using IPDR_Analyzer.Classes;
 using LiveCharts;
 using LiveCharts.Wpf;
 using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace IPDR_Analyzer.Forms
@@ -248,6 +250,10 @@ namespace IPDR_Analyzer.Forms
                 }
             }
         }
+
+
+        
+
 
         private void AppSumForm_Load(object sender, EventArgs e)
         {

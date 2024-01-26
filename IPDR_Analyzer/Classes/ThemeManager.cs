@@ -26,8 +26,8 @@ namespace IPDR_Analyzer.Classes
     RGBColors.color7,
     RGBColors.color8,
     RGBColors.color9,
-    RGBColors.color10,
-    RGBColors.color11,
+    RGBColors.color10
+    /*RGBColors.color11,
     RGBColors.color12,
     RGBColors.color13,
     RGBColors.color14,
@@ -131,7 +131,7 @@ namespace IPDR_Analyzer.Classes
     RGBColors.color112,
     RGBColors.color113,
     RGBColors.color114,
-    RGBColors.color115
+    RGBColors.color115*/
 };
         
 
@@ -156,7 +156,7 @@ namespace IPDR_Analyzer.Classes
         public static Color color8 = Color.FromArgb(63, 195, 128);
         public static Color color9 = Color.FromArgb(255, 193, 7);
         public static Color color10 = Color.FromArgb(0, 123, 255);
-        public static Color color11 = Color.FromArgb(102, 187, 106);
+        /*public static Color color11 = Color.FromArgb(102, 187, 106);
         public static Color color12 = Color.FromArgb(255, 87, 34);
         public static Color color13 = Color.FromArgb(33, 150, 243);
         public static Color color14 = Color.FromArgb(144, 202, 249);
@@ -260,6 +260,6 @@ namespace IPDR_Analyzer.Classes
         public static Color color112 = Color.FromArgb(10, 85, 61);
         public static Color color113 = Color.FromArgb(206, 135, 118);
         public static Color color114 = Color.FromArgb(197, 111, 34);
-        public static Color color115 = Color.FromArgb(129, 230, 95);
+        public static Color color115 = Color.FromArgb(129, 230, 95);*/
     }
 }

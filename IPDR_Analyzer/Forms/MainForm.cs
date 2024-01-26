@@ -111,7 +111,7 @@ namespace IPDR_Analyzer.Forms
         {
             indicator.Top = ((Control)sender).Top;
             bunifuPages.SetPage("tabPage");
-            openChildFormPage(new AppDurationForm(), sender, tabPage);
+            openChildFormPage(new AppDurForm(), sender, tabPage);
             this.Text = "App Duration";
         }
 

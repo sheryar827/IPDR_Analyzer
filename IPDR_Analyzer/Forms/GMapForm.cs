@@ -25,7 +25,9 @@ namespace IPDR_Analyzer.Forms
         PointLatLng endPoint;
         List<StandIPDR> allLocRecordA_Num = new List<StandIPDR>();
         List<StandIPDR> commonLatLngList = new List<StandIPDR>();
-        
+        List<StandIPDR> allRecordNum = new List<StandIPDR>();
+
+
         GMapOverlay routes;
 
         bool zoom = false;
@@ -207,7 +209,7 @@ namespace IPDR_Analyzer.Forms
                 {
                     if (dt.Columns.Count > 0)
                     {
-                        Common.allRecordNum = new List<StandIPDR>();
+                        allRecordNum = new List<StandIPDR>();
 
 
                         foreach (DataRow row in dt.Rows)

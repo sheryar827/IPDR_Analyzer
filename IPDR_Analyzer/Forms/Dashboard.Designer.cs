@@ -30,8 +30,9 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Dashboard));
-            Utilities.BunifuPages.BunifuAnimatorNS.Animation animation1 = new Utilities.BunifuPages.BunifuAnimatorNS.Animation();
+            Utilities.BunifuPages.BunifuAnimatorNS.Animation animation2 = new Utilities.BunifuPages.BunifuAnimatorNS.Animation();
             this.panelMenu = new Bunifu.UI.WinForms.BunifuPanel();
+            this.btnAppsDur = new FontAwesome.Sharp.IconButton();
             this.btnCommonGMAP = new FontAwesome.Sharp.IconButton();
             this.btnBasicConver = new FontAwesome.Sharp.IconButton();
             this.btnLocSummary = new FontAwesome.Sharp.IconButton();
@@ -51,6 +52,7 @@
             this.tabPage = new System.Windows.Forms.TabPage();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.bunifuElipse1 = new Bunifu.Framework.UI.BunifuElipse(this.components);
+            this.bunifuElipse2 = new Bunifu.Framework.UI.BunifuElipse(this.components);
             this.panelMenu.SuspendLayout();
             this.bunifuPanel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.bunifuPictureBox1)).BeginInit();
@@ -64,12 +66,13 @@
             // 
             // panelMenu
             // 
-            this.panelMenu.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(30)))), ((int)(((byte)(68)))));
+            this.panelMenu.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(108)))), ((int)(((byte)(35)))), ((int)(((byte)(250)))));
             this.panelMenu.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("panelMenu.BackgroundImage")));
             this.panelMenu.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.panelMenu.BorderColor = System.Drawing.Color.Transparent;
             this.panelMenu.BorderRadius = 3;
             this.panelMenu.BorderThickness = 1;
+            this.panelMenu.Controls.Add(this.btnAppsDur);
             this.panelMenu.Controls.Add(this.btnCommonGMAP);
             this.panelMenu.Controls.Add(this.btnBasicConver);
             this.panelMenu.Controls.Add(this.btnLocSummary);
@@ -85,12 +88,37 @@
             this.panelMenu.Size = new System.Drawing.Size(220, 635);
             this.panelMenu.TabIndex = 0;
             // 
+            // btnAppsDur
+            // 
+            this.btnAppsDur.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(108)))), ((int)(((byte)(35)))), ((int)(((byte)(250)))));
+            this.btnAppsDur.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnAppsDur.FlatAppearance.BorderSize = 0;
+            this.btnAppsDur.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnAppsDur.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold);
+            this.btnAppsDur.ForeColor = System.Drawing.Color.Gainsboro;
+            this.btnAppsDur.IconChar = FontAwesome.Sharp.IconChar.Calculator;
+            this.btnAppsDur.IconColor = System.Drawing.Color.Gainsboro;
+            this.btnAppsDur.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.btnAppsDur.IconSize = 32;
+            this.btnAppsDur.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnAppsDur.Location = new System.Drawing.Point(0, 560);
+            this.btnAppsDur.Name = "btnAppsDur";
+            this.btnAppsDur.Padding = new System.Windows.Forms.Padding(10, 0, 20, 0);
+            this.btnAppsDur.Size = new System.Drawing.Size(220, 60);
+            this.btnAppsDur.TabIndex = 8;
+            this.btnAppsDur.Text = "APPS DURATION";
+            this.btnAppsDur.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnAppsDur.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnAppsDur.UseVisualStyleBackColor = false;
+            this.btnAppsDur.Click += new System.EventHandler(this.btnAppsDur_Click);
+            // 
             // btnCommonGMAP
             // 
-            this.btnCommonGMAP.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(30)))), ((int)(((byte)(68)))));
+            this.btnCommonGMAP.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(108)))), ((int)(((byte)(35)))), ((int)(((byte)(250)))));
             this.btnCommonGMAP.Dock = System.Windows.Forms.DockStyle.Top;
             this.btnCommonGMAP.FlatAppearance.BorderSize = 0;
             this.btnCommonGMAP.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnCommonGMAP.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold);
             this.btnCommonGMAP.ForeColor = System.Drawing.Color.Gainsboro;
             this.btnCommonGMAP.IconChar = FontAwesome.Sharp.IconChar.Calculator;
             this.btnCommonGMAP.IconColor = System.Drawing.Color.Gainsboro;
@@ -110,10 +138,11 @@
             // 
             // btnBasicConver
             // 
-            this.btnBasicConver.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(30)))), ((int)(((byte)(68)))));
+            this.btnBasicConver.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(108)))), ((int)(((byte)(35)))), ((int)(((byte)(250)))));
             this.btnBasicConver.Dock = System.Windows.Forms.DockStyle.Top;
             this.btnBasicConver.FlatAppearance.BorderSize = 0;
             this.btnBasicConver.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnBasicConver.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold);
             this.btnBasicConver.ForeColor = System.Drawing.Color.Gainsboro;
             this.btnBasicConver.IconChar = FontAwesome.Sharp.IconChar.Calculator;
             this.btnBasicConver.IconColor = System.Drawing.Color.Gainsboro;
@@ -133,10 +162,11 @@
             // 
             // btnLocSummary
             // 
-            this.btnLocSummary.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(30)))), ((int)(((byte)(68)))));
+            this.btnLocSummary.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(108)))), ((int)(((byte)(35)))), ((int)(((byte)(250)))));
             this.btnLocSummary.Dock = System.Windows.Forms.DockStyle.Top;
             this.btnLocSummary.FlatAppearance.BorderSize = 0;
             this.btnLocSummary.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnLocSummary.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold);
             this.btnLocSummary.ForeColor = System.Drawing.Color.Gainsboro;
             this.btnLocSummary.IconChar = FontAwesome.Sharp.IconChar.Calculator;
             this.btnLocSummary.IconColor = System.Drawing.Color.Gainsboro;
@@ -156,10 +186,11 @@
             // 
             // btnAppSummaary
             // 
-            this.btnAppSummaary.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(30)))), ((int)(((byte)(68)))));
+            this.btnAppSummaary.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(108)))), ((int)(((byte)(35)))), ((int)(((byte)(250)))));
             this.btnAppSummaary.Dock = System.Windows.Forms.DockStyle.Top;
             this.btnAppSummaary.FlatAppearance.BorderSize = 0;
             this.btnAppSummaary.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnAppSummaary.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold);
             this.btnAppSummaary.ForeColor = System.Drawing.Color.Gainsboro;
             this.btnAppSummaary.IconChar = FontAwesome.Sharp.IconChar.Calculator;
             this.btnAppSummaary.IconColor = System.Drawing.Color.Gainsboro;
@@ -179,10 +210,11 @@
             // 
             // btnGMAP
             // 
-            this.btnGMAP.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(30)))), ((int)(((byte)(68)))));
+            this.btnGMAP.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(108)))), ((int)(((byte)(35)))), ((int)(((byte)(250)))));
             this.btnGMAP.Dock = System.Windows.Forms.DockStyle.Top;
             this.btnGMAP.FlatAppearance.BorderSize = 0;
             this.btnGMAP.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnGMAP.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold);
             this.btnGMAP.ForeColor = System.Drawing.Color.Gainsboro;
             this.btnGMAP.IconChar = FontAwesome.Sharp.IconChar.MapMarkedAlt;
             this.btnGMAP.IconColor = System.Drawing.Color.Gainsboro;
@@ -202,10 +234,11 @@
             // 
             // btnAddIPDR
             // 
-            this.btnAddIPDR.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(30)))), ((int)(((byte)(68)))));
+            this.btnAddIPDR.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(108)))), ((int)(((byte)(35)))), ((int)(((byte)(250)))));
             this.btnAddIPDR.Dock = System.Windows.Forms.DockStyle.Top;
             this.btnAddIPDR.FlatAppearance.BorderSize = 0;
             this.btnAddIPDR.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnAddIPDR.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold);
             this.btnAddIPDR.ForeColor = System.Drawing.Color.Gainsboro;
             this.btnAddIPDR.IconChar = FontAwesome.Sharp.IconChar.Comment;
             this.btnAddIPDR.IconColor = System.Drawing.Color.Gainsboro;
@@ -225,10 +258,11 @@
             // 
             // btnAddCase
             // 
-            this.btnAddCase.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(30)))), ((int)(((byte)(68)))));
+            this.btnAddCase.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(108)))), ((int)(((byte)(35)))), ((int)(((byte)(250)))));
             this.btnAddCase.Dock = System.Windows.Forms.DockStyle.Top;
             this.btnAddCase.FlatAppearance.BorderSize = 0;
             this.btnAddCase.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnAddCase.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold);
             this.btnAddCase.ForeColor = System.Drawing.Color.Gainsboro;
             this.btnAddCase.IconChar = FontAwesome.Sharp.IconChar.Briefcase;
             this.btnAddCase.IconColor = System.Drawing.Color.Gainsboro;
@@ -248,7 +282,7 @@
             // 
             // bunifuPanel2
             // 
-            this.bunifuPanel2.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(30)))), ((int)(((byte)(68)))));
+            this.bunifuPanel2.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(108)))), ((int)(((byte)(35)))), ((int)(((byte)(250)))));
             this.bunifuPanel2.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("bunifuPanel2.BackgroundImage")));
             this.bunifuPanel2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.bunifuPanel2.BorderColor = System.Drawing.Color.Transparent;
@@ -280,7 +314,7 @@
             // 
             // panelTitleBar
             // 
-            this.panelTitleBar.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(25)))), ((int)(((byte)(62)))));
+            this.panelTitleBar.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(108)))), ((int)(((byte)(35)))), ((int)(((byte)(250)))));
             this.panelTitleBar.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("panelTitleBar.BackgroundImage")));
             this.panelTitleBar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.panelTitleBar.BorderColor = System.Drawing.Color.Transparent;
@@ -302,7 +336,7 @@
             // btnMin
             // 
             this.btnMin.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnMin.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(25)))), ((int)(((byte)(62)))));
+            this.btnMin.BackColor = System.Drawing.Color.Transparent;
             this.btnMin.ForeColor = System.Drawing.Color.Gainsboro;
             this.btnMin.IconChar = FontAwesome.Sharp.IconChar.CompressArrowsAlt;
             this.btnMin.IconColor = System.Drawing.Color.Gainsboro;
@@ -320,7 +354,7 @@
             // btnMax
             // 
             this.btnMax.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnMax.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(25)))), ((int)(((byte)(62)))));
+            this.btnMax.BackColor = System.Drawing.Color.Transparent;
             this.btnMax.ForeColor = System.Drawing.Color.Gainsboro;
             this.btnMax.IconChar = FontAwesome.Sharp.IconChar.Maximize;
             this.btnMax.IconColor = System.Drawing.Color.Gainsboro;
@@ -338,7 +372,7 @@
             // btnClose
             // 
             this.btnClose.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnClose.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(25)))), ((int)(((byte)(62)))));
+            this.btnClose.BackColor = System.Drawing.Color.Transparent;
             this.btnClose.ForeColor = System.Drawing.Color.Gainsboro;
             this.btnClose.IconChar = FontAwesome.Sharp.IconChar.Xmark;
             this.btnClose.IconColor = System.Drawing.Color.Gainsboro;
@@ -359,12 +393,12 @@
             this.lbTitleChildForm.AutoEllipsis = false;
             this.lbTitleChildForm.Cursor = System.Windows.Forms.Cursors.Default;
             this.lbTitleChildForm.CursorType = System.Windows.Forms.Cursors.Default;
-            this.lbTitleChildForm.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.lbTitleChildForm.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold);
             this.lbTitleChildForm.ForeColor = System.Drawing.Color.Gainsboro;
-            this.lbTitleChildForm.Location = new System.Drawing.Point(57, 33);
+            this.lbTitleChildForm.Location = new System.Drawing.Point(57, 30);
             this.lbTitleChildForm.Name = "lbTitleChildForm";
             this.lbTitleChildForm.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.lbTitleChildForm.Size = new System.Drawing.Size(33, 15);
+            this.lbTitleChildForm.Size = new System.Drawing.Size(45, 21);
             this.lbTitleChildForm.TabIndex = 1;
             this.lbTitleChildForm.Text = "Home";
             this.lbTitleChildForm.TextAlignment = System.Drawing.ContentAlignment.TopLeft;
@@ -372,7 +406,7 @@
             // 
             // iconCurrentChildForm
             // 
-            this.iconCurrentChildForm.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(25)))), ((int)(((byte)(62)))));
+            this.iconCurrentChildForm.BackColor = System.Drawing.Color.Transparent;
             this.iconCurrentChildForm.ForeColor = System.Drawing.Color.MediumPurple;
             this.iconCurrentChildForm.IconChar = FontAwesome.Sharp.IconChar.House;
             this.iconCurrentChildForm.IconColor = System.Drawing.Color.MediumPurple;
@@ -400,22 +434,22 @@
             this.bunifuPages.SelectedIndex = 0;
             this.bunifuPages.Size = new System.Drawing.Size(853, 560);
             this.bunifuPages.TabIndex = 2;
-            animation1.AnimateOnlyDifferences = false;
-            animation1.BlindCoeff = ((System.Drawing.PointF)(resources.GetObject("animation1.BlindCoeff")));
-            animation1.LeafCoeff = 0F;
-            animation1.MaxTime = 1F;
-            animation1.MinTime = 0F;
-            animation1.MosaicCoeff = ((System.Drawing.PointF)(resources.GetObject("animation1.MosaicCoeff")));
-            animation1.MosaicShift = ((System.Drawing.PointF)(resources.GetObject("animation1.MosaicShift")));
-            animation1.MosaicSize = 0;
-            animation1.Padding = new System.Windows.Forms.Padding(0);
-            animation1.RotateCoeff = 0F;
-            animation1.RotateLimit = 0F;
-            animation1.ScaleCoeff = ((System.Drawing.PointF)(resources.GetObject("animation1.ScaleCoeff")));
-            animation1.SlideCoeff = ((System.Drawing.PointF)(resources.GetObject("animation1.SlideCoeff")));
-            animation1.TimeCoeff = 0F;
-            animation1.TransparencyCoeff = 0F;
-            this.bunifuPages.Transition = animation1;
+            animation2.AnimateOnlyDifferences = false;
+            animation2.BlindCoeff = ((System.Drawing.PointF)(resources.GetObject("animation2.BlindCoeff")));
+            animation2.LeafCoeff = 0F;
+            animation2.MaxTime = 1F;
+            animation2.MinTime = 0F;
+            animation2.MosaicCoeff = ((System.Drawing.PointF)(resources.GetObject("animation2.MosaicCoeff")));
+            animation2.MosaicShift = ((System.Drawing.PointF)(resources.GetObject("animation2.MosaicShift")));
+            animation2.MosaicSize = 0;
+            animation2.Padding = new System.Windows.Forms.Padding(0);
+            animation2.RotateCoeff = 0F;
+            animation2.RotateLimit = 0F;
+            animation2.ScaleCoeff = ((System.Drawing.PointF)(resources.GetObject("animation2.ScaleCoeff")));
+            animation2.SlideCoeff = ((System.Drawing.PointF)(resources.GetObject("animation2.SlideCoeff")));
+            animation2.TimeCoeff = 0F;
+            animation2.TransparencyCoeff = 0F;
+            this.bunifuPages.Transition = animation2;
             this.bunifuPages.TransitionType = Utilities.BunifuPages.BunifuAnimatorNS.AnimationType.Custom;
             // 
             // tabPage
@@ -443,15 +477,22 @@
             this.bunifuElipse1.ElipseRadius = 20;
             this.bunifuElipse1.TargetControl = this.panelTitleBar;
             // 
+            // bunifuElipse2
+            // 
+            this.bunifuElipse2.ElipseRadius = 20;
+            this.bunifuElipse2.TargetControl = this.panelMenu;
+            // 
             // Dashboard
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.ClientSize = new System.Drawing.Size(1073, 635);
             this.Controls.Add(this.bunifuPages);
             this.Controls.Add(this.panelTitleBar);
             this.Controls.Add(this.panelMenu);
+            this.MinimumSize = new System.Drawing.Size(1089, 674);
             this.Name = "Dashboard";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Dashboard";
             this.Load += new System.EventHandler(this.Dashboard_Load);
             this.panelMenu.ResumeLayout(false);
@@ -490,5 +531,7 @@
         private FontAwesome.Sharp.IconPictureBox btnMax;
         private FontAwesome.Sharp.IconPictureBox btnClose;
         private Bunifu.Framework.UI.BunifuElipse bunifuElipse1;
+        private Bunifu.Framework.UI.BunifuElipse bunifuElipse2;
+        private FontAwesome.Sharp.IconButton btnAppsDur;
     }
 }

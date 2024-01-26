@@ -1,32 +1,31 @@
-﻿using IPDR_Analyzer.Classes;
+﻿using Bunifu.Charts.WinForms;
+using IPDR_Analyzer.Classes;
 using LiveCharts;
 using LiveCharts.Wpf;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace IPDR_Analyzer.Forms
 {
-    public partial class AppDurationForm : Form
+    public partial class AppDurForm : Form
     {
+        List<Double> data = new List<Double>();
         List<TopAppCallSec> top5App = null;
         List<StandIPDR> selectedRecordsA_Num, morningRecordsA_Num, dayRecordsA_Num, eveningRecordsA_Num;
 
-        public AppDurationForm()
+        public AppDurForm()
         {
             InitializeComponent();
         }
 
         Func<ChartPoint, string> labelPoint = chartpoint => string.Format("{0} ({1:P})", chartpoint.Y, chartpoint.Participation);
 
-        private void AppDurationForm_Load(object sender, EventArgs e)
+        private void AppDurForm_Load(object sender, EventArgs e)
         {
+            //panel3.BackColor = ThemeManager.RandomizeTheme();
             //getting start date from datatable
             string sd = Common.allRecordNum.First().Date.ToString();
             string st = Common.allRecordNum.First().Time.ToString();
@@ -42,13 +41,12 @@ namespace IPDR_Analyzer.Forms
 
             panelDT.Enabled = false;
 
-            labelA_Num.Text = Common.numForAnalysis;
+            //labelA_Num.Text = Common.numForAnalysis;
             //callsSecsCount();
             callsSecsCountList(Common.allRecordNum);
             pcCallsSecCount.LegendLocation = LegendLocation.Top;
         }
 
-        
         private void callsSecsCountList(List<StandIPDR> appsSecList)
         {
             try
@@ -57,14 +55,14 @@ namespace IPDR_Analyzer.Forms
 
                 if (appsSecList.Count > 0)
                 {
-                    
+
                     // Adding Call seconds of same number togather
                     var result = appsSecList.GroupBy(app => app.App)
                         .Select(gr => new TopAppCallSec(gr.Key
                         , TimeSpan.FromMilliseconds(gr.Sum(x => Convert.ToInt32(x.Dur))).ToString()
                         , gr.Sum(x => Convert.ToInt32(x.Dur))));
 
-                   
+
                     /* Aranging the list in decending order on the basis of B_NumCallSec*/
                     top5App = result.OrderByDescending(t1 => t1.AppCallMin).ToList();
 
@@ -77,24 +75,28 @@ namespace IPDR_Analyzer.Forms
 
                     gvCallsSecCount.Columns[2].Visible = false;
 
-                    lbListSize.Text = top5App.Count.ToString();
+                    //lbListSize.Text = top5App.Count.ToString();
                     if (top5App.Count > 5)
                     {
                         foreach (var app in top5App.GetRange(0, 5))
                         {
 
-                            series.Add(item: new PieSeries() { Title = app.App, Values = new ChartValues<long> { app.AppCallSec/1000 }, DataLabels = true, LabelPoint = labelPoint });
+                            series.Add(item: new PieSeries() { Title = app.App, Values = new ChartValues<long> { app.AppCallSec / 1000 }, DataLabels = true, LabelPoint = labelPoint });
                             pcCallsSecCount.Series = series;
+                            
                         }
+                        
                     }
                     else
                     {
                         foreach (var app in top5App)
                         {
 
-                            series.Add(item: new PieSeries() { Title = app.App, Values = new ChartValues<long> { app.AppCallSec/1000 }, DataLabels = true, LabelPoint = labelPoint });
+                            series.Add(item: new PieSeries() { Title = app.App, Values = new ChartValues<long> { app.AppCallSec / 1000 }, DataLabels = true, LabelPoint = labelPoint });
                             pcCallsSecCount.Series = series;
+                            data.Add(app.AppCallSec / 1000);
                         }
+                        
                     }
                 }
             }
@@ -115,7 +117,7 @@ namespace IPDR_Analyzer.Forms
             panelDT.Enabled = false;
             flpTime.Enabled = true;
 
-            rbDay.Checked = false; rbMorning.Checked = false; rbEvening.Checked = false;
+            rbDays.Checked = false; rbMorning.Checked = false; rbEvening.Checked = false;
             // get all call records
             callsSecsCountList(Common.allRecordNum);
         }
@@ -148,6 +150,16 @@ namespace IPDR_Analyzer.Forms
             {
                 MessageBox.Show(ex.Message);
             }
+        }
+
+        private void btnSearch_MouseHover(object sender, EventArgs e)
+        {
+            btnSearch.IconColor = ThemeManager.RandomizeTheme();
+        }
+
+        private void btnSearch_MouseLeave(object sender, EventArgs e)
+        {
+            btnSearch.IconColor= Color.White;
         }
 
         private void rbMorning_Click(object sender, EventArgs e)
@@ -196,5 +208,7 @@ namespace IPDR_Analyzer.Forms
                 MessageBox.Show(ex.Message);
             }
         }
+
+        
     }
 }

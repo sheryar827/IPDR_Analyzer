@@ -11,6 +11,8 @@ using IPDR_Analyzer.Classes;
 using GMap.NET.WindowsForms.Markers;
 using GMap.NET.MapProviders;
 using System.Windows.Markup;
+using System.Threading.Tasks;
+using Bunifu.UI.WinForms;
 
 namespace IPDR_Analyzer.Forms
 {
@@ -25,6 +27,7 @@ namespace IPDR_Analyzer.Forms
         PointLatLng endPoint;
         List<StandIPDR> allLocRecordA_Num = new List<StandIPDR>();
         List<StandIPDR> commonLatLngList = new List<StandIPDR>();
+        List<StandIPDR> allRecordNum = new List<StandIPDR>();
         /*DialogResult locDetDialog = new DialogResult();*/
         /*private bool MarkerWasClicked = false;*/
         GMapOverlay routes;
@@ -224,7 +227,7 @@ namespace IPDR_Analyzer.Forms
                 {
                     if (dt.Columns.Count > 0)
                     {
-                        Common.allRecordNum = new List<StandIPDR>();
+                        allRecordNum = new List<StandIPDR>();
 
 
                         foreach (DataRow row in dt.Rows)
@@ -279,10 +282,14 @@ namespace IPDR_Analyzer.Forms
             }
         }
 
-        private void btnPlotCommonLatLng_Click(object sender, EventArgs e)
+        private async void btnPlotCommonLatLng_Click(object sender, EventArgs e)
         {
-            commonLatLngList = FindMatchingRecords(allLocRecordA_Num);
-            Console.WriteLine(commonLatLngList.Count());
+            bunifuLoader.Visible = true;
+            commonLatLngList = await FindMatchingRecords(allLocRecordA_Num);
+            //Console.WriteLine(commonLatLngList.Count());
+            this.Invoke(new Action(() =>
+            {
+                bunifuLoader.Visible = false;
             var points = new List<PointLatLng>();
             foreach (var record in commonLatLngList)
             {
@@ -304,17 +311,21 @@ namespace IPDR_Analyzer.Forms
             List<PointLatLng> uniquePointLst = points.Distinct().ToList();
 
             plotMarkers("", "common lat lng", uniquePointLst, Color.Red);
+            
+        }));
+            
+
         }
 
 
-        public List<StandIPDR> FindMatchingRecords(List<StandIPDR> records)
+        public async Task<List<StandIPDR>> FindMatchingRecords(List<StandIPDR> records)
         {
-            var filteredRecords = records
+            var filteredRecords = await Task.Run(() => records
                 .GroupBy(r => new { r.Date, r.Latitude, r.Longitude })
                 .Where(g => g.Select(r => r.Number).Distinct().Count() > 1)
                 .SelectMany(g => g)
                 // Filter out records with invalid or empty Lat and Lng
-                .ToList();
+                .ToList());
 
             return filteredRecords;
         }

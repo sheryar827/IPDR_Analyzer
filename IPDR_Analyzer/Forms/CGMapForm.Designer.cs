@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
@@ -39,6 +40,7 @@
             this.btnPlotCommonLatLng = new Bunifu.UI.WinForms.BunifuButton.BunifuButton();
             this.lbCommonLatLng = new System.Windows.Forms.ListBox();
             this.btnLocDetails = new System.Windows.Forms.Button();
+            this.bunifuLoader = new Bunifu.UI.WinForms.BunifuLoader();
             ((System.ComponentModel.ISupportInitialize)(this.gvProjectNum)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
@@ -121,6 +123,7 @@
             // 
             // splitContainer1.Panel2
             // 
+            this.splitContainer1.Panel2.Controls.Add(this.bunifuLoader);
             this.splitContainer1.Panel2.Controls.Add(this.btnPlotCommonLatLng);
             this.splitContainer1.Panel2.Controls.Add(this.lbCommonLatLng);
             this.splitContainer1.Panel2.Controls.Add(this.btnLocDetails);
@@ -188,7 +191,7 @@
             this.btnPlotCommonLatLng.DisabledForecolor = System.Drawing.Color.Empty;
             this.btnPlotCommonLatLng.Dock = System.Windows.Forms.DockStyle.Top;
             this.btnPlotCommonLatLng.FocusState = Bunifu.UI.WinForms.BunifuButton.BunifuButton.ButtonStates.Pressed;
-            this.btnPlotCommonLatLng.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.btnPlotCommonLatLng.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold);
             this.btnPlotCommonLatLng.ForeColor = System.Drawing.Color.White;
             this.btnPlotCommonLatLng.IconLeft = null;
             this.btnPlotCommonLatLng.IconLeftAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -208,7 +211,7 @@
             this.btnPlotCommonLatLng.IdleIconLeftImage = null;
             this.btnPlotCommonLatLng.IdleIconRightImage = null;
             this.btnPlotCommonLatLng.IndicateFocus = false;
-            this.btnPlotCommonLatLng.Location = new System.Drawing.Point(0, 449);
+            this.btnPlotCommonLatLng.Location = new System.Drawing.Point(0, 440);
             this.btnPlotCommonLatLng.Margin = new System.Windows.Forms.Padding(2);
             this.btnPlotCommonLatLng.Name = "btnPlotCommonLatLng";
             this.btnPlotCommonLatLng.OnDisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(191)))), ((int)(((byte)(191)))), ((int)(((byte)(191)))));
@@ -255,11 +258,13 @@
             // lbCommonLatLng
             // 
             this.lbCommonLatLng.Dock = System.Windows.Forms.DockStyle.Top;
+            this.lbCommonLatLng.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold);
             this.lbCommonLatLng.FormattingEnabled = true;
+            this.lbCommonLatLng.ItemHeight = 21;
             this.lbCommonLatLng.Location = new System.Drawing.Point(0, 289);
             this.lbCommonLatLng.Margin = new System.Windows.Forms.Padding(2);
             this.lbCommonLatLng.Name = "lbCommonLatLng";
-            this.lbCommonLatLng.Size = new System.Drawing.Size(283, 160);
+            this.lbCommonLatLng.Size = new System.Drawing.Size(283, 151);
             this.lbCommonLatLng.TabIndex = 21;
             // 
             // btnLocDetails
@@ -269,7 +274,7 @@
             this.btnLocDetails.FlatAppearance.BorderColor = System.Drawing.Color.White;
             this.btnLocDetails.FlatAppearance.BorderSize = 0;
             this.btnLocDetails.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnLocDetails.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnLocDetails.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold);
             this.btnLocDetails.ForeColor = System.Drawing.Color.White;
             this.btnLocDetails.Location = new System.Drawing.Point(0, 246);
             this.btnLocDetails.Name = "btnLocDetails";
@@ -279,10 +284,37 @@
             this.btnLocDetails.UseVisualStyleBackColor = false;
             this.btnLocDetails.Click += new System.EventHandler(this.btnLocDetails_Click);
             // 
+            // bunifuLoader
+            // 
+            this.bunifuLoader.AllowStylePresets = true;
+            this.bunifuLoader.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.bunifuLoader.BackColor = System.Drawing.Color.Transparent;
+            this.bunifuLoader.CapStyle = Bunifu.UI.WinForms.BunifuLoader.CapStyles.Round;
+            this.bunifuLoader.Color = System.Drawing.Color.DodgerBlue;
+            this.bunifuLoader.Colors = new Bunifu.UI.WinForms.Bloom[0];
+            this.bunifuLoader.Customization = "";
+            this.bunifuLoader.DashWidth = 0.5F;
+            this.bunifuLoader.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.bunifuLoader.Image = null;
+            this.bunifuLoader.Location = new System.Drawing.Point(49, 520);
+            this.bunifuLoader.Name = "bunifuLoader";
+            this.bunifuLoader.NoRounding = false;
+            this.bunifuLoader.Preset = Bunifu.UI.WinForms.BunifuLoader.StylePresets.Solid;
+            this.bunifuLoader.RingStyle = Bunifu.UI.WinForms.BunifuLoader.RingStyles.Solid;
+            this.bunifuLoader.ShowText = false;
+            this.bunifuLoader.Size = new System.Drawing.Size(185, 185);
+            this.bunifuLoader.Speed = 7;
+            this.bunifuLoader.TabIndex = 3;
+            this.bunifuLoader.Text = "bunifuLoader1";
+            this.bunifuLoader.TextPadding = new System.Windows.Forms.Padding(0);
+            this.bunifuLoader.Thickness = 6;
+            this.bunifuLoader.Transparent = true;
+            this.bunifuLoader.Visible = false;
+            // 
             // CGMapForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.ClientSize = new System.Drawing.Size(1311, 894);
             this.Controls.Add(this.splitContainer1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
@@ -305,5 +337,6 @@
         private Bunifu.UI.WinForms.BunifuButton.BunifuButton btnPlotCommonLatLng;
         private System.Windows.Forms.ListBox lbCommonLatLng;
         private System.Windows.Forms.Button btnLocDetails;
+        private Bunifu.UI.WinForms.BunifuLoader bunifuLoader;
     }
 }
