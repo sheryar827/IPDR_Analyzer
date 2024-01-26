@@ -121,7 +121,7 @@ namespace IPDR_Analyzer.Forms
                     //Console.WriteLine(dateFormat);
                     foreach (DataRow row in dt.Rows)
                     {
-                        DateTime dateTime = DateTime.ParseExact(row["Time"].ToString(), dateFormat, CultureInfo.InvariantCulture);
+                        DateTime dateTime = DateTime.ParseExact(TryParseDateTime(row["Time"].ToString()), dateFormat, CultureInfo.InvariantCulture);
 
                         //Console.WriteLine(dateTime);
                         
@@ -168,6 +168,50 @@ namespace IPDR_Analyzer.Forms
                 MessageBox.Show(ex.Message);
                 UpdateErrorHandlingText(standIPDR);
             }
+        }
+
+        private string TryParseDateTime(string dateTimeStr)
+        {
+            var formats = new string[] {
+        // 24-hour formats
+        "dd-MM-yyyy HH:mm:ss", "MM-dd-yyyy HH:mm:ss", "yyyy-MM-dd HH:mm:ss",
+        "dd/MM/yyyy HH:mm:ss", "MM/dd/yyyy HH:mm:ss", "yyyy/MM/dd HH:mm:ss",
+        "dd.MM.yyyy HH:mm:ss", "MM.dd.yyyy HH:mm:ss", "yyyy.MM.dd HH:mm:ss",
+        // 12-hour formats with AM/PM
+        "dd-MM-yyyy hh:mm:ss tt", "MM-dd-yyyy hh:mm:ss tt", "yyyy-MM-dd hh:mm:ss tt",
+        "dd/MM/yyyy hh:mm:ss tt", "MM/dd/yyyy hh:mm:ss tt", "yyyy/MM/dd hh:mm:ss tt",
+        "dd.MM.yyyy hh:mm:ss tt", "MM.dd.yyyy hh:mm:ss tt", "yyyy.MM.dd hh:mm:ss tt",
+        "MM/dd/yyyy H:mm", "dd-MM-yyyy H:mm","MM/dd/yyyy HH:mm",
+        // Variations with different separators
+        "MM-dd-yyyy H:mm",
+        "MM-dd-yyyy HH:mm",
+        "MM.dd.yyyy H:mm",
+        "MM.dd.yyyy HH:mm",
+        "MM/dd/yyyy H:mm:ss",
+        "MM/dd/yyyy HH:mm:ss",
+        "MM-dd-yyyy H:mm:ss",
+        "MM-dd-yyyy HH:mm:ss",
+        "MM.dd.yyyy H:mm:ss",
+        "MM.dd.yyyy HH:mm:ss",
+        
+        // 12-hour formats with AM/PM
+        "MM/dd/yyyy h:mm tt",
+        "MM/dd/yyyy hh:mm tt",
+        "MM-dd-yyyy h:mm tt",
+        "MM-dd-yyyy hh:mm tt",
+        "MM.dd.yyyy h:mm tt",
+        "MM.dd.yyyy hh:mm tt",
+
+        // Other common formats can be added here
+    };
+
+            if (DateTime.TryParseExact(dateTimeStr, formats, CultureInfo.InvariantCulture, DateTimeStyles.None, out DateTime parsedDate))
+            {
+                return parsedDate.ToString("dd-MM-yyyy h:mm", CultureInfo.InvariantCulture);
+            }
+
+            // If parsing fails, return the original string
+            return dateTimeStr;
         }
 
         private async void standCDRsAsync()
