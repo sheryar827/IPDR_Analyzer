@@ -27,6 +27,7 @@ namespace IPDR_Analyzer.Forms
         PointLatLng endPoint;
         List<StandIPDR> allLocRecordA_Num = new List<StandIPDR>();
         List<StandIPDR> commonLatLngList = new List<StandIPDR>();
+        List<StandIPDR> dateExtLatLngList;
         List<StandIPDR> allRecordNum = new List<StandIPDR>();
         /*DialogResult locDetDialog = new DialogResult();*/
         /*private bool MarkerWasClicked = false;*/
@@ -53,6 +54,12 @@ namespace IPDR_Analyzer.Forms
             , List<PointLatLng> _points
             , Color selectedColor)
         {
+            // Remove the existing 'markers' overlay
+            if (gMap.Overlays.Contains(markers))
+            {
+                gMap.Overlays.Remove(markers);
+            }
+
             gMap.DragButton = MouseButtons.Left;
             markers = new GMapOverlay("markers");
             /*gMap.MapProvider = GMapProviders.GoogleMap;
@@ -290,31 +297,44 @@ namespace IPDR_Analyzer.Forms
             this.Invoke(new Action(() =>
             {
                 bunifuLoader.Visible = false;
+
+                if (commonLatLngList.Count > 0)
+                {
+                    //get start date from datatable
+                    string sd = commonLatLngList.First().Date.ToString();
+
+
+                    //getting end date from datatable
+                    string ed = commonLatLngList.Last().Date.ToString();
+
+                    txtDateLimit.Text = $"{sd.Split(' ').First()} - {ed.Split(' ').First()}";
+
+                    DatePickerStartDate.Value = DateTime.Parse(sd).Date;
+
+                }
+
+                //MessageBox.Show("Please Select Date in the Range");
+
+                //plotExtractedLatLng(commonLatLngList);
+
+             }));
+            
+
+        }
+
+        private void plotExtractedLatLng(List<StandIPDR> list)
+        {
             var points = new List<PointLatLng>();
-            foreach (var record in commonLatLngList)
+
+
+            foreach (var record in list)
             {
                 points.Add(new PointLatLng(record.Latitude, record.Longitude));
-                /*if (double.TryParse(record.Lat, out double lat) && double.TryParse(record.Lng, out double lng))
-                {
-                    points.Add(new PointLatLng(lat, lng));
-                }*/
-
-                /*Console.WriteLine($"A_Num: {record.A_Num}, B_Num: {record.B_Num}, IMEI: {record.IMEI}, " +
-                         $"Date: {record.Date}, Time: {record.Time}, Call_Dur: {record.Call_Dur}, " +
-                         $"Call_Dir: {record.Call_Dir}, Call_Type: {record.Call_Type}, Lac_No: {record.Lac_No}, " +
-                         $"Cell_ID: {record.Cell_ID}, Loc: {record.Loc}, Lat: {record.Lat}, Lng: {record.Lng}, " +
-                         $"Network: {record.Network}, Weekday: {record.Weekday}");*/
             }
-
-
 
             List<PointLatLng> uniquePointLst = points.Distinct().ToList();
 
-            plotMarkers("", "common lat lng", uniquePointLst, Color.Red);
-            
-        }));
-            
-
+            plotMarkers("", "common lat lng", uniquePointLst, ThemeManager.RandomizeTheme());
         }
 
 
@@ -338,20 +358,20 @@ namespace IPDR_Analyzer.Forms
                     , item.Position.Lat.ToString()
                     , item.Position.Lng.ToString());*/
 
-                var matchingRecords = commonLatLngList.Where(r => r.Latitude == item.Position.Lat && r.Longitude == item.Position.Lng).ToList();
+                var matchingRecords = dateExtLatLngList.Where(r => r.Latitude == item.Position.Lat && r.Longitude == item.Position.Lng).ToList();
 
                 //matchingRecords = matchingRecords.OrderByDescending(cs => cs.Number).ThenBy(cs => cs.Time).ToList();
 
                 var groupedData = matchingRecords.GroupBy(
-                n => new { n.Number, n.Date, LatLong = new { n.Latitude, n.Longitude }, n.Location }
+                n => new { n.Number, n.Date, LatLong = new { n.Latitude, n.Longitude }}
                 ).Select(g => new
                 {
-                g.Key.Number,
-                g.Key.Date,
-                g.Key.Location,
-                g.Key.LatLong,
-                StartTime = g.Min(n => n.Time),
-                EndTime = g.Max(n => n.Time)
+                    g.Key.Number,
+                    g.Key.Date,
+                    g.Key.LatLong,
+                    StartTime = g.Min(n => n.Time),
+                    EndTime = g.Max(n => n.Time),
+                    Duration = g.Max(n => TimeSpan.Parse(n.Time)) - g.Min(n => TimeSpan.Parse(n.Time)) // Calculate the duration
                 });
 
                 //var specificLatLngDT = new ListtoDataTable().ToDataTable(groupedData);
@@ -360,13 +380,13 @@ namespace IPDR_Analyzer.Forms
 
                 foreach (var group in groupedData)
                 {
-                    var to = new TimeOverLap(group.Number, group.Date, group.StartTime, group.EndTime, group.Location, group.LatLong.Latitude, group.LatLong.Longitude);
-                    
+                    var to = new TimeOverLap(group.Number, group.Date, group.StartTime, group.EndTime, group.Duration.ToString(), group.LatLong.Latitude, group.LatLong.Longitude);
+
                     timeOverLap.Add(to);
                     //Console.WriteLine($"Number: {group.Number}, LatLong: ({group.LatLong.Latitude}, {group.LatLong.Longitude}), Start Time: {group.StartTime}, End Time: {group.EndTime}");
                 }
 
-                new CommonLocDetailsForm(new ListtoDataTable().ToDataTable(timeOverLap)).Show();
+                new CommonLocDetailsForm(new ListtoDataTable().ToDataTable(timeOverLap), matchingRecords).Show();
                 //var specificLatLngDT = new ListtoDataTable().ToDataTable(matchingRecords);
                 //Console.WriteLine(latlngRecord.Count);
                 //new Forms.LocationDetailsForm(item.Position, item.ToolTipText, item.Tag.ToString(), allLocRecordA_Num).Show();
@@ -390,6 +410,22 @@ namespace IPDR_Analyzer.Forms
                 locDetails = false;
                 btnLocDetails.FlatAppearance.BorderSize = 0;
             }
+        }
+
+        private void btnExtract_Click(object sender, EventArgs e)
+        {
+            // Sql Query to get every row from CDRTable
+            DateTime startDate = DatePickerStartDate.Value.Date;
+
+            var selectedRecordsA_Num = new List<StandIPDR>();
+            dateExtLatLngList = new List<StandIPDR>();
+            dateExtLatLngList = commonLatLngList.Where(record => DateTime.Parse(record.Date).Date == startDate).ToList();
+            foreach (StandIPDR record in selectedRecordsA_Num)
+            {
+                Console.WriteLine($"Date: {record.Date}");
+                // You can add more fields as needed
+            }
+            plotExtractedLatLng(dateExtLatLngList);
         }
     }
 }

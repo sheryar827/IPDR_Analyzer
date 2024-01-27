@@ -14,7 +14,7 @@ namespace IPDR_Analyzer.Classes
         public string StartTime { get; set; } = string.Empty;
         public string EndTime { get; set; } = string.Empty;
 
-        public string loc { get; set; } = string.Empty;
+        public string Duration { get; set; } = string.Empty;
 
         public double Lat {  get; set; }
 
@@ -24,7 +24,7 @@ namespace IPDR_Analyzer.Classes
             , string date
             , string startdate
             , string enddate
-            , string loc
+            , string dur
             , double lat
             , double lng) { 
         
@@ -32,7 +32,7 @@ namespace IPDR_Analyzer.Classes
             this.Date = date;
             this.StartTime = startdate;
             this.EndTime = enddate;
-            this.loc = loc;
+            this.Duration = dur;
             this.Lat = lat;
             this.Lng = lng;
         }

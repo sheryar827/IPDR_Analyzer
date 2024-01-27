@@ -13,6 +13,7 @@ namespace IPDR_Analyzer.Forms
 {
     public partial class AppSumForm : Form
     {
+        string selectedItem;
         DataTable ipdrSum = null;
         DataTable ipdrDetail = null;
         //List which have overall CDR Summary
@@ -113,11 +114,12 @@ namespace IPDR_Analyzer.Forms
               //      .ToDataTable(getAllSummary(getAppRecords(Common.allRecordNum)));
         }
 
-        private List<AppSummary> getAppRecords(List<StandIPDR> ipdrList)
+        /*private List<AppSummary> getAppRecords(List<StandIPDR> ipdrList)
         {
             List<AppSummary> appsum = new List<AppSummary>();
 
             // Using LINQ to group and count the applications
+            
             var appCounts = ipdrList
                 .GroupBy(ipdr => ipdr.App)
                 .Select(group => new
@@ -135,6 +137,86 @@ namespace IPDR_Analyzer.Forms
             }
 
             return appsum;
+        }*/
+
+        private List<AppSummary> getAppRecords(List<StandIPDR> ipdrList)
+        {
+            switch (selectedItem)
+            {
+                case "APP":
+                    List<AppSummary> appsum = new List<AppSummary>();
+                    var appCounts = ipdrList
+                        .GroupBy(ipdr => ipdr.App) // Assuming Source_IP is the IP you want to group by
+                        .Select(group => new { APP = group.Key, Count = group.Count() })
+                        .ToList();
+                    foreach (var appCount in appCounts)
+                    {
+                        AppSummary appSummary = new AppSummary(appCount.APP, appCount.Count);
+                        appsum.Add(appSummary);
+                    }
+
+                    return appsum;
+
+                case "SOURCE IP":
+                    List<AppSummary> ipsum = new List<AppSummary>();
+                    var ipCounts = ipdrList
+                        .GroupBy(ipdr => ipdr.Source_IP)
+                        .Select(group => new { IP = group.Key, Count = group.Count() })
+                        .ToList();
+                    foreach (var appCount in ipCounts)
+                    {
+                        AppSummary appSummary = new AppSummary(appCount.IP, appCount.Count);
+                        ipsum.Add(appSummary);
+                    }
+
+                    return ipsum;
+
+                case "DEST IP":
+                    List<AppSummary> ipdestsum = new List<AppSummary>();
+                    var ipdestCounts = ipdrList
+                        .GroupBy(ipdr => ipdr.Dest_IP)
+                        .Select(group => new { IP = group.Key, Count = group.Count() })
+                        .ToList();
+                    foreach (var appCount in ipdestCounts)
+                    {
+                        AppSummary appSummary = new AppSummary(appCount.IP, appCount.Count);
+                        ipdestsum.Add(appSummary);
+                    }
+
+                    return ipdestsum;
+
+
+                case "PORT":
+                    List<AppSummary> portsum = new List<AppSummary>();
+                    var portCounts = ipdrList
+                        .GroupBy(ipdr => ipdr.Source_PORT) // Assuming Source_PORT is the PORT you want to group by
+                        .Select(group => new { Port = group.Key, Count = group.Count() })
+                        .ToList();
+                    foreach (var appCount in portCounts)
+                    {
+                        AppSummary appSummary = new AppSummary(appCount.Port, appCount.Count);
+                        portsum.Add(appSummary);
+                    }
+
+                    return portsum;
+
+                case "IP,PORT":
+                    List<AppSummary> sipportsum = new List<AppSummary>();
+                    var ipportCounts = ipdrList
+                        .GroupBy(ipdr => new { ipdr.Source_IP, ipdr.Source_PORT }) // Combine IP and PORT
+                        .Select(group => new { IP = group.Key.Source_IP, Port = group.Key.Source_PORT, Count = group.Count() })
+                        .ToList();
+                    foreach (var appCount in ipportCounts)
+                    {
+                        AppSummary appSummary = new AppSummary($"{appCount.IP} {appCount.Port}", appCount.Count);
+                        sipportsum.Add(appSummary);
+                    }
+
+                    return sipportsum;
+
+                default:
+                    throw new ArgumentException("Invalid grouping option.");
+            }
         }
 
         private void IPDRSummaryGridView_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -171,17 +253,45 @@ namespace IPDR_Analyzer.Forms
         {
             try
             {
-                var matchingRecords = list.Where(record => record.App == appName).ToList();
+                
+                switch (selectedItem)
+                {
+                    case "APP":
+                        
+                        var matchingRecords = list.Where(record => record.App == appName).ToList();
+                        showRecords(matchingRecords);
+                        break;
+                    case "SOURCE IP":
+                        var matchingRecordsSourceIP = list.Where(record => record.Source_IP == appName).ToList();
+                        showRecords(matchingRecordsSourceIP);
+                        break;
+                    case "DEST IP":
+                        var matchingRecordsDestIP = list.Where(record => record.Dest_IP == appName).ToList();
+                        showRecords(matchingRecordsDestIP);
+                        break;
+                }
 
-                ListtoDataTable ltdt = new ListtoDataTable();
-                DataTable dataTable = ltdt.ToDataTable(matchingRecords);
-
-                new IPDRSummaryDetailForm(dataTable).ShowDialog();
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
             }
+        }
+
+        private void showRecords(List<StandIPDR> matchingRecords)
+        {
+            ListtoDataTable ltdt = new ListtoDataTable();
+            DataTable dataTable = ltdt.ToDataTable(matchingRecords);
+
+            new IPDRSummaryDetailForm(dataTable).ShowDialog();
+        }
+
+        private void comboBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            // Get the currently selected item in the ComboBox
+            selectedItem = comboBox.SelectedItem.ToString();
+
+            getAllSummary(getAppRecords(Common.allRecordNum));
         }
 
         private void rbMorning_Click(object sender, EventArgs e)
@@ -259,6 +369,7 @@ namespace IPDR_Analyzer.Forms
         {
             try
             {
+                comboBox.SelectedIndex = 0; // Selects the first item
                 panelMenu.BackColor = ThemeManager.RandomizeTheme();
                 //getting start date from datatable
                 string sd = Common.allRecordNum.First().Date.ToString();

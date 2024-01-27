@@ -41,7 +41,6 @@
             this.btnAddIPDR = new FontAwesome.Sharp.IconButton();
             this.btnAddCase = new FontAwesome.Sharp.IconButton();
             this.bunifuPanel2 = new Bunifu.UI.WinForms.BunifuPanel();
-            this.bunifuPictureBox1 = new Bunifu.UI.WinForms.BunifuPictureBox();
             this.panelTitleBar = new Bunifu.UI.WinForms.BunifuPanel();
             this.btnMin = new FontAwesome.Sharp.IconPictureBox();
             this.btnMax = new FontAwesome.Sharp.IconPictureBox();
@@ -53,15 +52,16 @@
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.bunifuElipse1 = new Bunifu.Framework.UI.BunifuElipse(this.components);
             this.bunifuElipse2 = new Bunifu.Framework.UI.BunifuElipse(this.components);
+            this.bunifuPictureBox1 = new Bunifu.UI.WinForms.BunifuPictureBox();
             this.panelMenu.SuspendLayout();
             this.bunifuPanel2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.bunifuPictureBox1)).BeginInit();
             this.panelTitleBar.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.btnMin)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnMax)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnClose)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.iconCurrentChildForm)).BeginInit();
             this.bunifuPages.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.bunifuPictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // panelMenu
@@ -296,22 +296,6 @@
             this.bunifuPanel2.Size = new System.Drawing.Size(220, 140);
             this.bunifuPanel2.TabIndex = 0;
             // 
-            // bunifuPictureBox1
-            // 
-            this.bunifuPictureBox1.AllowFocused = false;
-            this.bunifuPictureBox1.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.bunifuPictureBox1.AutoSizeHeight = true;
-            this.bunifuPictureBox1.BorderRadius = 0;
-            this.bunifuPictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("bunifuPictureBox1.Image")));
-            this.bunifuPictureBox1.IsCircle = true;
-            this.bunifuPictureBox1.Location = new System.Drawing.Point(55, 15);
-            this.bunifuPictureBox1.Name = "bunifuPictureBox1";
-            this.bunifuPictureBox1.Size = new System.Drawing.Size(111, 111);
-            this.bunifuPictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.bunifuPictureBox1.TabIndex = 0;
-            this.bunifuPictureBox1.TabStop = false;
-            this.bunifuPictureBox1.Type = Bunifu.UI.WinForms.BunifuPictureBox.Types.Square;
-            // 
             // panelTitleBar
             // 
             this.panelTitleBar.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(108)))), ((int)(((byte)(35)))), ((int)(((byte)(250)))));
@@ -482,6 +466,22 @@
             this.bunifuElipse2.ElipseRadius = 20;
             this.bunifuElipse2.TargetControl = this.panelMenu;
             // 
+            // bunifuPictureBox1
+            // 
+            this.bunifuPictureBox1.AllowFocused = false;
+            this.bunifuPictureBox1.AutoSizeHeight = true;
+            this.bunifuPictureBox1.BackColor = System.Drawing.Color.LightCyan;
+            this.bunifuPictureBox1.BorderRadius = 62;
+            this.bunifuPictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("bunifuPictureBox1.Image")));
+            this.bunifuPictureBox1.IsCircle = true;
+            this.bunifuPictureBox1.Location = new System.Drawing.Point(36, 12);
+            this.bunifuPictureBox1.Name = "bunifuPictureBox1";
+            this.bunifuPictureBox1.Size = new System.Drawing.Size(125, 125);
+            this.bunifuPictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.bunifuPictureBox1.TabIndex = 0;
+            this.bunifuPictureBox1.TabStop = false;
+            this.bunifuPictureBox1.Type = Bunifu.UI.WinForms.BunifuPictureBox.Types.Circle;
+            // 
             // Dashboard
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
@@ -494,10 +494,10 @@
             this.Name = "Dashboard";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Dashboard";
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.Dashboard_Load);
             this.panelMenu.ResumeLayout(false);
             this.bunifuPanel2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.bunifuPictureBox1)).EndInit();
             this.panelTitleBar.ResumeLayout(false);
             this.panelTitleBar.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.btnMin)).EndInit();
@@ -505,6 +505,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.btnClose)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.iconCurrentChildForm)).EndInit();
             this.bunifuPages.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.bunifuPictureBox1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -520,7 +521,6 @@
         private FontAwesome.Sharp.IconButton btnGMAP;
         private FontAwesome.Sharp.IconButton btnAddIPDR;
         private FontAwesome.Sharp.IconButton btnCommonGMAP;
-        private Bunifu.UI.WinForms.BunifuPictureBox bunifuPictureBox1;
         private Bunifu.UI.WinForms.BunifuPanel panelTitleBar;
         private FontAwesome.Sharp.IconPictureBox iconCurrentChildForm;
         private Bunifu.UI.WinForms.BunifuLabel lbTitleChildForm;
@@ -533,5 +533,6 @@
         private Bunifu.Framework.UI.BunifuElipse bunifuElipse1;
         private Bunifu.Framework.UI.BunifuElipse bunifuElipse2;
         private FontAwesome.Sharp.IconButton btnAppsDur;
+        private Bunifu.UI.WinForms.BunifuPictureBox bunifuPictureBox1;
     }
 }

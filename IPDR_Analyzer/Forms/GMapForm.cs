@@ -212,6 +212,7 @@ namespace IPDR_Analyzer.Forms
                         allRecordNum = new List<StandIPDR>();
 
 
+
                         foreach (DataRow row in dt.Rows)
                         {
                            
@@ -246,6 +247,8 @@ namespace IPDR_Analyzer.Forms
                         }
                     }
 
+                    
+
                     List<PointLatLng> uniquePointLst = _points.Distinct().ToList();
 
                     // Filter out invalid points. Define your own criteria for invalidity
@@ -254,7 +257,17 @@ namespace IPDR_Analyzer.Forms
                     plotMarkers(a_numForAnalysis, project_Name, uniquePointLst, selectColor);
 
                     allLocRecordA_Num = allLocRecordA_Num.OrderBy(x => x.Date).Distinct().ToList();
-                    
+
+                    //get start date from datatable
+                    string sd = allLocRecordA_Num.First().Date.ToString();
+
+
+                    //getting end date from datatable
+                    string ed = allLocRecordA_Num.Last().Date.ToString();
+
+                    txtDateLimit.Text = $"{sd.Split(' ').First()} - {ed.Split(' ').First()}";
+
+                    DatePickerStartDate.Value = DateTime.Parse(sd).Date;
                 }
                 catch (Exception ex)
                 {
@@ -277,15 +290,15 @@ namespace IPDR_Analyzer.Forms
                 //matchingRecords = matchingRecords.OrderByDescending(cs => cs.Number).ThenBy(cs => cs.Time).ToList();
 
                 var groupedData = matchingRecords.GroupBy(
-                n => new { n.Number, n.Date, LatLong = new { n.Latitude, n.Longitude }, n.Location }
+                n => new { n.Number, n.Date, LatLong = new { n.Latitude, n.Longitude }}
                 ).Select(g => new
                 {
                     g.Key.Number,
                     g.Key.Date,
-                    g.Key.Location,
                     g.Key.LatLong,
                     StartTime = g.Min(n => n.Time),
-                    EndTime = g.Max(n => n.Time)
+                    EndTime = g.Max(n => n.Time),
+                    Duration = g.Max(n => TimeSpan.Parse(n.Time)) - g.Min(n => TimeSpan.Parse(n.Time)) // Calculate the duration
                 });
 
                 //var specificLatLngDT = new ListtoDataTable().ToDataTable(groupedData);
@@ -294,13 +307,13 @@ namespace IPDR_Analyzer.Forms
 
                 foreach (var group in groupedData)
                 {
-                    var to = new TimeOverLap(group.Number, group.Date, group.StartTime, group.EndTime, group.Location, group.LatLong.Latitude, group.LatLong.Longitude);
+                    var to = new TimeOverLap(group.Number, group.Date, group.StartTime, group.EndTime, group.Duration.ToString(), group.LatLong.Latitude, group.LatLong.Longitude);
 
                     timeOverLap.Add(to);
                     //Console.WriteLine($"Number: {group.Number}, LatLong: ({group.LatLong.Latitude}, {group.LatLong.Longitude}), Start Time: {group.StartTime}, End Time: {group.EndTime}");
                 }
 
-                new CommonLocDetailsForm(new ListtoDataTable().ToDataTable(timeOverLap)).Show();
+                new CommonLocDetailsForm(new ListtoDataTable().ToDataTable(timeOverLap), matchingRecords).Show();
                 
             }
         }
@@ -321,5 +334,21 @@ namespace IPDR_Analyzer.Forms
                 btnLocDetails.FlatAppearance.BorderSize = 0;
             }
         }
+
+        /*private void btnExtract_Click(object sender, EventArgs e)
+        {
+            // Sql Query to get every row from CDRTable
+            DateTime startDate = DatePickerStartDate.Value.Date;
+
+            
+            var dateExtLatLngList = new List<StandIPDR>();
+            dateExtLatLngList = allLocRecordA_Num.Where(record => DateTime.Parse(record.Date).Date == startDate).ToList();
+            foreach (StandIPDR record in dateExtLatLngList)
+            {
+                Console.WriteLine($"Date: {record.Date}");
+                // You can add more fields as needed
+            }
+            plotExtractedLatLng(dateExtLatLngList);
+        }*/
     }
 }

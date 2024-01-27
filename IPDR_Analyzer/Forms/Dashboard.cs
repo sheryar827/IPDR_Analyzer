@@ -281,5 +281,7 @@ namespace IPDR_Analyzer.Forms
             openChildFormPage(new AppDurForm(), sender, tabPage);
             lbTitleChildForm.Text = "APPS DURATION";
         }
+
+        
     }
 }
