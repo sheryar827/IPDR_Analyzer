@@ -96,7 +96,7 @@
             this.btnAppsDur.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnAppsDur.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold);
             this.btnAppsDur.ForeColor = System.Drawing.Color.Gainsboro;
-            this.btnAppsDur.IconChar = FontAwesome.Sharp.IconChar.Calculator;
+            this.btnAppsDur.IconChar = FontAwesome.Sharp.IconChar.Clock;
             this.btnAppsDur.IconColor = System.Drawing.Color.Gainsboro;
             this.btnAppsDur.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.btnAppsDur.IconSize = 32;
@@ -120,7 +120,7 @@
             this.btnCommonGMAP.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnCommonGMAP.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold);
             this.btnCommonGMAP.ForeColor = System.Drawing.Color.Gainsboro;
-            this.btnCommonGMAP.IconChar = FontAwesome.Sharp.IconChar.Calculator;
+            this.btnCommonGMAP.IconChar = FontAwesome.Sharp.IconChar.LocationDot;
             this.btnCommonGMAP.IconColor = System.Drawing.Color.Gainsboro;
             this.btnCommonGMAP.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.btnCommonGMAP.IconSize = 32;
@@ -144,7 +144,7 @@
             this.btnBasicConver.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnBasicConver.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold);
             this.btnBasicConver.ForeColor = System.Drawing.Color.Gainsboro;
-            this.btnBasicConver.IconChar = FontAwesome.Sharp.IconChar.Calculator;
+            this.btnBasicConver.IconChar = FontAwesome.Sharp.IconChar.Book;
             this.btnBasicConver.IconColor = System.Drawing.Color.Gainsboro;
             this.btnBasicConver.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.btnBasicConver.IconSize = 32;
@@ -168,7 +168,7 @@
             this.btnLocSummary.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnLocSummary.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold);
             this.btnLocSummary.ForeColor = System.Drawing.Color.Gainsboro;
-            this.btnLocSummary.IconChar = FontAwesome.Sharp.IconChar.Calculator;
+            this.btnLocSummary.IconChar = FontAwesome.Sharp.IconChar.LocationArrow;
             this.btnLocSummary.IconColor = System.Drawing.Color.Gainsboro;
             this.btnLocSummary.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.btnLocSummary.IconSize = 32;
@@ -192,7 +192,7 @@
             this.btnAppSummaary.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnAppSummaary.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold);
             this.btnAppSummaary.ForeColor = System.Drawing.Color.Gainsboro;
-            this.btnAppSummaary.IconChar = FontAwesome.Sharp.IconChar.Calculator;
+            this.btnAppSummaary.IconChar = FontAwesome.Sharp.IconChar.RectangleList;
             this.btnAppSummaary.IconColor = System.Drawing.Color.Gainsboro;
             this.btnAppSummaary.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.btnAppSummaary.IconSize = 32;
@@ -240,7 +240,7 @@
             this.btnAddIPDR.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnAddIPDR.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold);
             this.btnAddIPDR.ForeColor = System.Drawing.Color.Gainsboro;
-            this.btnAddIPDR.IconChar = FontAwesome.Sharp.IconChar.Comment;
+            this.btnAddIPDR.IconChar = FontAwesome.Sharp.IconChar.Message;
             this.btnAddIPDR.IconColor = System.Drawing.Color.Gainsboro;
             this.btnAddIPDR.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.btnAddIPDR.IconSize = 32;
