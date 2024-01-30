@@ -515,6 +515,7 @@ namespace IPDR_Analyzer.Forms
 
         private async void StandForm_Load(object sender, EventArgs e)
         {
+            bunifuLoader.Color = ThemeManager.RandomizeTheme();
             string proc = "exec dbo.Projects_View_Filter_UserName '" + Common.userName + "'";
             dataTable = await CommonMethods.getRecords(proc);
 

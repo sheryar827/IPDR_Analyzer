@@ -164,6 +164,7 @@ namespace IPDR_Analyzer.Forms
         {
             try
             {
+                
                 //gMap.CacheLocation = Application.StartupPath + @"\MAP\"; //Reset the default cache location (the default cache problem of Grandpa and Dog Thief, a waste of labor and youth for a day)
                 gMap.CacheLocation = @"cache";
                 GMaps.Instance.Mode = AccessMode.ServerAndCache;
