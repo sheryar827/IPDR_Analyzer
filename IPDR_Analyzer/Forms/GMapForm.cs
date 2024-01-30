@@ -24,9 +24,10 @@ namespace IPDR_Analyzer.Forms
         PointLatLng startPoint;
         PointLatLng endPoint;
         List<StandIPDR> allLocRecordA_Num = new List<StandIPDR>();
-        List<StandIPDR> commonLatLngList = new List<StandIPDR>();
-        List<StandIPDR> allRecordNum = new List<StandIPDR>();
-
+        //List<StandIPDR> commonLatLngList = new List<StandIPDR>();
+        //List<StandIPDR> allRecordNum = new List<StandIPDR>();
+        List<StandIPDR> dateExtLatLngList = new List<StandIPDR>();
+        string a_numForAnalysis, project_Name;
 
         GMapOverlay routes;
 
@@ -36,9 +37,17 @@ namespace IPDR_Analyzer.Forms
         bool locDetails = false;
         public GMapForm()
         {
-            InitializeComponent();
+            try
+            {
+                InitializeComponent();
 
-            routes = new GMapOverlay("routes");
+                routes = new GMapOverlay("routes");
+            }
+            catch (Exception ex)
+            {
+
+                MessageBox.Show(ex.Message);
+            }
         }
 
         private void plotMarkers(string A_Num
@@ -46,41 +55,54 @@ namespace IPDR_Analyzer.Forms
            , List<PointLatLng> _points
            , Color selectedColor)
         {
-            gMap.DragButton = MouseButtons.Left;
-            markers = new GMapOverlay("markers");
-            
-            foreach (PointLatLng point in _points)
+            try
             {
-                //PointLatLng point = new PointLatLng(lat, lng);
+                if (gMap.Overlays.Contains(markers))
+                {
+                    gMap.Overlays.Remove(markers);
+                }
 
-                //Bitmap bmpMarker = (Bitmap)Image.FromFile("img/location.png");
+                gMap.DragButton = MouseButtons.Left;
+                markers = new GMapOverlay("markers");
 
-                /*GMapMarker marker = new GMarkerGoogle(point, bmpMarker);*/
+                foreach (PointLatLng point in _points)
+                {
+                    //PointLatLng point = new PointLatLng(lat, lng);
 
-                //GMapMarker marker = new GMarkerGoogle(point, GMarkerGoogleType.red_big_stop);
-                //marker.IsVisible = true;
+                    //Bitmap bmpMarker = (Bitmap)Image.FromFile("img/location.png");
 
-                Bitmap markerBitmap = CreateCustomMarkerBitmap(selectedColor, new Size(40, 40)); // Customize size as needed
+                    /*GMapMarker marker = new GMarkerGoogle(point, bmpMarker);*/
 
-                GMapMarker marker = new GMarkerGoogle(point, markerBitmap);
+                    //GMapMarker marker = new GMarkerGoogle(point, GMarkerGoogleType.red_big_stop);
+                    //marker.IsVisible = true;
 
-                marker.ToolTipMode = MarkerTooltipMode.Always;
-                /* marker.Tag = point.Lat.ToString() + " " + point.Lng.ToString();
-                 marker.ToolTipText = point.Lat.ToString() + " " + point.Lng.ToString();*/
+                    Bitmap markerBitmap = CreateCustomMarkerBitmap(selectedColor, new Size(40, 40)); // Customize size as needed
 
-                marker.Tag = project_Name;
-                marker.ToolTipText = A_Num + " " + project_Name;
+                    GMapMarker marker = new GMarkerGoogle(point, markerBitmap);
 
-                /*marker.ToolTipMode = MarkerTooltipMode.OnMouseOver;*/
+                    marker.ToolTipMode = MarkerTooltipMode.Always;
+                    /* marker.Tag = point.Lat.ToString() + " " + point.Lng.ToString();
+                     marker.ToolTipText = point.Lat.ToString() + " " + point.Lng.ToString();*/
 
-                //2. Add all available markers to that Overlay
-                markers.Markers.Add(marker);
-                //3. Cover map with Overlay
+                    marker.Tag = project_Name;
+                    marker.ToolTipText = A_Num + " " + project_Name;
 
+                    /*marker.ToolTipMode = MarkerTooltipMode.OnMouseOver;*/
+
+                    //2. Add all available markers to that Overlay
+                    markers.Markers.Add(marker);
+                    //3. Cover map with Overlay
+
+                }
+
+
+                gMap.Overlays.Add(markers);
             }
+            catch (Exception ex)
+            {
 
-
-            gMap.Overlays.Add(markers);
+                MessageBox.Show(ex.Message);
+            }
         }
 
         private Bitmap CreateCustomMarkerBitmap(Color color, Size size)
@@ -113,21 +135,29 @@ namespace IPDR_Analyzer.Forms
 
         private void gMap_Load(object sender, EventArgs e)
         {
-            
-            //gMap.CacheLocation = Application.StartupPath + @"\MAP\"; //Reset the default cache location (the default cache problem of Grandpa and Dog Thief, a waste of labor and youth for a day)
-            gMap.CacheLocation = @"cache";
-            GMaps.Instance.Mode = AccessMode.ServerAndCache;
-            
-            gMap.ShowCenter = false;
-            gMap.MapProvider = GMapProviders.GoogleMap;
-            double lat = Convert.ToDouble("32.71086");
-            double lng = Convert.ToDouble("73.93865");
-            gMap.Position = new PointLatLng(lat, lng);
-            gMap.MinZoom = 5;
-            gMap.MaxZoom = 100;
-            gMap.Zoom = 5;
 
-            getProjectNum();
+            try
+            {
+                //gMap.CacheLocation = Application.StartupPath + @"\MAP\"; //Reset the default cache location (the default cache problem of Grandpa and Dog Thief, a waste of labor and youth for a day)
+                gMap.CacheLocation = @"cache";
+                GMaps.Instance.Mode = AccessMode.ServerAndCache;
+
+                gMap.ShowCenter = false;
+                gMap.MapProvider = GMapProviders.GoogleMap;
+                double lat = Convert.ToDouble("32.71086");
+                double lng = Convert.ToDouble("73.93865");
+                gMap.Position = new PointLatLng(lat, lng);
+                gMap.MinZoom = 5;
+                gMap.MaxZoom = 100;
+                gMap.Zoom = 5;
+
+                getProjectNum();
+            }
+            catch (Exception ex)
+            {
+
+                MessageBox.Show(ex.Message);
+            }
 
         }
 
@@ -176,179 +206,236 @@ namespace IPDR_Analyzer.Forms
 
         private async void gvProjectNum_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (e.RowIndex >= 0)
+            try
             {
-                List<PointLatLng> _points = new List<PointLatLng>();
-                string a_numForAnalysis = gvProjectNum.Rows[e.RowIndex].Cells[1].Value.ToString();
-                string project_Name = gvProjectNum.Rows[e.RowIndex].Cells[0].Value.ToString();
-                Color selectColor = Color.Red;
-
-                using (ColorDialog colorDialog = new ColorDialog())
+                if (e.RowIndex >= 0)
                 {
-                    if (colorDialog.ShowDialog() == DialogResult.OK)
+
+                    List<PointLatLng> _points = new List<PointLatLng>();
+                    a_numForAnalysis = gvProjectNum.Rows[e.RowIndex].Cells[1].Value.ToString();
+                    project_Name = gvProjectNum.Rows[e.RowIndex].Cells[0].Value.ToString();
+                    Color selectColor = Color.Red;
+
+                    using (ColorDialog colorDialog = new ColorDialog())
                     {
-                        selectColor = colorDialog.Color;
-                    }
-                }
-
-
-                CurrencyManager cm = (CurrencyManager)BindingContext[gvProjectNum.DataSource];
-                cm.SuspendBinding();
-                gvProjectNum.Rows[e.RowIndex].Visible = false;
-                cm.ResumeBinding();
-
-                string spGetAllRecords = "exec dbo.GET_ALL_RECORD_NUM '" + a_numForAnalysis + "', '" + project_Name + "'";
-
-                DataTable dt = new DataTable();
-
-                dt = await CommonMethods.getRecords(spGetAllRecords);
-
-                Console.WriteLine(dt.Rows.Count);
-
-                try
-                {
-                    if (dt.Columns.Count > 0)
-                    {
-                        allRecordNum = new List<StandIPDR>();
-
-
-
-                        foreach (DataRow row in dt.Rows)
+                        if (colorDialog.ShowDialog() == DialogResult.OK)
                         {
-                           
-                            StandIPDR record = new StandIPDR
-                            {
-                                Number = row["Number"].ToString(),
-                                Date = row["Date"].ToString(),//dateTime.ToString(Common.datef), // Format date as a string in the format you need
-                                Time = row["Time"].ToString(), // Format time as a string
-                                Dur = row["Dur"].ToString(),
-                                Protocol = row["Protocol"].ToString(),
-                                Source_IP = row["Source_IP"].ToString(),
-                                Source_PORT = row["Source_PORT"].ToString(),
-                                Dest_IP = row["Dest_IP"].ToString(),
-                                Dest_PORT = row["Dest_PORT"].ToString(),
-                                App = row["App"].ToString(),
-                                Up = row["Up"].ToString(),
-                                Down = row["Down"].ToString(),
-                                Location = row["Location"].ToString(),
-                                Latitude = Convert.ToDouble(row["Latitude"]),
-                                Longitude = Convert.ToDouble(row["Longitude"]),
-                                Weekday = row["Weekday"].ToString()
-                            };
-
-                            allLocRecordA_Num.Add(record);
-                            
-                            
-
-                            PointLatLng getLatLngForMap = new PointLatLng(record.Latitude
-                                , record.Longitude);
-
-                            _points.Add(getLatLngForMap);
+                            selectColor = colorDialog.Color;
                         }
                     }
 
-                    
+                    bunifuLoader.Visible = true;
+                    CurrencyManager cm = (CurrencyManager)BindingContext[gvProjectNum.DataSource];
+                    cm.SuspendBinding();
+                    gvProjectNum.Rows[e.RowIndex].Visible = false;
+                    cm.ResumeBinding();
 
-                    List<PointLatLng> uniquePointLst = _points.Distinct().ToList();
+                    string spGetAllRecords = "exec dbo.GET_ALL_RECORD_NUM '" + a_numForAnalysis + "', '" + project_Name + "'";
 
-                    // Filter out invalid points. Define your own criteria for invalidity
-                    uniquePointLst = uniquePointLst.Where(p => IsValidPoint(p)).ToList();
+                    DataTable dt = new DataTable();
 
-                    plotMarkers(a_numForAnalysis, project_Name, uniquePointLst, selectColor);
+                    dt = await CommonMethods.getRecords(spGetAllRecords);
 
-                    allLocRecordA_Num = allLocRecordA_Num.OrderBy(x => x.Date).Distinct().ToList();
+                    //Console.WriteLine(dt.Rows.Count);
+                    this.Invoke(new Action(() =>
+                    {
+                        bunifuLoader.Visible = false;
+                        try
+                        {
+                            if (dt.Columns.Count > 0)
+                            {
+                                //allRecordNum = new List<StandIPDR>();
 
-                    //get start date from datatable
-                    string sd = allLocRecordA_Num.First().Date.ToString();
 
 
-                    //getting end date from datatable
-                    string ed = allLocRecordA_Num.Last().Date.ToString();
+                                foreach (DataRow row in dt.Rows)
+                                {
 
-                    txtDateLimit.Text = $"{sd.Split(' ').First()} - {ed.Split(' ').First()}";
+                                    StandIPDR record = new StandIPDR
+                                    {
+                                        Number = row["Number"].ToString(),
+                                        Date = row["Date"].ToString(),//dateTime.ToString(Common.datef), // Format date as a string in the format you need
+                                        Time = row["Time"].ToString(), // Format time as a string
+                                        Dur = row["Dur"].ToString(),
+                                        Protocol = row["Protocol"].ToString(),
+                                        Source_IP = row["Source_IP"].ToString(),
+                                        Source_PORT = row["Source_PORT"].ToString(),
+                                        Dest_IP = row["Dest_IP"].ToString(),
+                                        Dest_PORT = row["Dest_PORT"].ToString(),
+                                        App = row["App"].ToString(),
+                                        Up = row["Up"].ToString(),
+                                        Down = row["Down"].ToString(),
+                                        Location = row["Location"].ToString(),
+                                        Latitude = Convert.ToDouble(row["Latitude"]),
+                                        Longitude = Convert.ToDouble(row["Longitude"]),
+                                        Weekday = row["Weekday"].ToString()
+                                    };
 
-                    DatePickerStartDate.Value = DateTime.Parse(sd).Date;
+                                    allLocRecordA_Num.Add(record);
+                                    dateExtLatLngList.Add(record);
+
+
+                                    PointLatLng getLatLngForMap = new PointLatLng(record.Latitude
+                                    , record.Longitude);
+
+                                    _points.Add(getLatLngForMap);
+                                }
+                            }
+
+                            List<PointLatLng> uniquePointLst = _points.Distinct().ToList();
+
+                            // Filter out invalid points. Define your own criteria for invalidity
+                            uniquePointLst = uniquePointLst.Where(p => IsValidPoint(p)).ToList();
+
+                            plotMarkers(a_numForAnalysis, project_Name, uniquePointLst, selectColor);
+
+                            allLocRecordA_Num = allLocRecordA_Num.OrderBy(x => x.Date).Distinct().ToList();
+
+                            //get start date from datatable
+                            string sd = allLocRecordA_Num.First().Date.ToString();
+
+
+                            //getting end date from datatable
+                            string ed = allLocRecordA_Num.Last().Date.ToString();
+
+                            txtDateLimit.Text = $"{sd.Split(' ').First()} - {ed.Split(' ').First()}";
+
+                            DatePickerStartDate.Value = DateTime.Parse(sd).Date;
+                        }
+                        catch (Exception ex)
+                        {
+                            MessageBox.Show(ex.Message);
+                        }
+                    }));
+
                 }
-                catch (Exception ex)
-                {
-                    MessageBox.Show(ex.Message);
-                }
- 
+            }
+            catch (Exception ex)
+            {
+
+                MessageBox.Show(ex.Message);
             }
         }
 
         private void gMap_OnMarkerClick(GMapMarker item, MouseEventArgs e)
         {
-            if (locDetails)
+            try
             {
-                /*var latlngRecord = FilterBySpecificCoordinates(commonLatLngList
-                    , item.Position.Lat.ToString()
-                    , item.Position.Lng.ToString());*/
-
-                var matchingRecords = allLocRecordA_Num.Where(r => r.Latitude == item.Position.Lat && r.Longitude == item.Position.Lng).ToList();
-
-                //matchingRecords = matchingRecords.OrderByDescending(cs => cs.Number).ThenBy(cs => cs.Time).ToList();
-
-                var groupedData = matchingRecords.GroupBy(
-                n => new { n.Number, n.Date, LatLong = new { n.Latitude, n.Longitude }}
-                ).Select(g => new
+                if (locDetails)
                 {
-                    g.Key.Number,
-                    g.Key.Date,
-                    g.Key.LatLong,
-                    StartTime = g.Min(n => n.Time),
-                    EndTime = g.Max(n => n.Time),
-                    Duration = g.Max(n => TimeSpan.Parse(n.Time)) - g.Min(n => TimeSpan.Parse(n.Time)) // Calculate the duration
-                });
+                    /*var latlngRecord = FilterBySpecificCoordinates(commonLatLngList
+                        , item.Position.Lat.ToString()
+                        , item.Position.Lng.ToString());*/
 
-                //var specificLatLngDT = new ListtoDataTable().ToDataTable(groupedData);
+                    var matchingRecords = dateExtLatLngList.Where(r => r.Latitude == item.Position.Lat && r.Longitude == item.Position.Lng).ToList();
 
-                var timeOverLap = new List<TimeOverLap>();
+                    //matchingRecords = matchingRecords.OrderByDescending(cs => cs.Number).ThenBy(cs => cs.Time).ToList();
 
-                foreach (var group in groupedData)
-                {
-                    var to = new TimeOverLap(group.Number, group.Date, group.StartTime, group.EndTime, group.Duration.ToString(), group.LatLong.Latitude, group.LatLong.Longitude);
+                    var groupedData = matchingRecords.GroupBy(
+                    n => new { n.Number, n.Date, LatLong = new { n.Latitude, n.Longitude } }
+                    ).Select(g => new
+                    {
+                        g.Key.Number,
+                        g.Key.Date,
+                        g.Key.LatLong,
+                        StartTime = g.Min(n => n.Time),
+                        EndTime = g.Max(n => n.Time),
+                        Duration = g.Max(n => TimeSpan.Parse(n.Time)) - g.Min(n => TimeSpan.Parse(n.Time)) // Calculate the duration
+                    });
 
-                    timeOverLap.Add(to);
-                    //Console.WriteLine($"Number: {group.Number}, LatLong: ({group.LatLong.Latitude}, {group.LatLong.Longitude}), Start Time: {group.StartTime}, End Time: {group.EndTime}");
+                    //var specificLatLngDT = new ListtoDataTable().ToDataTable(groupedData);
+
+                    var timeOverLap = new List<TimeOverLap>();
+
+                    foreach (var group in groupedData)
+                    {
+                        var to = new TimeOverLap(group.Number, group.Date, group.StartTime, group.EndTime, group.Duration.ToString(), group.LatLong.Latitude, group.LatLong.Longitude);
+
+                        timeOverLap.Add(to);
+                        //Console.WriteLine($"Number: {group.Number}, LatLong: ({group.LatLong.Latitude}, {group.LatLong.Longitude}), Start Time: {group.StartTime}, End Time: {group.EndTime}");
+                    }
+
+                    new CommonLocDetailsForm(new ListtoDataTable().ToDataTable(timeOverLap), matchingRecords).Show();
+
                 }
+            }
+            catch (Exception ex)
+            {
 
-                new CommonLocDetailsForm(new ListtoDataTable().ToDataTable(timeOverLap), matchingRecords).Show();
-                
+                MessageBox.Show(ex.Message);
             }
         }
 
         private void btnLocDetails_Click(object sender, EventArgs e)
         {
-            if (locDetails == false)
+            try
             {
-                locDetails = true;
-                zoom = false;
-                route = false;
-                btnLocDetails.FlatAppearance.BorderSize = 1;
-            }
+                if (locDetails == false)
+                {
+                    locDetails = true;
+                    zoom = false;
+                    route = false;
+                    btnLocDetails.FlatAppearance.BorderSize = 1;
+                }
 
-            else
+                else
+                {
+                    locDetails = false;
+                    btnLocDetails.FlatAppearance.BorderSize = 0;
+                }
+            }
+            catch (Exception ex)
             {
-                locDetails = false;
-                btnLocDetails.FlatAppearance.BorderSize = 0;
+
+                MessageBox.Show(ex.Message);
             }
         }
 
-        /*private void btnExtract_Click(object sender, EventArgs e)
+        private void btnExtract_Click(object sender, EventArgs e)
         {
-            // Sql Query to get every row from CDRTable
-            DateTime startDate = DatePickerStartDate.Value.Date;
-
-            
-            var dateExtLatLngList = new List<StandIPDR>();
-            dateExtLatLngList = allLocRecordA_Num.Where(record => DateTime.Parse(record.Date).Date == startDate).ToList();
-            foreach (StandIPDR record in dateExtLatLngList)
+            try
             {
-                Console.WriteLine($"Date: {record.Date}");
-                // You can add more fields as needed
+                // Sql Query to get every row from CDRTable
+                DateTime startDate = DatePickerStartDate.Value.Date;
+
+
+                dateExtLatLngList = new List<StandIPDR>();
+                dateExtLatLngList = allLocRecordA_Num.Where(record => DateTime.Parse(record.Date).Date == startDate).ToList();
+                /*foreach (StandIPDR record in dateExtLatLngList)
+                {
+                    Console.WriteLine($"Date: {record.Date}");
+                    // You can add more fields as needed
+                }*/
+                plotExtractedLatLng(dateExtLatLngList);
             }
-            plotExtractedLatLng(dateExtLatLngList);
-        }*/
+            catch (Exception ex)
+            {
+
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        private void plotExtractedLatLng(List<StandIPDR> list)
+        {
+            try
+            {
+                var points = new List<PointLatLng>();
+
+
+                foreach (var record in list)
+                {
+                    points.Add(new PointLatLng(record.Latitude, record.Longitude));
+                }
+
+                List<PointLatLng> uniquePointLst = points.Distinct().ToList();
+
+                plotMarkers(a_numForAnalysis, project_Name, uniquePointLst, ThemeManager.RandomizeTheme());
+            }
+            catch (Exception ex)
+            {
+
+                MessageBox.Show("Error plotting extracted latitude and longitude: " + ex.Message);
+            }
+        }
     }
 }

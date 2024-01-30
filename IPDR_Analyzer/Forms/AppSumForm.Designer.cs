@@ -29,11 +29,12 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle19 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle20 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle21 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.bunifuElipse3 = new Bunifu.Framework.UI.BunifuElipse(this.components);
             this.panelMenu = new System.Windows.Forms.Panel();
+            this.comboBox = new System.Windows.Forms.ComboBox();
             this.flpTime = new System.Windows.Forms.FlowLayoutPanel();
             this.rbMorning = new System.Windows.Forms.RadioButton();
             this.rbDay = new System.Windows.Forms.RadioButton();
@@ -60,7 +61,6 @@
             this.panel4 = new System.Windows.Forms.Panel();
             this.IPDRSummaryGridView = new Bunifu.UI.WinForms.BunifuDataGridView();
             this.fontDialog1 = new System.Windows.Forms.FontDialog();
-            this.comboBox = new System.Windows.Forms.ComboBox();
             this.panelMenu.SuspendLayout();
             this.flpTime.SuspendLayout();
             this.panelDateTime.SuspendLayout();
@@ -96,6 +96,20 @@
             this.panelMenu.Name = "panelMenu";
             this.panelMenu.Size = new System.Drawing.Size(960, 159);
             this.panelMenu.TabIndex = 15;
+            // 
+            // comboBox
+            // 
+            this.comboBox.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.comboBox.FormattingEnabled = true;
+            this.comboBox.Items.AddRange(new object[] {
+            "APP",
+            "SOURCE IP",
+            "DEST IP"});
+            this.comboBox.Location = new System.Drawing.Point(829, 11);
+            this.comboBox.Name = "comboBox";
+            this.comboBox.Size = new System.Drawing.Size(121, 30);
+            this.comboBox.TabIndex = 43;
+            this.comboBox.SelectedIndexChanged += new System.EventHandler(this.comboBox_SelectedIndexChanged);
             // 
             // flpTime
             // 
@@ -378,22 +392,22 @@
             // IPDRSummaryGridView
             // 
             this.IPDRSummaryGridView.AllowCustomTheming = false;
-            dataGridViewCellStyle19.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(206)))), ((int)(((byte)(236)))), ((int)(((byte)(219)))));
-            dataGridViewCellStyle19.ForeColor = System.Drawing.Color.Black;
-            this.IPDRSummaryGridView.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle19;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(206)))), ((int)(((byte)(236)))), ((int)(((byte)(219)))));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.Black;
+            this.IPDRSummaryGridView.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.IPDRSummaryGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.IPDRSummaryGridView.BackgroundColor = System.Drawing.Color.White;
             this.IPDRSummaryGridView.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.IPDRSummaryGridView.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
             this.IPDRSummaryGridView.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle20.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle20.BackColor = System.Drawing.Color.MediumSeaGreen;
-            dataGridViewCellStyle20.Font = new System.Drawing.Font("Segoe UI Semibold", 11.75F, System.Drawing.FontStyle.Bold);
-            dataGridViewCellStyle20.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle20.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(143)))), ((int)(((byte)(90)))));
-            dataGridViewCellStyle20.SelectionForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle20.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.IPDRSummaryGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle20;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.MediumSeaGreen;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI Semibold", 11.75F, System.Drawing.FontStyle.Bold);
+            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(143)))), ((int)(((byte)(90)))));
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.IPDRSummaryGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.IPDRSummaryGridView.ColumnHeadersHeight = 40;
             this.IPDRSummaryGridView.CurrentTheme.AlternatingRowsStyle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(206)))), ((int)(((byte)(236)))), ((int)(((byte)(219)))));
             this.IPDRSummaryGridView.CurrentTheme.AlternatingRowsStyle.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold);
@@ -413,14 +427,14 @@
             this.IPDRSummaryGridView.CurrentTheme.RowsStyle.ForeColor = System.Drawing.Color.Black;
             this.IPDRSummaryGridView.CurrentTheme.RowsStyle.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(209)))), ((int)(((byte)(169)))));
             this.IPDRSummaryGridView.CurrentTheme.RowsStyle.SelectionForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle21.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle21.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(216)))), ((int)(((byte)(239)))), ((int)(((byte)(226)))));
-            dataGridViewCellStyle21.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold);
-            dataGridViewCellStyle21.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle21.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(209)))), ((int)(((byte)(169)))));
-            dataGridViewCellStyle21.SelectionForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle21.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.IPDRSummaryGridView.DefaultCellStyle = dataGridViewCellStyle21;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(216)))), ((int)(((byte)(239)))), ((int)(((byte)(226)))));
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold);
+            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(209)))), ((int)(((byte)(169)))));
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.IPDRSummaryGridView.DefaultCellStyle = dataGridViewCellStyle3;
             this.IPDRSummaryGridView.Dock = System.Windows.Forms.DockStyle.Fill;
             this.IPDRSummaryGridView.EnableHeadersVisualStyles = false;
             this.IPDRSummaryGridView.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(196)))), ((int)(((byte)(232)))), ((int)(((byte)(212)))));
@@ -436,20 +450,6 @@
             this.IPDRSummaryGridView.TabIndex = 0;
             this.IPDRSummaryGridView.Theme = Bunifu.UI.WinForms.BunifuDataGridView.PresetThemes.MediumSeaGreen;
             this.IPDRSummaryGridView.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.IPDRSummaryGridView_CellClick);
-            // 
-            // comboBox
-            // 
-            this.comboBox.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.comboBox.FormattingEnabled = true;
-            this.comboBox.Items.AddRange(new object[] {
-            "APP",
-            "SOURCE IP",
-            "DEST IP"});
-            this.comboBox.Location = new System.Drawing.Point(829, 11);
-            this.comboBox.Name = "comboBox";
-            this.comboBox.Size = new System.Drawing.Size(121, 30);
-            this.comboBox.TabIndex = 43;
-            this.comboBox.SelectedIndexChanged += new System.EventHandler(this.comboBox_SelectedIndexChanged);
             // 
             // AppSumForm
             // 

@@ -43,6 +43,7 @@
             this.panel2 = new System.Windows.Forms.Panel();
             this.gbLocationSummary = new System.Windows.Forms.GroupBox();
             this.panel3 = new System.Windows.Forms.Panel();
+            this.LocSumDataGridView = new Bunifu.UI.WinForms.BunifuDataGridView();
             this.panelMenu = new System.Windows.Forms.Panel();
             this.flpTime = new System.Windows.Forms.FlowLayoutPanel();
             this.rbMorning = new System.Windows.Forms.RadioButton();
@@ -64,17 +65,16 @@
             this.label1 = new System.Windows.Forms.Label();
             this.txtGetRange = new System.Windows.Forms.TextBox();
             this.bunifuElipse2 = new Bunifu.Framework.UI.BunifuElipse(this.components);
-            this.LocSumDataGridView = new Bunifu.UI.WinForms.BunifuDataGridView();
             ((System.ComponentModel.ISupportInitialize)(this.gvTopFiveLoc)).BeginInit();
             this.panel4.SuspendLayout();
             this.panel2.SuspendLayout();
             this.gbLocationSummary.SuspendLayout();
             this.panel3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.LocSumDataGridView)).BeginInit();
             this.panelMenu.SuspendLayout();
             this.flpTime.SuspendLayout();
             this.panelDateTime.SuspendLayout();
             this.panelDT.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.LocSumDataGridView)).BeginInit();
             this.SuspendLayout();
             // 
             // bunifuElipse3
@@ -202,6 +202,68 @@
             this.panel3.Padding = new System.Windows.Forms.Padding(10);
             this.panel3.Size = new System.Drawing.Size(1220, 306);
             this.panel3.TabIndex = 16;
+            // 
+            // LocSumDataGridView
+            // 
+            this.LocSumDataGridView.AllowCustomTheming = false;
+            dataGridViewCellStyle4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(191)))), ((int)(((byte)(223)))), ((int)(((byte)(223)))));
+            dataGridViewCellStyle4.ForeColor = System.Drawing.Color.Black;
+            this.LocSumDataGridView.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle4;
+            this.LocSumDataGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.LocSumDataGridView.BackgroundColor = System.Drawing.Color.White;
+            this.LocSumDataGridView.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.LocSumDataGridView.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
+            this.LocSumDataGridView.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle5.BackColor = System.Drawing.Color.Teal;
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("Segoe UI Semibold", 11.75F, System.Drawing.FontStyle.Bold);
+            dataGridViewCellStyle5.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(102)))), ((int)(((byte)(102)))));
+            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.LocSumDataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
+            this.LocSumDataGridView.ColumnHeadersHeight = 40;
+            this.LocSumDataGridView.CurrentTheme.AlternatingRowsStyle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(191)))), ((int)(((byte)(223)))), ((int)(((byte)(223)))));
+            this.LocSumDataGridView.CurrentTheme.AlternatingRowsStyle.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold);
+            this.LocSumDataGridView.CurrentTheme.AlternatingRowsStyle.ForeColor = System.Drawing.Color.Black;
+            this.LocSumDataGridView.CurrentTheme.AlternatingRowsStyle.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(102)))), ((int)(((byte)(178)))), ((int)(((byte)(178)))));
+            this.LocSumDataGridView.CurrentTheme.AlternatingRowsStyle.SelectionForeColor = System.Drawing.Color.White;
+            this.LocSumDataGridView.CurrentTheme.BackColor = System.Drawing.Color.Teal;
+            this.LocSumDataGridView.CurrentTheme.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(178)))), ((int)(((byte)(216)))), ((int)(((byte)(216)))));
+            this.LocSumDataGridView.CurrentTheme.HeaderStyle.BackColor = System.Drawing.Color.Teal;
+            this.LocSumDataGridView.CurrentTheme.HeaderStyle.Font = new System.Drawing.Font("Segoe UI Semibold", 11.75F, System.Drawing.FontStyle.Bold);
+            this.LocSumDataGridView.CurrentTheme.HeaderStyle.ForeColor = System.Drawing.Color.White;
+            this.LocSumDataGridView.CurrentTheme.HeaderStyle.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(102)))), ((int)(((byte)(102)))));
+            this.LocSumDataGridView.CurrentTheme.HeaderStyle.SelectionForeColor = System.Drawing.Color.White;
+            this.LocSumDataGridView.CurrentTheme.Name = null;
+            this.LocSumDataGridView.CurrentTheme.RowsStyle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
+            this.LocSumDataGridView.CurrentTheme.RowsStyle.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold);
+            this.LocSumDataGridView.CurrentTheme.RowsStyle.ForeColor = System.Drawing.Color.Black;
+            this.LocSumDataGridView.CurrentTheme.RowsStyle.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(102)))), ((int)(((byte)(178)))), ((int)(((byte)(178)))));
+            this.LocSumDataGridView.CurrentTheme.RowsStyle.SelectionForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
+            dataGridViewCellStyle6.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold);
+            dataGridViewCellStyle6.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(102)))), ((int)(((byte)(178)))), ((int)(((byte)(178)))));
+            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.LocSumDataGridView.DefaultCellStyle = dataGridViewCellStyle6;
+            this.LocSumDataGridView.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.LocSumDataGridView.EnableHeadersVisualStyles = false;
+            this.LocSumDataGridView.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(178)))), ((int)(((byte)(216)))), ((int)(((byte)(216)))));
+            this.LocSumDataGridView.HeaderBackColor = System.Drawing.Color.Teal;
+            this.LocSumDataGridView.HeaderBgColor = System.Drawing.Color.Empty;
+            this.LocSumDataGridView.HeaderForeColor = System.Drawing.Color.White;
+            this.LocSumDataGridView.Location = new System.Drawing.Point(10, 10);
+            this.LocSumDataGridView.Name = "LocSumDataGridView";
+            this.LocSumDataGridView.RowHeadersVisible = false;
+            this.LocSumDataGridView.RowTemplate.Height = 40;
+            this.LocSumDataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.LocSumDataGridView.Size = new System.Drawing.Size(1200, 286);
+            this.LocSumDataGridView.TabIndex = 1;
+            this.LocSumDataGridView.Theme = Bunifu.UI.WinForms.BunifuDataGridView.PresetThemes.Teal;
+            this.LocSumDataGridView.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.LocSumDataGridView_CellClick);
             // 
             // panelMenu
             // 
@@ -443,68 +505,6 @@
             this.bunifuElipse2.ElipseRadius = 20;
             this.bunifuElipse2.TargetControl = this.panelMenu;
             // 
-            // LocSumDataGridView
-            // 
-            this.LocSumDataGridView.AllowCustomTheming = false;
-            dataGridViewCellStyle4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(191)))), ((int)(((byte)(223)))), ((int)(((byte)(223)))));
-            dataGridViewCellStyle4.ForeColor = System.Drawing.Color.Black;
-            this.LocSumDataGridView.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle4;
-            this.LocSumDataGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.LocSumDataGridView.BackgroundColor = System.Drawing.Color.White;
-            this.LocSumDataGridView.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.LocSumDataGridView.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
-            this.LocSumDataGridView.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle5.BackColor = System.Drawing.Color.Teal;
-            dataGridViewCellStyle5.Font = new System.Drawing.Font("Segoe UI Semibold", 11.75F, System.Drawing.FontStyle.Bold);
-            dataGridViewCellStyle5.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(102)))), ((int)(((byte)(102)))));
-            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.LocSumDataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
-            this.LocSumDataGridView.ColumnHeadersHeight = 40;
-            this.LocSumDataGridView.CurrentTheme.AlternatingRowsStyle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(191)))), ((int)(((byte)(223)))), ((int)(((byte)(223)))));
-            this.LocSumDataGridView.CurrentTheme.AlternatingRowsStyle.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold);
-            this.LocSumDataGridView.CurrentTheme.AlternatingRowsStyle.ForeColor = System.Drawing.Color.Black;
-            this.LocSumDataGridView.CurrentTheme.AlternatingRowsStyle.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(102)))), ((int)(((byte)(178)))), ((int)(((byte)(178)))));
-            this.LocSumDataGridView.CurrentTheme.AlternatingRowsStyle.SelectionForeColor = System.Drawing.Color.White;
-            this.LocSumDataGridView.CurrentTheme.BackColor = System.Drawing.Color.Teal;
-            this.LocSumDataGridView.CurrentTheme.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(178)))), ((int)(((byte)(216)))), ((int)(((byte)(216)))));
-            this.LocSumDataGridView.CurrentTheme.HeaderStyle.BackColor = System.Drawing.Color.Teal;
-            this.LocSumDataGridView.CurrentTheme.HeaderStyle.Font = new System.Drawing.Font("Segoe UI Semibold", 11.75F, System.Drawing.FontStyle.Bold);
-            this.LocSumDataGridView.CurrentTheme.HeaderStyle.ForeColor = System.Drawing.Color.White;
-            this.LocSumDataGridView.CurrentTheme.HeaderStyle.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(102)))), ((int)(((byte)(102)))));
-            this.LocSumDataGridView.CurrentTheme.HeaderStyle.SelectionForeColor = System.Drawing.Color.White;
-            this.LocSumDataGridView.CurrentTheme.Name = null;
-            this.LocSumDataGridView.CurrentTheme.RowsStyle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
-            this.LocSumDataGridView.CurrentTheme.RowsStyle.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold);
-            this.LocSumDataGridView.CurrentTheme.RowsStyle.ForeColor = System.Drawing.Color.Black;
-            this.LocSumDataGridView.CurrentTheme.RowsStyle.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(102)))), ((int)(((byte)(178)))), ((int)(((byte)(178)))));
-            this.LocSumDataGridView.CurrentTheme.RowsStyle.SelectionForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
-            dataGridViewCellStyle6.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold);
-            dataGridViewCellStyle6.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(102)))), ((int)(((byte)(178)))), ((int)(((byte)(178)))));
-            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.LocSumDataGridView.DefaultCellStyle = dataGridViewCellStyle6;
-            this.LocSumDataGridView.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.LocSumDataGridView.EnableHeadersVisualStyles = false;
-            this.LocSumDataGridView.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(178)))), ((int)(((byte)(216)))), ((int)(((byte)(216)))));
-            this.LocSumDataGridView.HeaderBackColor = System.Drawing.Color.Teal;
-            this.LocSumDataGridView.HeaderBgColor = System.Drawing.Color.Empty;
-            this.LocSumDataGridView.HeaderForeColor = System.Drawing.Color.White;
-            this.LocSumDataGridView.Location = new System.Drawing.Point(10, 10);
-            this.LocSumDataGridView.Name = "LocSumDataGridView";
-            this.LocSumDataGridView.RowHeadersVisible = false;
-            this.LocSumDataGridView.RowTemplate.Height = 40;
-            this.LocSumDataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.LocSumDataGridView.Size = new System.Drawing.Size(1200, 286);
-            this.LocSumDataGridView.TabIndex = 1;
-            this.LocSumDataGridView.Theme = Bunifu.UI.WinForms.BunifuDataGridView.PresetThemes.Teal;
-            this.LocSumDataGridView.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.LocSumDataGridView_CellClick);
-            // 
             // LocSumForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
@@ -521,6 +521,7 @@
             this.panel2.ResumeLayout(false);
             this.gbLocationSummary.ResumeLayout(false);
             this.panel3.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.LocSumDataGridView)).EndInit();
             this.panelMenu.ResumeLayout(false);
             this.panelMenu.PerformLayout();
             this.flpTime.ResumeLayout(false);
@@ -528,7 +529,6 @@
             this.panelDateTime.ResumeLayout(false);
             this.panelDateTime.PerformLayout();
             this.panelDT.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.LocSumDataGridView)).EndInit();
             this.ResumeLayout(false);
 
         }

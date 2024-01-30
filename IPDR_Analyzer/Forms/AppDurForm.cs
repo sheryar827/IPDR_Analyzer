@@ -18,33 +18,49 @@ namespace IPDR_Analyzer.Forms
 
         public AppDurForm()
         {
-            InitializeComponent();
+            try
+            {
+                InitializeComponent();
+            }
+            catch (Exception ex)
+            {
+
+                MessageBox.Show("Error during form loading: " + ex.Message);
+            }
         }
 
         Func<ChartPoint, string> labelPoint = chartpoint => string.Format("{0} ({1:P})", chartpoint.Y, chartpoint.Participation);
 
         private void AppDurForm_Load(object sender, EventArgs e)
         {
-            //panel3.BackColor = ThemeManager.RandomizeTheme();
-            //getting start date from datatable
-            string sd = Common.allRecordNum.First().Date.ToString();
-            string st = Common.allRecordNum.First().Time.ToString();
+            try
+            {
+                //panel3.BackColor = ThemeManager.RandomizeTheme();
+                //getting start date from datatable
+                string sd = Common.allRecordNum.First().Date.ToString();
+                string st = Common.allRecordNum.First().Time.ToString();
 
-            //getting end date from datatable
-            string ed = Common.allRecordNum.Last().Date.ToString();
-            string et = Common.allRecordNum.Last().Time.ToString();
+                //getting end date from datatable
+                string ed = Common.allRecordNum.Last().Date.ToString();
+                string et = Common.allRecordNum.Last().Time.ToString();
 
-            dtpDateFrom.Value = Convert.ToDateTime(sd);
-            dtpDateTo.Value = Convert.ToDateTime(ed);
-            dtpTimeFrom.Value = Convert.ToDateTime(st);
-            dtpTimeTo.Value = Convert.ToDateTime(et);
+                dtpDateFrom.Value = Convert.ToDateTime(sd);
+                dtpDateTo.Value = Convert.ToDateTime(ed);
+                dtpTimeFrom.Value = Convert.ToDateTime(st);
+                dtpTimeTo.Value = Convert.ToDateTime(et);
 
-            panelDT.Enabled = false;
+                panelDT.Enabled = false;
 
-            //labelA_Num.Text = Common.numForAnalysis;
-            //callsSecsCount();
-            callsSecsCountList(Common.allRecordNum);
-            pcCallsSecCount.LegendLocation = LegendLocation.Top;
+                //labelA_Num.Text = Common.numForAnalysis;
+                //callsSecsCount();
+                callsSecsCountList(Common.allRecordNum);
+                pcCallsSecCount.LegendLocation = LegendLocation.Top;
+            }
+            catch (Exception ex)
+            {
+
+                MessageBox.Show(ex.Message);
+            }
         }
 
         private void callsSecsCountList(List<StandIPDR> appsSecList)
@@ -108,35 +124,52 @@ namespace IPDR_Analyzer.Forms
 
         private void rbSelected_Click(object sender, EventArgs e)
         {
-            panelDT.Enabled = true;
-            flpTime.Enabled = false;
+            try
+            {
+                panelDT.Enabled = true;
+                flpTime.Enabled = false;
+            }
+            catch (Exception ex)
+            {
+
+                MessageBox.Show(ex.Message);
+            }
         }
 
         private void rbAllData_Click(object sender, EventArgs e)
         {
-            panelDT.Enabled = false;
-            flpTime.Enabled = true;
+            try
+            {
+                panelDT.Enabled = false;
+                flpTime.Enabled = true;
 
-            rbDays.Checked = false; rbMorning.Checked = false; rbEvening.Checked = false;
-            // get all call records
-            callsSecsCountList(Common.allRecordNum);
+                rbDays.Checked = false; rbMorning.Checked = false; rbEvening.Checked = false;
+                // get all call records
+                callsSecsCountList(Common.allRecordNum);
+            }
+            catch (Exception ex)
+            {
+
+                MessageBox.Show(ex.Message);
+            }
         }
 
         private void btnSearch_Click(object sender, EventArgs e)
         {
-            // Sql Query to get every row from CDRTable
-            DateTime startDate = Convert.ToDateTime(dtpDateFrom.Value.ToString("yyyy/MM/dd"));
-            DateTime endDate = Convert.ToDateTime(dtpDateTo.Value.ToString("yyyy/MM/dd"));
-
-            // Converting time to 24H format and removing PM, AM from it e.g 16:00:00 AM getting only first 8 char like 16:00:00
-            TimeSpan startTime = Convert.ToDateTime(dtpTimeFrom.Value.ToString("HH:mm:ss tt").Substring(0, 8)).TimeOfDay;
-            TimeSpan endTime = Convert.ToDateTime(dtpTimeTo.Value.ToString("HH:mm:ss tt").Substring(0, 8)).TimeOfDay;
-
-            selectedRecordsA_Num = new List<StandIPDR>();
-            selectedRecordsA_Num = Common.allRecordNum.Where(t => Convert.ToDateTime(t.Date) >= startDate && Convert.ToDateTime(t.Date) <= endDate
-            && Convert.ToDateTime(t.Time).TimeOfDay >= startTime && Convert.ToDateTime(t.Time).TimeOfDay <= endTime).ToList();
             try
             {
+                // Sql Query to get every row from CDRTable
+                DateTime startDate = Convert.ToDateTime(dtpDateFrom.Value.ToString("yyyy/MM/dd"));
+                DateTime endDate = Convert.ToDateTime(dtpDateTo.Value.ToString("yyyy/MM/dd"));
+
+                // Converting time to 24H format and removing PM, AM from it e.g 16:00:00 AM getting only first 8 char like 16:00:00
+                TimeSpan startTime = Convert.ToDateTime(dtpTimeFrom.Value.ToString("HH:mm:ss tt").Substring(0, 8)).TimeOfDay;
+                TimeSpan endTime = Convert.ToDateTime(dtpTimeTo.Value.ToString("HH:mm:ss tt").Substring(0, 8)).TimeOfDay;
+
+                selectedRecordsA_Num = new List<StandIPDR>();
+                selectedRecordsA_Num = Common.allRecordNum.Where(t => Convert.ToDateTime(t.Date) >= startDate && Convert.ToDateTime(t.Date) <= endDate
+                && Convert.ToDateTime(t.Time).TimeOfDay >= startTime && Convert.ToDateTime(t.Time).TimeOfDay <= endTime).ToList();
+
                 if (selectedRecordsA_Num.Count > 0)
                 {
                     callsSecsCountList(selectedRecordsA_Num);
@@ -148,25 +181,44 @@ namespace IPDR_Analyzer.Forms
             }
             catch (Exception ex)
             {
+
                 MessageBox.Show(ex.Message);
             }
+            
         }
 
         private void btnSearch_MouseHover(object sender, EventArgs e)
         {
-            btnSearch.IconColor = ThemeManager.RandomizeTheme();
+            try
+            {
+                btnSearch.IconColor = ThemeManager.RandomizeTheme();
+            }
+            catch (Exception ex)
+            {
+
+                MessageBox.Show(ex.Message);
+            }
         }
 
         private void btnSearch_MouseLeave(object sender, EventArgs e)
         {
-            btnSearch.IconColor= Color.White;
+            try
+            {
+                btnSearch.IconColor = Color.White;
+            }
+            catch (Exception ex)
+            {
+
+                MessageBox.Show(ex.Message);
+            }
         }
 
         private void rbMorning_Click(object sender, EventArgs e)
         {
-            morningRecordsA_Num = new List<StandIPDR>();
+            
             try
             {
+                morningRecordsA_Num = new List<StandIPDR>();
                 morningRecordsA_Num = Common.allRecordNum.Where(t => Convert.ToDateTime(t.Time).TimeOfDay >= Common.mStart
             && Convert.ToDateTime(t.Time).TimeOfDay <= Common.mEnd).ToList();
                 callsSecsCountList(morningRecordsA_Num);
@@ -179,10 +231,11 @@ namespace IPDR_Analyzer.Forms
 
         private void rbEvening_Click(object sender, EventArgs e)
         {
-            eveningRecordsA_Num = new List<StandIPDR>();
+            
 
             try
             {
+                eveningRecordsA_Num = new List<StandIPDR>();
                 eveningRecordsA_Num = Common.allRecordNum.Where(t => Convert.ToDateTime(t.Time).TimeOfDay >= Common.eStart
             && Convert.ToDateTime(t.Time).TimeOfDay <= Common.eEnd).ToList();
                 callsSecsCountList(eveningRecordsA_Num);
@@ -195,10 +248,11 @@ namespace IPDR_Analyzer.Forms
 
         private void rbDay_Click(object sender, EventArgs e)
         {
-            dayRecordsA_Num = new List<StandIPDR>();
+            
 
             try
             {
+                dayRecordsA_Num = new List<StandIPDR>();
                 dayRecordsA_Num = Common.allRecordNum.Where(t => Convert.ToDateTime(t.Time).TimeOfDay >= Common.dStart
             && Convert.ToDateTime(t.Time).TimeOfDay <= Common.dEnd).ToList();
                 callsSecsCountList(dayRecordsA_Num);

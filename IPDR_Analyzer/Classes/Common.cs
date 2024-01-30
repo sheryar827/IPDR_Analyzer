@@ -23,5 +23,6 @@ namespace IPDR_Analyzer.Forms
         public static TimeSpan eEnd = Convert.ToDateTime("07:59:59").TimeOfDay;
 
         public const string NoRecord = "No Record Found!!";
+        public const string select_num = "Please, first select IPDR number for analysis";
     }
 }

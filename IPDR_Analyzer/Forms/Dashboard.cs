@@ -19,16 +19,24 @@ namespace IPDR_Analyzer.Forms
         //Constructor
         public Dashboard()
         {
-            InitializeComponent();
-            leftBorderBtn = new Panel();
-            leftBorderBtn.Size = new System.Drawing.Size(7, 60);
-            panelMenu.Controls.Add(leftBorderBtn);
+            try
+            {
+                InitializeComponent();
+                leftBorderBtn = new Panel();
+                leftBorderBtn.Size = new System.Drawing.Size(7, 60);
+                panelMenu.Controls.Add(leftBorderBtn);
 
-            //Form
-            this.Text = string.Empty;
-            this.ControlBox = false;
-            this.DoubleBuffered = true;
-            this.MaximizedBounds = Screen.FromHandle(this.Handle).WorkingArea;
+                //Form
+                this.Text = string.Empty;
+                this.ControlBox = false;
+                this.DoubleBuffered = true;
+                this.MaximizedBounds = Screen.FromHandle(this.Handle).WorkingArea;
+            }
+            catch (Exception ex)
+            {
+
+                MessageBox.Show(ex.Message);
+            }
         }
 
         //Drag Form
@@ -88,153 +96,298 @@ namespace IPDR_Analyzer.Forms
         //Methods
         private void ActivateButton(object senderBtn, Color color)
         {
-            if(senderBtn != null)
+            try
             {
-                DisableButton();
-                //Button
-                currentBtn = (IconButton) senderBtn;
-                currentBtn.BackColor = Color.FromArgb(37,36,81);
-                currentBtn.ForeColor = color;
-                currentBtn.TextAlign = ContentAlignment.MiddleCenter;
-                currentBtn.IconColor = color;
-                currentBtn.TextImageRelation = TextImageRelation.TextBeforeImage;
-                currentBtn.ImageAlign = ContentAlignment.MiddleRight;
-                //Left border button
-                leftBorderBtn.BackColor = color;
-                leftBorderBtn.Location = new Point(0, currentBtn.Location.Y);
-                leftBorderBtn.Visible = true;
-                leftBorderBtn.BringToFront();
+                if (senderBtn != null)
+                {
+                    DisableButton();
+                    //Button
+                    currentBtn = (IconButton)senderBtn;
+                    currentBtn.BackColor = Color.FromArgb(37, 36, 81);
+                    currentBtn.ForeColor = color;
+                    currentBtn.TextAlign = ContentAlignment.MiddleCenter;
+                    currentBtn.IconColor = color;
+                    currentBtn.TextImageRelation = TextImageRelation.TextBeforeImage;
+                    currentBtn.ImageAlign = ContentAlignment.MiddleRight;
+                    //Left border button
+                    leftBorderBtn.BackColor = color;
+                    leftBorderBtn.Location = new Point(0, currentBtn.Location.Y);
+                    leftBorderBtn.Visible = true;
+                    leftBorderBtn.BringToFront();
 
-                //Icon Current Child Form
-                iconCurrentChildForm.IconChar = currentBtn.IconChar;
-                iconCurrentChildForm.IconColor = color;
+                    //Icon Current Child Form
+                    iconCurrentChildForm.IconChar = currentBtn.IconChar;
+                    iconCurrentChildForm.IconColor = color;
+                }
+            }
+            catch (Exception ex)
+            {
+
+                MessageBox.Show(ex.Message);
             }
         }
 
         private void DisableButton()
         {
-            if(currentBtn != null)
+            try
             {
-                currentBtn.BackColor = Color.FromArgb(108, 35, 250);
-                currentBtn.ForeColor = Color.Gainsboro;
-                currentBtn.TextAlign = ContentAlignment.MiddleLeft;
-                currentBtn.IconColor = Color.Gainsboro;
-                currentBtn.TextImageRelation = TextImageRelation.ImageBeforeText;
-                currentBtn.ImageAlign = ContentAlignment.MiddleLeft;
+                if (currentBtn != null)
+                {
+                    currentBtn.BackColor = Color.FromArgb(108, 35, 250);
+                    currentBtn.ForeColor = Color.Gainsboro;
+                    currentBtn.TextAlign = ContentAlignment.MiddleLeft;
+                    currentBtn.IconColor = Color.Gainsboro;
+                    currentBtn.TextImageRelation = TextImageRelation.ImageBeforeText;
+                    currentBtn.ImageAlign = ContentAlignment.MiddleLeft;
+                }
+            }
+            catch (Exception ex)
+            {
+
+                MessageBox.Show(ex.Message);
             }
         }
 
         private void btnAddCase_Click(object sender, System.EventArgs e)
         {
-            ActivateButton(sender, ThemeManager.RandomizeTheme());
-            bunifuPages.SetPage("tabPage");
-            openChildFormPage(new AddCaseForm(), sender, tabPage);
-            lbTitleChildForm.Text = "ADD CASE";
+            try
+            {
+                ActivateButton(sender, ThemeManager.RandomizeTheme());
+                bunifuPages.SetPage("tabPage");
+                openChildFormPage(new AddCaseForm(), sender, tabPage);
+                lbTitleChildForm.Text = "ADD CASE";
+            }
+            catch (Exception ex)
+            {
+
+                MessageBox.Show(ex.Message);
+            }
         }
 
         private void btnAddIPDR_Click(object sender, System.EventArgs e)
         {
-            ActivateButton(sender, ThemeManager.RandomizeTheme());
-            bunifuPages.SetPage("tabPage");
-            openChildFormPage(new StandForm(), sender, tabPage);
-            lbTitleChildForm.Text = "STANDARDIZE IPDR";
+
+            try
+            {
+                ActivateButton(sender, ThemeManager.RandomizeTheme());
+                bunifuPages.SetPage("tabPage");
+                openChildFormPage(new StandForm(), sender, tabPage);
+                lbTitleChildForm.Text = "STANDARDIZE IPDR";
+            }
+            catch (Exception ex)
+            {
+
+                MessageBox.Show(ex.Message);
+            }
         }
 
         private void btnGMAP_Click(object sender, System.EventArgs e)
         {
-            ActivateButton(sender, ThemeManager.RandomizeTheme());
-            bunifuPages.SetPage("tabPage");
-            openChildFormPage(new GMapForm(), sender, tabPage);
-            lbTitleChildForm.Text = "GMap";
+
+            try
+            {
+                ActivateButton(sender, ThemeManager.RandomizeTheme());
+                bunifuPages.SetPage("tabPage");
+                openChildFormPage(new GMapForm(), sender, tabPage);
+                lbTitleChildForm.Text = "GMAP";
+            }
+            catch (Exception ex)
+            {
+
+                MessageBox.Show(ex.Message);
+            }
         }
 
         private void btnAppSummaary_Click(object sender, System.EventArgs e)
         {
-            ActivateButton(sender, ThemeManager.RandomizeTheme());
-            bunifuPages.SetPage("tabPage");
-            openChildFormPage(new AppSumForm(), sender, tabPage);
-            lbTitleChildForm.Text = "App Summary";
+            try
+            {
+                if (Common.numForAnalysis != null)
+                {
+                    ActivateButton(sender, ThemeManager.RandomizeTheme());
+                    bunifuPages.SetPage("tabPage");
+                    openChildFormPage(new AppSumForm(), sender, tabPage);
+                    lbTitleChildForm.Text = "APP SUMMARY";
+                }
+                else
+                {
+                    MessageBox.Show(Common.select_num);
+                }
+            }
+            catch (Exception ex)
+            {
+
+                MessageBox.Show(ex.Message);
+            }
         }
 
         private void btnLocSummary_Click(object sender, System.EventArgs e)
         {
-            ActivateButton(sender, ThemeManager.RandomizeTheme());
-            bunifuPages.SetPage("tabPage");
-            openChildFormPage(new LocSumForm(), sender, tabPage);
-            lbTitleChildForm.Text = "Loc Summary";
+            try
+            {
+                if (Common.numForAnalysis != null)
+                {
+                    ActivateButton(sender, ThemeManager.RandomizeTheme());
+                    bunifuPages.SetPage("tabPage");
+                    openChildFormPage(new LocSumForm(), sender, tabPage);
+                    lbTitleChildForm.Text = "LOC SUMMARY";
+                }
+                else
+                {
+                    MessageBox.Show(Common.select_num);
+                }
+            }
+            catch (Exception ex)
+            {
+
+                MessageBox.Show(ex.Message);
+            }
         }
 
         private void btnBasicConver_Click(object sender, System.EventArgs e)
         {
-            ActivateButton(sender, ThemeManager.RandomizeTheme());
-            bunifuPages.SetPage("tabPage");
-            openChildFormPage(new BasicConversationInfoForm(), sender, tabPage);
-            lbTitleChildForm.Text = "Basic Conver";
+            try
+            {
+                if (Common.numForAnalysis != null)
+                {
+                    ActivateButton(sender, ThemeManager.RandomizeTheme());
+                    bunifuPages.SetPage("tabPage");
+                    openChildFormPage(new BasicConversationInfoForm(), sender, tabPage);
+                    lbTitleChildForm.Text = "BASIC CONVER";
+                }
+                else
+                {
+                    MessageBox.Show(Common.select_num);
+                }
+            }
+            catch (Exception ex)
+            {
+
+                MessageBox.Show(ex.Message);
+            }
         }
 
         private void btnCommonGMAP_Click(object sender, System.EventArgs e)
         {
-            ActivateButton(sender, ThemeManager.RandomizeTheme());
-            bunifuPages.SetPage("tabPage");
-            openChildFormPage(new CGMapForm(), sender, tabPage);
-            lbTitleChildForm.Text = "Common GMAP";
+
+            try
+            {
+                ActivateButton(sender, ThemeManager.RandomizeTheme());
+                bunifuPages.SetPage("tabPage");
+                openChildFormPage(new CGMapForm(), sender, tabPage);
+                lbTitleChildForm.Text = "COMMON-GMAP";
+            }
+            catch (Exception ex)
+            {
+
+                MessageBox.Show(ex.Message);
+            }
+
         }
 
         private void panelTitleBar_MouseDown(object sender, MouseEventArgs e)
         {
-            ReleaseCapture();
-            SendMessage(this.Handle, 0x112, 0xf012, 0);
+            try
+            {
+                ReleaseCapture();
+                SendMessage(this.Handle, 0x112, 0xf012, 0);
+            }
+            catch (Exception ex)
+            {
+
+                MessageBox.Show(ex.Message);
+            }
         }
 
         private void Dashboard_Load(object sender, EventArgs e)
         {
-            bunifuPages.SetPage("tabPage");
-            openChildFormPage(new AddCaseForm(), sender, tabPage);
-            lbTitleChildForm.Text = "ADD CASE";
+            try
+            {
+                bunifuPages.SetPage("tabPage");
+                openChildFormPage(new AddCaseForm(), sender, tabPage);
+                lbTitleChildForm.Text = "ADD CASE";
+            }
+            catch (Exception ex)
+            {
+
+                MessageBox.Show(ex.Message);
+            }
         }
 
         private void openChildFormPage(Form childForm, object btnSender, TabPage tabPage)
         {
 
-            if (activeForm != null)
+            try
             {
-                activeForm.Close();
+                if (activeForm != null)
+                {
+                    activeForm.Close();
 
+                }
+                //ActivateButton(btnSender);
+                activeForm = childForm;
+                childForm.TopLevel = false;
+                childForm.FormBorderStyle = FormBorderStyle.None;
+                childForm.Dock = DockStyle.Fill;
+                tabPage.Controls.Add(childForm);
+
+                //this.btnCDRSummary.Controls.Add(childForm);
+                //this.btnCDRSummary.Tag = childForm;
+
+                childForm.BringToFront();
+                childForm.Show();
+                //lbTitle.Text = childForm.Text;
             }
-            //ActivateButton(btnSender);
-            activeForm = childForm;
-            childForm.TopLevel = false;
-            childForm.FormBorderStyle = FormBorderStyle.None;
-            childForm.Dock = DockStyle.Fill;
-            tabPage.Controls.Add(childForm);
+            catch (Exception ex)
+            {
 
-            //this.btnCDRSummary.Controls.Add(childForm);
-            //this.btnCDRSummary.Tag = childForm;
-
-            childForm.BringToFront();
-            childForm.Show();
-            //lbTitle.Text = childForm.Text;
+                MessageBox.Show(ex.Message);
+            }
         }
 
         private void btnClose_Click(object sender, EventArgs e)
         {
-            Application.Exit();
+            try
+            {
+                Application.Exit();
+            }
+            catch (Exception ex)
+            {
+
+                MessageBox.Show(ex.Message);
+            }
         }
 
         private void btnMin_Click(object sender, EventArgs e)
         {
-            WindowState = FormWindowState.Minimized;
+            try
+            {
+                WindowState = FormWindowState.Minimized;
+            }
+            catch (Exception ex)
+            {
+
+                MessageBox.Show(ex.Message);
+            }
         }
 
         private void btnMax_Click(object sender, EventArgs e)
         {
-            if(WindowState == FormWindowState.Normal)
+            try
             {
-                WindowState = FormWindowState.Maximized;
+                if (WindowState == FormWindowState.Normal)
+                {
+                    WindowState = FormWindowState.Maximized;
+                }
+                else
+                {
+                    WindowState = FormWindowState.Normal;
+                }
             }
-            else
+            catch (Exception ex)
             {
-                WindowState = FormWindowState.Normal;
+
+                MessageBox.Show(ex.Message);
             }
         }
 
@@ -276,10 +429,25 @@ namespace IPDR_Analyzer.Forms
 
         private void btnAppsDur_Click(object sender, EventArgs e)
         {
-            ActivateButton(sender, ThemeManager.RandomizeTheme());
-            bunifuPages.SetPage("tabPage");
-            openChildFormPage(new AppDurForm(), sender, tabPage);
-            lbTitleChildForm.Text = "APPS DURATION";
+            try
+            {
+                if (Common.numForAnalysis != null)
+                {
+                    ActivateButton(sender, ThemeManager.RandomizeTheme());
+                    bunifuPages.SetPage("tabPage");
+                    openChildFormPage(new AppDurForm(), sender, tabPage);
+                    lbTitleChildForm.Text = "APPS DURATION";
+                }
+                else
+                {
+                    MessageBox.Show(Common.select_num);
+                }
+            }
+            catch (Exception ex)
+            {
+
+                MessageBox.Show(ex.Message);
+            }
         }
 
         

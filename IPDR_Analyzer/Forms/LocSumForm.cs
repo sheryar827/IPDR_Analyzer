@@ -20,95 +20,127 @@ namespace IPDR_Analyzer.Forms
 
         public LocSumForm()
         {
-            InitializeComponent();
+            try
+            {
+                InitializeComponent();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Initialization error: " + ex.Message);
+            }
         }
 
         Func<ChartPoint, string> labelPoint = chartpoint => string.Format("{0} ({1:P})", chartpoint.Y, chartpoint.Participation);
 
         public void clearGridView()
         {
-            LocSumDataGridView.DataSource = null;
-            LocSumDataGridView.Rows.Clear();
-            LocSumDataGridView.Columns.Clear();
-            LocSumDataGridView.Refresh();
+            try
+            {
+                LocSumDataGridView.DataSource = null;
+                LocSumDataGridView.Rows.Clear();
+                LocSumDataGridView.Columns.Clear();
+                LocSumDataGridView.Refresh();
+            }
+            catch (Exception ex)
+            {
+
+                MessageBox.Show("Error clearing grid view: " + ex.Message);
+            }
         }
 
         private List<LocSummary> getLocRecords(List<StandIPDR> ipdrList)
         {
-            List<LocSummary> locsum = new List<LocSummary>();
-
-            // Using LINQ to group and count the applications
-            var appCounts = ipdrList
-                .GroupBy(ipdr => ipdr.Location)
-                .Select(group => new
-                {
-                    LocName = group.Key,
-                    Lat = group.First().Latitude, // Assuming Lat is a property of ipdr
-                    Lng = group.First().Longitude, // Assuming Lng is a property of ipdr
-                    Count = group.Count()
-                })
-                .ToList();
-
-            // Printing the results
-            foreach (var LocCount in appCounts)
+            try
             {
-                LocSummary LocSummary = new LocSummary(LocCount.LocName, LocCount.Lat, LocCount.Lng, LocCount.Count);
-                locsum.Add(LocSummary);
-                //Console.WriteLine(LocSummary.Loc);
-            }
+                List<LocSummary> locsum = new List<LocSummary>();
 
-            return locsum;
+                // Using LINQ to group and count the applications
+                var appCounts = ipdrList
+                    .GroupBy(ipdr => ipdr.Location)
+                    .Select(group => new
+                    {
+                        LocName = group.Key,
+                        Lat = group.First().Latitude, // Assuming Lat is a property of ipdr
+                        Lng = group.First().Longitude, // Assuming Lng is a property of ipdr
+                        Count = group.Count()
+                    })
+                    .ToList();
+
+                // Printing the results
+                foreach (var LocCount in appCounts)
+                {
+                    LocSummary LocSummary = new LocSummary(LocCount.LocName, LocCount.Lat, LocCount.Lng, LocCount.Count);
+                    locsum.Add(LocSummary);
+                    //Console.WriteLine(LocSummary.Loc);
+                }
+
+                return locsum;
+            }
+            catch (Exception ex)
+            {
+
+                MessageBox.Show("Error getting location records: " + ex.Message);
+                return new List<LocSummary>();
+            }
         }
 
         private void getAllSummary(List<LocSummary> locsum)
         {
-            if (locsum.Count() > 0)
+            try
+            {
+                if (locsum.Count() > 0)
+                {
+
+
+                    // List to show in PiChart
+                    List<GetBasicConversation> getBasicConversations = new List<GetBasicConversation>();
+
+
+
+
+                    /*Aranging the list in decending order on the basis of total in our calls and sms*/
+                    var locCompSumm = locsum.OrderByDescending(cs => cs.Total).ToList();
+
+                    LocSumDataGridView.DataSource = locCompSumm;
+
+                    SeriesCollection series = new SeriesCollection();
+
+                    if (locCompSumm.Count >= 5)
+                    {
+                        foreach (var bc in locCompSumm.GetRange(0, 5))
+                        {
+                            series.Add(item: new PieSeries()
+                            {
+                                Title = bc.Loc/*BasicConversation contain B-Party Contact Number*/
+                                ,
+                                Values = new ChartValues<int> { bc.Total },
+                                DataLabels = true,
+                                LabelPoint = labelPoint
+                            });
+                            pcLocSummary.Series = series;
+                        }
+                    }
+                    else
+                    {
+                        foreach (var bc in locCompSumm)
+                        {
+                            series.Add(item: new PieSeries()
+                            {
+                                Title = bc.Loc/*BasicConversation contain B-Party Contact Number*/
+                                ,
+                                Values = new ChartValues<int> { bc.Total },
+                                DataLabels = true,
+                                LabelPoint = labelPoint
+                            });
+                            pcLocSummary.Series = series;
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
             {
 
-
-                // List to show in PiChart
-                List<GetBasicConversation> getBasicConversations = new List<GetBasicConversation>();
-
-
-                
-
-                /*Aranging the list in decending order on the basis of total in our calls and sms*/
-                var locCompSumm = locsum.OrderByDescending(cs => cs.Total).ToList();
-
-                LocSumDataGridView.DataSource = locCompSumm;
-
-                SeriesCollection series = new SeriesCollection();
-
-                if (locCompSumm.Count >= 5)
-                {
-                    foreach (var bc in locCompSumm.GetRange(0, 5))
-                    {
-                        series.Add(item: new PieSeries()
-                        {
-                            Title = bc.Loc/*BasicConversation contain B-Party Contact Number*/
-                            ,
-                            Values = new ChartValues<int> { bc.Total },
-                            DataLabels = true,
-                            LabelPoint = labelPoint
-                        });
-                        pcLocSummary.Series = series;
-                    }
-                }
-                else
-                {
-                    foreach (var bc in locCompSumm)
-                    {
-                        series.Add(item: new PieSeries()
-                        {
-                            Title = bc.Loc/*BasicConversation contain B-Party Contact Number*/
-                            ,
-                            Values = new ChartValues<int> { bc.Total },
-                            DataLabels = true,
-                            LabelPoint = labelPoint
-                        });
-                        pcLocSummary.Series = series;
-                    }
-                }
+                MessageBox.Show("Error processing summary: " + ex.Message);
             }
         }
 
@@ -150,16 +182,17 @@ namespace IPDR_Analyzer.Forms
 
                 /*rbAllData.Checked = true;*/
                 panelDT.Enabled = false;
+                getAllSummary(getLocRecords(Common.allRecordNum));
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message);
+                MessageBox.Show("Error during form loading: " + ex.Message);
             }
 
-            getAllSummary(getLocRecords(Common.allRecordNum));
+            
         }
 
-        private List<AppSummary> getAppRecords(List<StandIPDR> ipdrList)
+        /*private List<AppSummary> getAppRecords(List<StandIPDR> ipdrList)
         {
             List<AppSummary> appsum = new List<AppSummary>();
 
@@ -181,75 +214,115 @@ namespace IPDR_Analyzer.Forms
             }
 
             return appsum;
-        }
+        }*/
 
         private void rbSelected_Click(object sender, EventArgs e)
         {
-            panelDT.Enabled = true;
-            flpTime.Enabled = false;
+            try
+            {
+                panelDT.Enabled = true;
+                flpTime.Enabled = false;
+            }
+            catch (Exception ex)
+            {
+
+                MessageBox.Show(ex.Message);
+            }
         }
 
         private void btnSearch_Click(object sender, EventArgs e)
         {
-            cdrSelectedSummary();
+            try
+            {
+                cdrSelectedSummary();
+            }
+            catch (Exception ex)
+            {
+
+                MessageBox.Show(ex.Message);
+            }
         }
 
         private void cdrSelectedSummary()
         {
-            //string Qry = "select * from CDRTable WHERE Call_Type = 'Voice'";
+            try
+            {
+                //string Qry = "select * from CDRTable WHERE Call_Type = 'Voice'";
 
-            // Sql Query to get every row from CDRTable
-            DateTime startDate = Convert.ToDateTime(dtpDateFrom.Value.ToString("yyyy/MM/dd"));
-            DateTime endDate = Convert.ToDateTime(dtpDateTo.Value.ToString("yyyy/MM/dd"));
-            // Converting time to 24H format and removing PM, AM from it e.g 16:00:00 AM getting only first 8 char like 16:00:00
-            TimeSpan startTime = Convert.ToDateTime(dtpTimeFrom.Value.ToString("HH:mm:ss tt").Substring(0, 8)).TimeOfDay;
-            TimeSpan endTime = Convert.ToDateTime(dtpTimeTo.Value.ToString("HH:mm:ss tt").Substring(0, 8)).TimeOfDay;
+                // Sql Query to get every row from CDRTable
+                DateTime startDate = Convert.ToDateTime(dtpDateFrom.Value.ToString("yyyy/MM/dd"));
+                DateTime endDate = Convert.ToDateTime(dtpDateTo.Value.ToString("yyyy/MM/dd"));
+                // Converting time to 24H format and removing PM, AM from it e.g 16:00:00 AM getting only first 8 char like 16:00:00
+                TimeSpan startTime = Convert.ToDateTime(dtpTimeFrom.Value.ToString("HH:mm:ss tt").Substring(0, 8)).TimeOfDay;
+                TimeSpan endTime = Convert.ToDateTime(dtpTimeTo.Value.ToString("HH:mm:ss tt").Substring(0, 8)).TimeOfDay;
 
-            selectedRecordsA_Num = new List<StandIPDR>();
-            selectedRecordsA_Num = Common.allRecordNum.Where(t => Convert.ToDateTime(t.Date) >= startDate && Convert.ToDateTime(t.Date) <= endDate
-            && Convert.ToDateTime(t.Time).TimeOfDay >= startTime && Convert.ToDateTime(t.Time).TimeOfDay <= endTime).ToList();
+                selectedRecordsA_Num = new List<StandIPDR>();
+                selectedRecordsA_Num = Common.allRecordNum.Where(t => Convert.ToDateTime(t.Date) >= startDate && Convert.ToDateTime(t.Date) <= endDate
+                && Convert.ToDateTime(t.Time).TimeOfDay >= startTime && Convert.ToDateTime(t.Time).TimeOfDay <= endTime).ToList();
 
-            getAllSummary(getLocRecords(selectedRecordsA_Num));
+                getAllSummary(getLocRecords(selectedRecordsA_Num));
+            }
+            catch (Exception ex)
+            {
+
+                MessageBox.Show(ex.Message);
+            }
 
         }
 
         private void rbAllData_Click(object sender, EventArgs e)
         {
-            panelDT.Enabled = false;
-            flpTime.Enabled = true;
+            try
+            {
+                panelDT.Enabled = false;
+                flpTime.Enabled = true;
 
-            rbDay.Checked = false; rbMorning.Checked = false; rbEvening.Checked = false;
+                rbDay.Checked = false; rbMorning.Checked = false; rbEvening.Checked = false;
 
-            // function to get complete cdr summary
-            getAllSummary(getLocRecords(Common.allRecordNum));
+                // function to get complete cdr summary
+                getAllSummary(getLocRecords(Common.allRecordNum));
+            }
+            catch (Exception ex)
+            {
+
+                MessageBox.Show(ex.Message);
+            }
         }
 
         private void LocSumDataGridView_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            string location = LocSumDataGridView.Rows[e.RowIndex].Cells[0].Value.ToString();
-            
-            if (!rbSelected.Checked)
+            try
             {
-                if (rbMorning.Checked)
+                string location = LocSumDataGridView.Rows[e.RowIndex].Cells[0].Value.ToString();
+
+                if (!rbSelected.Checked)
                 {
-                    getDetailedRecords(location, morningRecordsA_Num);
-                }
-                else if (rbDay.Checked)
-                {
-                    getDetailedRecords(location, dayRecordsA_Num);
-                }
-                else if (rbEvening.Checked)
-                {
-                    getDetailedRecords(location, eveningRecordsA_Num);
+                    if (rbMorning.Checked)
+                    {
+                        getDetailedRecords(location, morningRecordsA_Num);
+                    }
+                    else if (rbDay.Checked)
+                    {
+                        getDetailedRecords(location, dayRecordsA_Num);
+                    }
+                    else if (rbEvening.Checked)
+                    {
+                        getDetailedRecords(location, eveningRecordsA_Num);
+                    }
+                    else
+                    {
+                        getDetailedRecords(location, Common.allRecordNum);
+                    }
                 }
                 else
                 {
-                    getDetailedRecords(location, Common.allRecordNum);
+                    getDetailedRecords(location, selectedRecordsA_Num);
                 }
             }
-            else
+            catch (Exception ex)
             {
-                getDetailedRecords(location, selectedRecordsA_Num);
+
+                MessageBox.Show(ex.Message);
             }
         }
 
@@ -272,10 +345,11 @@ namespace IPDR_Analyzer.Forms
 
         private void rbMorning_Click(object sender, EventArgs e)
         {
-            morningRecordsA_Num = new List<StandIPDR>();
+            
 
             try
             {
+                morningRecordsA_Num = new List<StandIPDR>();
                 morningRecordsA_Num = Common.allRecordNum.Where(t => Convert.ToDateTime(t.Time).TimeOfDay >= Common.mStart
             && Convert.ToDateTime(t.Time).TimeOfDay <= Common.mEnd).ToList();
                 getAllSummary(getLocRecords(morningRecordsA_Num));
@@ -288,11 +362,12 @@ namespace IPDR_Analyzer.Forms
 
         private void rbDay_Click(object sender, EventArgs e)
         {
-            dayRecordsA_Num = new List<StandIPDR>();
+            
 
 
             try
             {
+                dayRecordsA_Num = new List<StandIPDR>();
                 dayRecordsA_Num = Common.allRecordNum.Where(t => Convert.ToDateTime(t.Time).TimeOfDay >= Common.dStart
             && Convert.ToDateTime(t.Time).TimeOfDay <= Common.dEnd).ToList();
                 getAllSummary(getLocRecords(dayRecordsA_Num));
@@ -305,11 +380,12 @@ namespace IPDR_Analyzer.Forms
 
         private void rbEvening_Click(object sender, EventArgs e)
         {
-            eveningRecordsA_Num = new List<StandIPDR>();
+            
 
 
             try
             {
+                eveningRecordsA_Num = new List<StandIPDR>();
                 eveningRecordsA_Num = Common.allRecordNum.Where(t => Convert.ToDateTime(t.Time).TimeOfDay >= Common.eStart
             && Convert.ToDateTime(t.Time).TimeOfDay <= Common.eEnd).ToList();
                 getAllSummary(getLocRecords(eveningRecordsA_Num));
