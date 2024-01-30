@@ -6,6 +6,7 @@ using System;
 using System.Windows.Forms;
 using System.Collections.Generic;
 using System.Linq;
+using System.Drawing;
 
 namespace IPDR_Analyzer.Forms
 {
@@ -16,6 +17,7 @@ namespace IPDR_Analyzer.Forms
             try
             {
                 InitializeComponent();
+                
             }
             catch (Exception ex)
             {
@@ -178,5 +180,8 @@ namespace IPDR_Analyzer.Forms
                 MessageBox.Show("Error on mouse hover in gbActiveThirds: " + ex.Message);
             }
         }
+
+        
+
     }
 }

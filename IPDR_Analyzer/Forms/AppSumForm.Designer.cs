@@ -32,6 +32,7 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AppSumForm));
             this.bunifuElipse3 = new Bunifu.Framework.UI.BunifuElipse(this.components);
             this.panelMenu = new System.Windows.Forms.Panel();
             this.comboBox = new System.Windows.Forms.ComboBox();
@@ -60,7 +61,8 @@
             this.gbCDRSummary = new System.Windows.Forms.GroupBox();
             this.panel4 = new System.Windows.Forms.Panel();
             this.IPDRSummaryGridView = new Bunifu.UI.WinForms.BunifuDataGridView();
-            this.fontDialog1 = new System.Windows.Forms.FontDialog();
+            this.bunifuPieChart1 = new Bunifu.Charts.WinForms.ChartTypes.BunifuPieChart(this.components);
+            this.bunifuElipse1 = new Bunifu.Framework.UI.BunifuElipse(this.components);
             this.panelMenu.SuspendLayout();
             this.flpTime.SuspendLayout();
             this.panelDateTime.SuspendLayout();
@@ -347,6 +349,7 @@
             // 
             // pcCDRSummary
             // 
+            this.pcCDRSummary.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(191)))), ((int)(((byte)(223)))), ((int)(((byte)(223)))));
             this.pcCDRSummary.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pcCDRSummary.Location = new System.Drawing.Point(10, 10);
             this.pcCDRSummary.Name = "pcCDRSummary";
@@ -451,6 +454,23 @@
             this.IPDRSummaryGridView.Theme = Bunifu.UI.WinForms.BunifuDataGridView.PresetThemes.MediumSeaGreen;
             this.IPDRSummaryGridView.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.IPDRSummaryGridView_CellClick);
             // 
+            // bunifuPieChart1
+            // 
+            this.bunifuPieChart1.BackgroundColor = ((System.Collections.Generic.List<System.Drawing.Color>)(resources.GetObject("bunifuPieChart1.BackgroundColor")));
+            this.bunifuPieChart1.BorderColor = ((System.Collections.Generic.List<System.Drawing.Color>)(resources.GetObject("bunifuPieChart1.BorderColor")));
+            this.bunifuPieChart1.BorderWidth = 0;
+            this.bunifuPieChart1.Data = ((System.Collections.Generic.List<double>)(resources.GetObject("bunifuPieChart1.Data")));
+            this.bunifuPieChart1.HoverBackgroundColor = System.Drawing.Color.Empty;
+            this.bunifuPieChart1.HoverBorderColor = System.Drawing.Color.Empty;
+            this.bunifuPieChart1.HoverBorderWidth = 0;
+            this.bunifuPieChart1.Label = "Label here";
+            this.bunifuPieChart1.TargetCanvas = null;
+            // 
+            // bunifuElipse1
+            // 
+            this.bunifuElipse1.ElipseRadius = 20;
+            this.bunifuElipse1.TargetControl = this.IPDRSummaryGridView;
+            // 
             // AppSumForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
@@ -506,9 +526,10 @@
         private System.Windows.Forms.Label lbListSize;
         private System.Windows.Forms.TextBox txtGetRange;
         private LiveCharts.WinForms.PieChart pcCDRSummary;
-        private System.Windows.Forms.FontDialog fontDialog1;
         private FontAwesome.Sharp.IconPictureBox btnSearch;
         private Bunifu.UI.WinForms.BunifuDataGridView IPDRSummaryGridView;
         private System.Windows.Forms.ComboBox comboBox;
+        private Bunifu.Charts.WinForms.ChartTypes.BunifuPieChart bunifuPieChart1;
+        private Bunifu.Framework.UI.BunifuElipse bunifuElipse1;
     }
 }

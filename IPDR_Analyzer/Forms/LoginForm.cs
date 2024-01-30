@@ -10,12 +10,12 @@ using System.Windows.Forms;
 
 namespace IPDR_Analyzer.Forms
 {
-    public partial class LoginForm : Form
+    public partial class loginForm : Form
     {
         private bool isLoginPassVisible;
         private bool isRegPassVisible;
         private bool isRegRePassVisible;
-        public LoginForm()
+        public loginForm()
         {
             InitializeComponent();
         }
@@ -190,6 +190,7 @@ namespace IPDR_Analyzer.Forms
 
         private async void LoginForm_Load(object sender, EventArgs e)
         {
+            bcLogin.BackColor = ThemeManager.RandomizeTheme();
             await Task.Delay(100);
             BunifuTransition transition = new BunifuTransition();
             transition.ShowSync(bcLogin, false,

@@ -46,6 +46,7 @@
             this.btnPlotCommonLatLng = new Bunifu.UI.WinForms.BunifuButton.BunifuButton();
             this.lbCommonLatLng = new System.Windows.Forms.ListBox();
             this.btnLocDetails = new System.Windows.Forms.Button();
+            this.bunifuElipse = new Bunifu.Framework.UI.BunifuElipse(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.gvProjectNum)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
@@ -463,6 +464,11 @@
             this.btnLocDetails.UseVisualStyleBackColor = false;
             this.btnLocDetails.Click += new System.EventHandler(this.btnLocDetails_Click);
             // 
+            // bunifuElipse
+            // 
+            this.bunifuElipse.ElipseRadius = 20;
+            this.bunifuElipse.TargetControl = this.gvProjectNum;
+            // 
             // CGMapForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
@@ -496,5 +502,6 @@
         private Bunifu.UI.WinForms.BunifuDatePicker DatePickerStartDate;
         private System.Windows.Forms.TextBox txtDateLimit;
         private Bunifu.UI.WinForms.BunifuButton.BunifuButton btnExtract;
+        private Bunifu.Framework.UI.BunifuElipse bunifuElipse;
     }
 }

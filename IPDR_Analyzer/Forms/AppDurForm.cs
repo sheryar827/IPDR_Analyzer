@@ -35,6 +35,7 @@ namespace IPDR_Analyzer.Forms
         {
             try
             {
+                //splitContainer2.Panel1.BackColor = ThemeManager.RandomizeTheme();
                 //panel3.BackColor = ThemeManager.RandomizeTheme();
                 //getting start date from datatable
                 string sd = Common.allRecordNum.First().Date.ToString();

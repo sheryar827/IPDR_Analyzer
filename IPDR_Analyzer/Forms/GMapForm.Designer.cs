@@ -43,6 +43,7 @@
             this.txtDateLimit = new System.Windows.Forms.TextBox();
             this.btnLocDetails = new System.Windows.Forms.Button();
             this.gvProjectNum = new Bunifu.UI.WinForms.BunifuDataGridView();
+            this.bunifuElipse2 = new Bunifu.Framework.UI.BunifuElipse(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -298,6 +299,7 @@
             dataGridViewCellStyle1.ForeColor = System.Drawing.Color.Black;
             this.gvProjectNum.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.gvProjectNum.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.gvProjectNum.BackgroundColor = System.Drawing.Color.White;
             this.gvProjectNum.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.gvProjectNum.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
             this.gvProjectNum.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
@@ -352,6 +354,11 @@
             this.gvProjectNum.Theme = Bunifu.UI.WinForms.BunifuDataGridView.PresetThemes.Teal;
             this.gvProjectNum.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.gvProjectNum_CellClick);
             // 
+            // bunifuElipse2
+            // 
+            this.bunifuElipse2.ElipseRadius = 20;
+            this.bunifuElipse2.TargetControl = this.gvProjectNum;
+            // 
             // GMapForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
@@ -383,5 +390,6 @@
         private Bunifu.UI.WinForms.BunifuDatePicker DatePickerStartDate;
         private System.Windows.Forms.TextBox txtDateLimit;
         private Bunifu.UI.WinForms.BunifuLoader bunifuLoader;
+        private Bunifu.Framework.UI.BunifuElipse bunifuElipse2;
     }
 }

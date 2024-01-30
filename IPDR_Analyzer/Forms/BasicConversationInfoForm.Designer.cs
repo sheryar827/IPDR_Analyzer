@@ -78,6 +78,7 @@
             this.bunifuElipse2 = new Bunifu.Framework.UI.BunifuElipse(this.components);
             this.bunifuElipse3 = new Bunifu.Framework.UI.BunifuElipse(this.components);
             this.bunifuElipse4 = new Bunifu.Framework.UI.BunifuElipse(this.components);
+            this.bunifuElipse5 = new Bunifu.Framework.UI.BunifuElipse(this.components);
             this.gbActiveThirds.SuspendLayout();
             this.panel1.SuspendLayout();
             this.panelWeekDays.SuspendLayout();
@@ -557,6 +558,7 @@
             this.pcbasicConver.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.pcbasicConver.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(191)))), ((int)(((byte)(223)))), ((int)(((byte)(223)))));
             this.pcbasicConver.Location = new System.Drawing.Point(396, 13);
             this.pcbasicConver.Name = "pcbasicConver";
             this.pcbasicConver.Size = new System.Drawing.Size(689, 903);
@@ -594,6 +596,11 @@
             // 
             this.bunifuElipse4.ElipseRadius = 20;
             this.bunifuElipse4.TargetControl = this.panelWeekDays;
+            // 
+            // bunifuElipse5
+            // 
+            this.bunifuElipse5.ElipseRadius = 20;
+            this.bunifuElipse5.TargetControl = this.pcbasicConver;
             // 
             // BasicConversationInfoForm
             // 
@@ -674,5 +681,6 @@
         private Bunifu.Framework.UI.BunifuElipse bunifuElipse2;
         private Bunifu.Framework.UI.BunifuElipse bunifuElipse3;
         private Bunifu.Framework.UI.BunifuElipse bunifuElipse4;
+        private Bunifu.Framework.UI.BunifuElipse bunifuElipse5;
     }
 }
