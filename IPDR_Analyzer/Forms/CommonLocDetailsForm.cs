@@ -13,7 +13,8 @@ namespace IPDR_Analyzer.Forms
 {
     public partial class CommonLocDetailsForm : Form
     {
-        List<StandIPDR> matchingRecords = new List<StandIPDR>();
+        //List<StandIPDR> matchingRecords = new List<StandIPDR>();
+
         public CommonLocDetailsForm(DataTable specificLatLngRecord
             , List<StandIPDR> mr)
         {
