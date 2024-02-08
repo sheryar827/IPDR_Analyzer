@@ -1,9 +1,8 @@
-﻿using Bunifu.UI.WinForms;
-using Dapper;
+﻿using Dapper;
 using ExcelDataReader;
 using IPDR_Analyzer.Classes;
 using LumenWorks.Framework.IO.Csv;
-using Newtonsoft.Json.Linq;
+using ReadExcelApp.Classes;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -530,9 +529,70 @@ namespace IPDR_Analyzer.Forms
             }
         }
 
-        private async void gvIPDRNumber_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        
+        /*private void deleteRecordA_Num(string a_num, string project)
         {
-            if (e.RowIndex >= 0)
+            String qry = "delete from ProjectsTableNumber where Number = '" + a_num + "' and project = '" + project + "'";
+            SqlConnection sqlcon = new SqlConnection(AppConnection.GetConnectionString());
+            try
+            {
+                SqlCommand sqlcmnd = new SqlCommand(qry, sqlcon);
+                sqlcon.Open();
+                sqlcmnd.ExecuteScalar();
+                sqlcon.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }*/
+
+        private async Task<bool> deleteNumberRecords(string numToDel, string proName, int proId)
+        {
+            bool success = false;
+            await Task.Run(() =>
+            {
+                using (SqlConnection con = new SqlConnection(AppConnection.GetConnectionString()))
+                {
+                    using (SqlCommand cmd = new SqlCommand("delete_Selected_Number_Records", con))
+                    {
+                        cmd.CommandType = CommandType.StoredProcedure;
+
+                        cmd.Parameters.AddWithValue("@Number", numToDel);
+                        cmd.Parameters.AddWithValue("@ProjectId", proId);
+                        cmd.Parameters.AddWithValue("@Project", proName);
+
+                        try
+                        {
+                            if (con.State != ConnectionState.Open)
+                                con.Open();
+
+                            int rowsAffected = cmd.ExecuteNonQuery();
+
+                            // If the command executed successfully and rows were affected
+                            if (rowsAffected > 0)
+                            {
+                                success = true;
+                            }
+                        }
+                        catch (Exception ex)
+                        {
+                            // Handle exception, log error, or throw further if necessary
+                            Console.WriteLine("Error executing command: " + ex.Message);
+                        }
+                    }
+                }
+            });
+            // Report progress
+            //progress.Report(success);
+
+            return success;
+        }
+
+
+        private async void gvIPDRNumber_CellContentDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex >= 0 && e.ColumnIndex < 4)
             {
                 bunifuLoader.Visible = true; // Show the loader
 
@@ -540,9 +600,9 @@ namespace IPDR_Analyzer.Forms
                 Common.project_Name = gvIPDRNumber.Rows[e.RowIndex].Cells[1].Value.ToString();
 
                 string spGetAllRecords = "exec dbo.GET_ALL_RECORD_NUM '" + Common.numForAnalysis + "', '" + Common.project_Name + "'";
-                
+
                 DataTable dt = new DataTable();
-                
+
                 dt = await CommonMethods.getRecords(spGetAllRecords);
 
                 this.Invoke(new Action(() =>
@@ -598,6 +658,59 @@ namespace IPDR_Analyzer.Forms
 
                 //Common.allRecordA_Nums = Common.allRecordA_Nums.OrderBy(x => x.Date).ToList();
                 //MessageBox.Show(Common.numForAnalysis + " With " + Common.allRecordNum.Count() + " Records Is Selected For Analysis");
+            }
+
+
+
+            // columnindex is 3 because column 0 is id which is hidden
+            else if (e.RowIndex >= 0 && e.ColumnIndex == 4)
+            {
+                
+                // columnindex is 3 because column 0 is id which is hidden
+                Common.numForAnalysis = gvIPDRNumber.Rows[e.RowIndex].Cells[2].Value.ToString();
+                Common.project_Name = gvIPDRNumber.Rows[e.RowIndex].Cells[1].Value.ToString();
+                projectId = (int)gvIPDRNumber.Rows[e.RowIndex].Cells[0].Value;
+                DialogResult result = MessageBox.Show("Are you confirm to Delete?", "Warning", MessageBoxButtons.YesNo);
+
+                if (result == DialogResult.Yes)
+                {
+                    bunifuLoader.Visible = true;
+                    bool deletionSuccess = await deleteNumberRecords(Common.numForAnalysis, Common.project_Name, projectId);
+                    // Create progress reporter
+                    this.Invoke(new Action(() =>
+                    {
+                        // Hide progress bar when records are deleted successfully
+                        bunifuLoader.Visible = false;
+
+                        if (deletionSuccess)
+                        {
+                            MessageBox.Show("Records deleted successfully");
+                            getProjectNumber();
+                        }
+                        else
+                        {
+                            MessageBox.Show("Failed to delete records");
+                        }
+                    }));
+
+                    // Call the asynchronous method
+                    
+                    /*if (deleteNumberRecords(Common.numForAnalysis, Common.project_Name, projectId))
+                    {
+                        //deleteRecordA_Num(Common.numForAnalysis, Common.project_Name);
+                        MessageBox.Show("Record Deleted Successfull.");
+                        getProjectNumber();
+                    }
+                    else
+                    {
+                        MessageBox.Show("Unable to Delete Records");
+                    }*/
+                }
+                else if (result == DialogResult.No)
+                {
+                    bunifuLoader.Visible=false;
+                    return;
+                }
             }
         }
     }
